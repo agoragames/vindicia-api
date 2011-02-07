@@ -65,12 +65,12 @@ module Vindicia
       def alias_class_action(action)
         class_action_module.module_eval <<-CODE
           def #{action.to_s.snakecase}_with_vindicia(body = nil, &block)
-            client.request :tns, #{action.inspect}, :body => body do
+            client.request :tns, #{action.inspect} do
               soap.namespaces["xmlns:tns"] = vindicia_target_namespace
               http.headers["SOAPAction"] = vindicia_soap_action('#{action}')
               soap.body = {
                 :auth => vindicia_auth_credentials
-              }
+              }.merge(body)
               block.call(soap, wsdl, http, wsse) if block
             end
           end
