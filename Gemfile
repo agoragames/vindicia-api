@@ -1,7 +1,6 @@
 source "http://rubygems.org"
 
-gem "savon", "~> 0.8.3"
-gem "savon_model", "~> 0.3.1"
+gem "savon", "~> 0.8.5"
 
 group :development do
   gem "bundler", "~> 1.0.0"
