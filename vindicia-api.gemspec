@@ -9,8 +9,8 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Tom Quackenbush"]
-  s.date = %q{2011-02-09}
-  s.description = %q{Wrapper for Vindicia SOAP API}
+  s.date = %q{2011-02-11}
+  s.description = %q{TODO: longer description of your gem}
   s.email = %q{tquackenbush@agoragames.com}
   s.extra_rdoc_files = [
     "LICENSE.txt",
@@ -33,7 +33,7 @@ Gem::Specification.new do |s|
   s.licenses = ["MIT"]
   s.require_paths = ["lib"]
   s.rubygems_version = %q{1.3.7}
-  s.summary = %q{Wrapper for Vindicia SOAP API}
+  s.summary = %q{TODO: one-line summary of your gem}
   s.test_files = [
     "test/helper.rb",
     "test/test_vindicia-api.rb"

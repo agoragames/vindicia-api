@@ -79,7 +79,7 @@ module Vindicia
       end
 
       def vindicia_target_namespace
-        "http://soap.vindicia.com/v#{underscoreize_periods(@api_version)}/#{vindicia_class_name}"
+        "#{namespace}/v#{underscoreize_periods(@api_version)}/#{vindicia_class_name}"
       end
 
       def underscoreize_periods(target)
