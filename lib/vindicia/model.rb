@@ -79,7 +79,7 @@ module Vindicia
       end
 
       def vindicia_target_namespace
-        "#{namespace}/v#{underscoreize_periods(@api_version)}/#{vindicia_class_name}"
+        "#{client.wsdl.namespace}/v#{underscoreize_periods(@api_version)}/#{vindicia_class_name}"
       end
 
       def underscoreize_periods(target)
