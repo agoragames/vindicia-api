@@ -55,6 +55,8 @@ module Vindicia
               }.merge(body)
               block.call(soap, wsdl, http, wsse) if block
             end
+          rescue => e
+            rescue_exception(e)
           end
         CODE
       end
@@ -89,6 +91,12 @@ module Vindicia
       
       def vindicia_soap_action(action)
         %{"#{vindicia_target_namespace}##{action.to_s.lower_camelcase}"}
+      end
+
+      def rescue_exception(error)
+        if error === HTTPClient::ReceiveTimeoutError
+          { :return_code => '500', :return_string => "Vindicia Timeout" }
+        end
       end
             
       def class_action_module
