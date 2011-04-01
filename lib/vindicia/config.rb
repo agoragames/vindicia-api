@@ -1,3 +1,6 @@
+require 'singleton'
+require 'vindicia/util'
+
 module Vindicia
 
   API_CLASSES = {
@@ -47,13 +50,24 @@ module Vindicia
       :symantec=>[:add_auto_bill_item, :cancel_auto_bill, :cancel_pending_ar_txns, :delay_bill, :dispute_bill, :refund_ab_txns, :update_abs_account, :update_ab_product, :update_bp, :update_bp_and_catch_up_billing, :validate_bp, :fetch_b_ps_by_customer_guid, :lookup_transaction, :disable_billing_profile, :fetch_captured_transactions, :report_order_exception],
       :token=>[:update, :fetch],
       :transaction=>[:fetch_by_vid, :fetch_by_web_session_vid, :fetch_by_account, :fetch_by_merchant_transaction_id, :fetch_delta_since, :fetch_delta, :fetch_by_autobill, :fetch_search_page, :fetch_by_payment_method, :auth, :calculate_sales_tax, :capture, :cancel, :auth_capture, :report, :score, :finalize_pay_pal_auth],
-      :web_session=>[:initialize, :finalize, :fetch_by_vid]
+#      :web_session=>[:initialize, :finalize, :fetch_by_vid] # initialize is a ruby reserved word. need to refactor to get this one to work =( @TQ
+      :web_session=>[:finalize, :fetch_by_vid]
     }
   }
 
   class Configuration
     include Singleton
+    
+    @@configured = false
     attr_accessor :api_version, :login, :password, :endpoint, :namespace
+
+    def configured!
+      @@configured = true
+    end
+    
+    def is_configured?
+      @@configured
+    end      
   end
 
   def self.config
@@ -61,17 +75,20 @@ module Vindicia
   end
 
   def self.configure
+    raise 'Vindicia-api gem has already been configured. Things might get hairy if we do this again with new values.' if config.is_configured?
     yield config
-    initialize!
+    if initialize!
+      config.configured!
+    end
   end
 
   private
   
   def self.initialize!
-    return false unless API_CLASSES[Vindicia.config.api_version]
+    return false unless API_CLASSES[config.api_version]
   
-    API_CLASSES[Vindicia.config.api_version].each_key do |vindicia_klass|
-      const_set(vindicia_klass.to_s.camelcase, 
+    API_CLASSES[config.api_version].each_key do |vindicia_klass|
+      const_set(Vindicia::Util.camelize(vindicia_klass.to_s), 
         Class.new do
           include Vindicia::Model
 

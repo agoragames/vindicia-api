@@ -1,4 +1,5 @@
 require "savon"
+require "savon/core_ext/string"
 
 module Vindicia
 
@@ -42,7 +43,7 @@ module Vindicia
       end
 
     private
-      
+    
       def define_class_action(action)
         class_action_module.module_eval <<-CODE
           def #{action.to_s.snakecase}(body = {}, &block)
