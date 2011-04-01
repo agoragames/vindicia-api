@@ -56,7 +56,7 @@ module Vindicia
               block.call(soap, wsdl, http, wsse) if block
             end
           rescue Exception => e
-            rescue_exception(e)
+            rescue_exception(:#{action.to_s.snakecase}, e)
           end
         CODE
       end
@@ -93,8 +93,8 @@ module Vindicia
         %{"#{vindicia_target_namespace}##{action.to_s.lower_camelcase}"}
       end
 
-      def rescue_exception(error)
-        { :return_code => '500', :return_string => "Error contacting Vindicia: #{error.message}" }
+      def rescue_exception(action, error)
+        { "#{action}_response".to_sym => { :return_code => '500', :return_string => "Error contacting Vindicia: #{error.message}" } }
       end
             
       def class_action_module
