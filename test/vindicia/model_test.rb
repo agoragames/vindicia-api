@@ -58,6 +58,6 @@ class Vindicia::ModelTest < Test::Unit::TestCase
 
     assert_not_nil resp
     assert resp.to_hash
-    assert_equal '500', resp[:update_response][:return_code]
+    assert_equal '500', resp[:update_response][:return][:return_code]
   end
 end

@@ -94,7 +94,9 @@ module Vindicia
       end
 
       def rescue_exception(action, error)
-        { "#{action}_response".to_sym => { :return_code => '500', :return_string => "Error contacting Vindicia: #{error.message}" } }
+        { "#{action}_response".to_sym => { :return => 
+          { :return_code => '500', :return_string => "Error contacting Vindicia: #{error.message}" } 
+        } }
       end
             
       def class_action_module
