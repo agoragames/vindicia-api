@@ -1,3 +1,4 @@
+# http://blog.ardes.com/2006/12/11/testing-singletons-with-ruby
 require 'singleton'
 
 class <<Singleton
