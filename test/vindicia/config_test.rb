@@ -4,18 +4,12 @@ require 'vindicia/util'
 class Vindicia::ConfigTest < Test::Unit::TestCase
 
   def setup
-    Vindicia::Configuration.class_eval do
-      def self.reset_configured!
-        @@configured = false
-      end
-    end
     Vindicia.class_eval do
       def self.clear_config
         if Vindicia.config.is_configured?
-          API_CLASSES[Vindicia.config.api_version].each_key do |vindicia_klass|
-            Vindicia.send(:remove_const, Vindicia::Util.camelize(vindicia_klass.to_s).to_sym) 
+          Vindicia::API_CLASSES[Vindicia.config.api_version].each_key do |vindicia_klass|
+            Vindicia.send(:remove_const, Vindicia::Util.camelize(vindicia_klass.to_s).to_sym)
           end
-          Vindicia::Configuration.reset_configured!
         end
       end
     end
@@ -23,6 +17,7 @@ class Vindicia::ConfigTest < Test::Unit::TestCase
 
   def teardown
     Vindicia.clear_config
+    Vindicia::Configuration.reset_instance
   end
 
   def test_should_not_configure_on_upsupported_api_version

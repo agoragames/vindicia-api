@@ -58,8 +58,11 @@ module Vindicia
   class Configuration
     include Singleton
     
-    @@configured = false
     attr_accessor :api_version, :login, :password, :endpoint, :namespace
+
+    def initialize
+      @@configured = false      
+    end
 
     def configured!
       @@configured = true

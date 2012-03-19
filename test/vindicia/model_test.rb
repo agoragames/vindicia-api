@@ -1,21 +1,16 @@
 require 'helper'
 require 'vindicia/util'
+require 'net/http'
 
 class Vindicia::ModelTest < Test::Unit::TestCase
-  
+
   def setup
-    Vindicia::Configuration.class_eval do
-      def self.reset_configured!
-        @@configured = false
-      end
-    end
     Vindicia.class_eval do
       def self.clear_config
         if Vindicia.config.is_configured?
-          API_CLASSES[Vindicia.config.api_version].each_key do |vindicia_klass|
-            Vindicia.send(:remove_const, Vindicia::Util.camelize(vindicia_klass.to_s).to_sym) 
+          Vindicia::API_CLASSES[Vindicia.config.api_version].each_key do |vindicia_klass|
+            Vindicia.send(:remove_const, Vindicia::Util.camelize(vindicia_klass.to_s).to_sym)
           end
-          Vindicia::Configuration.reset_configured!
         end
       end
     end
@@ -38,6 +33,7 @@ class Vindicia::ModelTest < Test::Unit::TestCase
 
   def teardown
     Vindicia.clear_config
+    Vindicia::Configuration.reset_instance
   end
 
   def test_should_define_api_methods_of_respective_vindicia_class_for_respective_api_version
@@ -52,7 +48,7 @@ class Vindicia::ModelTest < Test::Unit::TestCase
   end
 
   def test_should_catch_exceptions_thrown_underneath_savon
-    Vindicia::AutoBill.client.expects(:request).once.raises(TimeoutError)
+    Vindicia::AutoBill.client.expects(:request).once.raises(Timeout::Error)
 
     resp = Vindicia::AutoBill.update({})
 
