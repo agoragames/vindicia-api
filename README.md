@@ -35,6 +35,7 @@ You will want to modify the example above with which API version you are targeti
 Current supported API versions are '3.5' and '3.6'.
 
 Available Vindicia endpoints are:
+
 * Development: "https://soap.prodtest.sj.vindicia.com/soap.pl"
 * Staging: "https://soap.staging.sj.vindicia.com"
 * Production: "https://soap.vindicia.com/soap.pl"
