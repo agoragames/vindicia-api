@@ -50,6 +50,10 @@ Vindicia::AutoBill.fetch_by_account(:account => { :merchantAccountId => id }
 
 * Note that parameters must be specified in the same order as documented in Vindicia's developer documentation.
 
+## Bugs
+
+* WebSession class is unsupported as it uses 'initialize' as an API call which is a ruby reserved word
+
 ## Contributing
 
 1. Fork it
