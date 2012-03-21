@@ -4,8 +4,8 @@ require File.expand_path('../lib/vindicia/version', __FILE__)
 Gem::Specification.new do |gem|
   gem.authors       = ["Tom Quackenbush"]
   gem.email         = ["tquackenbush@agoragames.com"]
-  gem.description   = %q{TODO: Write a gem description}
-  gem.summary       = %q{TODO: Write a gem summary}
+  gem.description   = %q{A wrapper for creating queries to the Vindicia CashBox API}
+  gem.summary       = %q{A wrapper for creating queries to the Vindicia CashBox API}
   gem.homepage      = ""
 
   gem.files         = `git ls-files`.split($\)
