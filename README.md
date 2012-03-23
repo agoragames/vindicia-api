@@ -6,15 +6,21 @@ A wrapper for making calls to Vindicia's CashBox SOAP API.
 
 Add this line to your application's Gemfile:
 
-    gem 'vindicia-api'
+```ruby
+gem 'vindicia-api'
+```
 
 And then execute:
 
-    $ bundle
+```
+$ bundle
+```
 
 Or install it yourself as:
 
-    $ gem install vindicia-api
+```
+$ gem install vindicia-api
+```
 
 ## Usage
 
