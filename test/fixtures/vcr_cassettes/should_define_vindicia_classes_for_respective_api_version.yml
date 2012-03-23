@@ -1,0 +1,4027 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://soap.vindicia.com/3.6/Vindicia.xsd
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      accept:
+      - ! '*/*'
+      user-agent:
+      - Ruby
+      connection:
+      - close
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      date:
+      - Wed, 21 Mar 2012 14:12:57 GMT
+      server:
+      - Apache/1.3.41 (Unix) mod_perl/1.30 mod_ssl/2.8.31 OpenSSL/0.9.7f
+      last-modified:
+      - Fri, 17 Feb 2012 07:42:22 GMT
+      etag:
+      - ! '"7508a32-c68e-4f3e04de"'
+      accept-ranges:
+      - bytes
+      content-length:
+      - '50830'
+      connection:
+      - close
+      content-type:
+      - text/plain
+    body:
+      encoding: US-ASCII
+      string: ! "  <xsd:schema targetNamespace=\"http://soap.vindicia.com/v3_6/Vindicia\"
+        xmlns=\"http://schemas.xmlsoap.org/wsdl/\" xmlns:enc=\"http://schemas.xmlsoap.org/soap/encoding/\"
+        xmlns:soap=\"http://schemas.xmlsoap.org/wsdl/soap/\" xmlns:tns=\"http://soap.vindicia.com/v3_6/Vindicia\"
+        xmlns:vin=\"http://soap.vindicia.com/v3_6/Vindicia\" xmlns:wsdl=\"http://schemas.xmlsoap.org/wsdl/\"
+        xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsdl=\"http://soap.vindicia.com/v3_6/Vindicia\"
+        >\n  <xsd:import namespace=\"http://schemas.xmlsoap.org/soap/encoding/\" />\n
+        \ <xsd:complexType name=\"Account\">\n    <xsd:sequence>\n      <xsd:element
+        minOccurs=\"0\" name=\"VID\" type=\"xsd:string\" />\n      <xsd:element minOccurs=\"0\"
+        name=\"merchantAccountId\" type=\"xsd:string\" />\n      <xsd:element minOccurs=\"0\"
+        name=\"emailAddress\" type=\"xsd:string\" />\n      <xsd:element minOccurs=\"0\"
+        name=\"emailTypePreference\" type=\"tns:EmailPreference\" />\n      <xsd:element
+        minOccurs=\"0\" name=\"preferredLanguage\" type=\"xsd:string\" />\n      <xsd:element
+        minOccurs=\"0\" name=\"warnBeforeAutobilling\" type=\"xsd:boolean\" />\n      <xsd:element
+        minOccurs=\"0\" name=\"company\" type=\"xsd:string\" />\n      <xsd:element
+        minOccurs=\"0\" name=\"name\" type=\"xsd:string\" />\n      <xsd:element minOccurs=\"0\"
+        name=\"shippingAddress\" type=\"tns:Address\" />\n      <xsd:element maxOccurs=\"unbounded\"
+        minOccurs=\"0\" name=\"paymentMethods\" type=\"vin:PaymentMethod\" />\n      <xsd:element
+        maxOccurs=\"unbounded\" minOccurs=\"0\" name=\"nameValues\" type=\"vin:NameValuePair\"
+        />\n      <xsd:element maxOccurs=\"unbounded\" minOccurs=\"0\" name=\"taxExemptions\"
+        type=\"vin:TaxExemption\" />\n      <xsd:element maxOccurs=\"unbounded\" minOccurs=\"0\"
+        name=\"tokenBalances\" type=\"vin:TokenAmount\" />\n      <xsd:element minOccurs=\"0\"
+        name=\"credit\" type=\"vin:Credit\" />\n    </xsd:sequence>\n  </xsd:complexType>\n
+        \ <xsd:complexType name=\"ActivityTypeArg\">\n    <xsd:sequence>\n      <xsd:element
+        minOccurs=\"0\" name=\"loginArgs\" type=\"tns:ActivityLogin\" />\n      <xsd:element
+        minOccurs=\"0\" name=\"logoutArgs\" type=\"tns:ActivityLogout\" />\n      <xsd:element
+        minOccurs=\"0\" name=\"uriviewArgs\" type=\"tns:ActivityURIView\" />\n      <xsd:element
+        minOccurs=\"0\" name=\"phoneArgs\" type=\"tns:ActivityPhoneContact\" />\n
+        \     <xsd:element minOccurs=\"0\" name=\"emailArgs\" type=\"tns:ActivityEmailContact\"
+        />\n      <xsd:element minOccurs=\"0\" name=\"fulfillmentArgs\" type=\"tns:ActivityFulfillment\"
+        />\n      <xsd:element minOccurs=\"0\" name=\"usageArgs\" type=\"tns:ActivityUsage\"
+        />\n      <xsd:element minOccurs=\"0\" name=\"namedvalueArgs\" type=\"tns:ActivityNamedValue\"
+        />\n      <xsd:element minOccurs=\"0\" name=\"cancellationArgs\" type=\"tns:ActivityCancellation\"
+        />\n      <xsd:element minOccurs=\"0\" name=\"noteArgs\" type=\"tns:ActivityNote\"
+        />\n    </xsd:sequence>\n  </xsd:complexType>\n  <xsd:complexType name=\"ActivityLogin\">\n
+        \   <xsd:sequence>\n      <xsd:element minOccurs=\"0\" name=\"ip\" type=\"xsd:string\"
+        />\n    </xsd:sequence>\n  </xsd:complexType>\n  <xsd:complexType name=\"ActivityLogout\">\n
+        \   <xsd:sequence>\n      <xsd:element minOccurs=\"0\" name=\"ip\" type=\"xsd:string\"
+        />\n    </xsd:sequence>\n  </xsd:complexType>\n  <xsd:complexType name=\"ActivityUsage\">\n
+        \   <xsd:sequence>\n      <xsd:element minOccurs=\"0\" name=\"description\"
+        type=\"xsd:string\" />\n      <xsd:element minOccurs=\"0\" name=\"total\"
+        type=\"xsd:int\" />\n      <xsd:element minOccurs=\"0\" name=\"lastDay\" type=\"xsd:int\"
+        />\n      <xsd:element minOccurs=\"0\" name=\"lastWeek\" type=\"xsd:int\"
+        />\n      <xsd:element minOccurs=\"0\" name=\"lastMonth\" type=\"xsd:int\"
+        />\n      <xsd:element minOccurs=\"0\" name=\"lastYear\" type=\"xsd:int\"
+        />\n      <xsd:element minOccurs=\"0\" name=\"lastUsageDate\" type=\"xsd:dateTime\"
+        />\n    </xsd:sequence>\n  </xsd:complexType>\n  <xsd:complexType name=\"ActivityNamedValue\">\n
+        \   <xsd:sequence>\n      <xsd:element minOccurs=\"1\" name=\"type\" type=\"xsd:string\"
+        />\n      <xsd:element minOccurs=\"1\" name=\"name\" type=\"xsd:string\" />\n
+        \     <xsd:element minOccurs=\"1\" name=\"value\" type=\"xsd:string\" />\n
+        \   </xsd:sequence>\n  </xsd:complexType>\n  <xsd:complexType name=\"ActivityPhoneContact\">\n
+        \   <xsd:sequence>\n      <xsd:element minOccurs=\"0\" name=\"srcPhoneNumber\"
+        type=\"xsd:string\" />\n      <xsd:element minOccurs=\"0\" name=\"destPhoneNumber\"
+        type=\"xsd:string\" />\n      <xsd:element minOccurs=\"0\" name=\"cidPhoneNumber\"
+        type=\"xsd:string\" />\n      <xsd:element minOccurs=\"0\" name=\"aniPhoneNumber\"
+        type=\"xsd:string\" />\n      <xsd:element minOccurs=\"0\" name=\"durationSeconds\"
+        type=\"xsd:int\" />\n      <xsd:element minOccurs=\"0\" name=\"note\" type=\"xsd:string\"
+        />\n      <xsd:element minOccurs=\"1\" name=\"type\" type=\"tns:ActivityCallType\"
+        />\n    </xsd:sequence>\n  </xsd:complexType>\n  <xsd:complexType name=\"ActivityEmailContact\">\n
+        \   <xsd:sequence>\n      <xsd:element minOccurs=\"0\" name=\"srcEmail\" type=\"xsd:string\"
+        />\n      <xsd:element minOccurs=\"0\" name=\"destEmail\" type=\"xsd:string\"
+        />\n      <xsd:element minOccurs=\"0\" name=\"note\" type=\"xsd:string\" />\n
+        \   </xsd:sequence>\n  </xsd:complexType>\n  <xsd:complexType name=\"ActivityFulfillment\">\n
+        \   <xsd:sequence>\n      <xsd:element minOccurs=\"0\" name=\"merchantTransactionId\"
+        type=\"xsd:string\" />\n      <xsd:element minOccurs=\"0\" name=\"shipper\"
+        type=\"xsd:string\" />\n      <xsd:element minOccurs=\"0\" name=\"trackingString\"
+        type=\"xsd:string\" />\n      <xsd:element minOccurs=\"0\" name=\"shippingAddress\"
+        type=\"tns:Address\" />\n      <xsd:element minOccurs=\"0\" name=\"delivered\"
+        type=\"xsd:boolean\" />\n      <xsd:element minOccurs=\"0\" name=\"receivedTs\"
+        type=\"xsd:dateTime\" />\n      <xsd:element minOccurs=\"0\" name=\"receiptName\"
+        type=\"xsd:string\" />\n    </xsd:sequence>\n  </xsd:complexType>\n  <xsd:complexType
+        name=\"ActivityURIView\">\n    <xsd:sequence>\n      <xsd:element minOccurs=\"0\"
+        name=\"ip\" type=\"xsd:string\" />\n      <xsd:element minOccurs=\"1\" name=\"uri\"
+        type=\"xsd:anyURI\" />\n      <xsd:element minOccurs=\"0\" name=\"size\" type=\"xsd:int\"
+        />\n      <xsd:element minOccurs=\"0\" name=\"bytesTransferred\" type=\"xsd:int\"
+        />\n      <xsd:element minOccurs=\"0\" name=\"transferTime\" type=\"xsd:int\"
+        />\n      <xsd:element minOccurs=\"1\" name=\"description\" type=\"xsd:string\"
+        />\n    </xsd:sequence>\n  </xsd:complexType>\n  <xsd:complexType name=\"ActivityCancellation\">\n
+        \   <xsd:sequence>\n      <xsd:element minOccurs=\"0\" name=\"reason\" type=\"xsd:string\"
+        />\n      <xsd:element minOccurs=\"0\" name=\"confirmationCode\" type=\"xsd:int\"
+        />\n      <xsd:element minOccurs=\"1\" name=\"initiator\" type=\"tns:ActivityCancelInitType\"
+        />\n    </xsd:sequence>\n  </xsd:complexType>\n  <xsd:complexType name=\"ActivityNote\">\n
+        \   <xsd:sequence>\n      <xsd:element minOccurs=\"0\" name=\"note\" type=\"xsd:string\"
+        />\n    </xsd:sequence>\n  </xsd:complexType>\n  <xsd:complexType name=\"Activity\">\n
+        \   <xsd:sequence>\n      <xsd:element minOccurs=\"0\" name=\"account\" type=\"tns:Account\"
+        />\n      <xsd:element minOccurs=\"1\" name=\"activityType\" type=\"tns:ActivityType\"
+        />\n      <xsd:element minOccurs=\"0\" name=\"activityArgs\" type=\"tns:ActivityTypeArg\"
+        />\n      <xsd:element minOccurs=\"1\" name=\"timestamp\" type=\"xsd:dateTime\"
+        />\n    </xsd:sequence>\n  </xsd:complexType>\n  <xsd:complexType name=\"Address\">\n
+        \   <xsd:sequence>\n      <xsd:element minOccurs=\"0\" name=\"VID\" type=\"xsd:string\"
+        />\n      <xsd:element minOccurs=\"0\" name=\"name\" type=\"xsd:string\" />\n
+        \     <xsd:element minOccurs=\"0\" name=\"addr1\" type=\"xsd:string\" />\n
+        \     <xsd:element minOccurs=\"0\" name=\"addr2\" type=\"xsd:string\" />\n
+        \     <xsd:element minOccurs=\"0\" name=\"addr3\" type=\"xsd:string\" />\n
+        \     <xsd:element minOccurs=\"0\" name=\"city\" type=\"xsd:string\" />\n
+        \     <xsd:element minOccurs=\"0\" name=\"county\" type=\"xsd:string\" />\n
+        \     <xsd:element minOccurs=\"0\" name=\"district\" type=\"xsd:string\" />\n
+        \     <xsd:element minOccurs=\"0\" name=\"postalCode\" type=\"xsd:string\"
+        />\n      <xsd:element minOccurs=\"0\" name=\"country\" type=\"xsd:string\"
+        />\n      <xsd:element minOccurs=\"0\" name=\"phone\" type=\"xsd:string\"
+        />\n      <xsd:element minOccurs=\"0\" name=\"fax\" type=\"xsd:string\" />\n
+        \     <xsd:element minOccurs=\"0\" name=\"latitude\" type=\"xsd:decimal\"
+        />\n      <xsd:element minOccurs=\"0\" name=\"longitude\" type=\"xsd:decimal\"
+        />\n    </xsd:sequence>\n  </xsd:complexType>\n  <xsd:complexType name=\"Authentication\">\n
+        \   <xsd:sequence>\n      <xsd:element minOccurs=\"1\" name=\"version\" type=\"xsd:string\"
+        />\n      <xsd:element minOccurs=\"1\" name=\"login\" type=\"xsd:string\"
+        />\n      <xsd:element minOccurs=\"1\" name=\"password\" type=\"xsd:string\"
+        />\n      <xsd:element minOccurs=\"0\" name=\"evid\" type=\"xsd:string\" />\n
+        \     <xsd:element minOccurs=\"0\" name=\"userAgent\" type=\"xsd:string\"
+        />\n    </xsd:sequence>\n  </xsd:complexType>\n  <xsd:complexType name=\"AutoBill\">\n
+        \   <xsd:sequence>\n      <xsd:element minOccurs=\"0\" name=\"VID\" type=\"xsd:string\"
+        />\n      <xsd:element minOccurs=\"0\" name=\"merchantAutoBillId\" type=\"xsd:string\"
+        />\n      <xsd:element minOccurs=\"0\" name=\"account\" type=\"tns:Account\"
+        />\n      <xsd:element minOccurs=\"0\" name=\"product\" type=\"tns:Product\"
+        />\n      <xsd:element minOccurs=\"0\" name=\"billingPlan\" type=\"tns:BillingPlan\"
+        />\n      <xsd:element minOccurs=\"0\" name=\"paymentMethod\" type=\"tns:PaymentMethod\"
+        />\n      <xsd:element minOccurs=\"0\" name=\"currency\" type=\"xsd:string\"
+        />\n      <xsd:element minOccurs=\"0\" name=\"customerAutoBillName\" type=\"xsd:string\"
+        />\n      <xsd:element minOccurs=\"0\" name=\"status\" type=\"tns:AutoBillStatus\"
+        />\n      <xsd:element minOccurs=\"0\" name=\"startTimestamp\" type=\"xsd:dateTime\"
+        />\n      <xsd:element minOccurs=\"0\" name=\"endTimestamp\" type=\"xsd:dateTime\"
+        />\n      <xsd:element minOccurs=\"0\" name=\"sourceIp\" type=\"xsd:string\"
+        />\n      <xsd:element minOccurs=\"0\" name=\"billingStatementIdentifier\"
+        type=\"xsd:string\" />\n      <xsd:element minOccurs=\"0\" name=\"billingDay\"
+        type=\"xsd:int\" />\n      <xsd:element minOccurs=\"0\" name=\"minimumCommitment\"
+        type=\"xsd:int\" />\n      <xsd:element minOccurs=\"0\" name=\"merchantAffiliateId\"
+        type=\"xsd:string\" />\n      <xsd:element minOccurs=\"0\" name=\"merchantAffiliateSubId\"
+        type=\"xsd:string\" />\n      <xsd:element minOccurs=\"0\" name=\"warnOnExpiration\"
+        type=\"xsd:boolean\" />\n      <xsd:element maxOccurs=\"unbounded\" minOccurs=\"0\"
+        name=\"futureRebills\" type=\"vin:Transaction\" />\n      <xsd:element maxOccurs=\"unbounded\"
+        minOccurs=\"0\" name=\"nameValues\" type=\"vin:NameValuePair\" />\n      <xsd:element
+        minOccurs=\"0\" name=\"credit\" type=\"vin:Credit\" />\n      <xsd:element
+        minOccurs=\"0\" name=\"upgradedFromVid\" type=\"xsd:string\" />\n      <xsd:element
+        minOccurs=\"0\" name=\"upgradedToVid\" type=\"xsd:string\" />\n    </xsd:sequence>\n
+        \ </xsd:complexType>\n  <xsd:complexType name=\"AutoBillUpgradeHistoryStep\">\n
+        \   <xsd:sequence>\n      <xsd:element minOccurs=\"0\" name=\"vid\" type=\"xsd:string\"
+        />\n      <xsd:element minOccurs=\"0\" name=\"startTimestamp\" type=\"xsd:dateTime\"
+        />\n      <xsd:element minOccurs=\"0\" name=\"endTimestamp\" type=\"xsd:dateTime\"
+        />\n    </xsd:sequence>\n  </xsd:complexType>\n  <xsd:complexType name=\"BillingPlanPrice\">\n
+        \   <xsd:sequence>\n      <xsd:element minOccurs=\"0\" name=\"amount\" type=\"xsd:decimal\"
+        />\n      <xsd:element minOccurs=\"0\" name=\"currency\" type=\"xsd:string\"
+        />\n      <xsd:element minOccurs=\"0\" name=\"priceListName\" type=\"xsd:string\"
+        />\n      <xsd:element minOccurs=\"0\" name=\"tokenAmount\" type=\"tns:TokenAmount\"
+        />\n    </xsd:sequence>\n  </xsd:complexType>\n  <xsd:complexType name=\"BillingPlanPeriod\">\n
+        \   <xsd:sequence>\n      <xsd:element minOccurs=\"0\" name=\"type\" type=\"tns:BillingPeriodType\"
+        />\n      <xsd:element minOccurs=\"0\" name=\"quantity\" type=\"xsd:int\"
+        />\n      <xsd:element minOccurs=\"0\" name=\"cycles\" type=\"xsd:int\" />\n
+        \     <xsd:element maxOccurs=\"unbounded\" minOccurs=\"0\" name=\"prices\"
+        type=\"vin:BillingPlanPrice\" />\n      <xsd:element minOccurs=\"0\" name=\"expireWarningDays\"
+        type=\"xsd:int\" />\n      <xsd:element minOccurs=\"0\" name=\"doNotNotifyFirstBill\"
+        type=\"xsd:boolean\" />\n    </xsd:sequence>\n  </xsd:complexType>\n  <xsd:complexType
+        name=\"BillingPlan\">\n    <xsd:sequence>\n      <xsd:element minOccurs=\"0\"
+        name=\"VID\" type=\"xsd:string\" />\n      <xsd:element minOccurs=\"0\" name=\"merchantBillingPlanId\"
+        type=\"xsd:string\" />\n      <xsd:element minOccurs=\"0\" name=\"description\"
+        type=\"xsd:string\" />\n      <xsd:element minOccurs=\"0\" name=\"status\"
+        type=\"tns:BillingPlanStatus\" />\n      <xsd:element maxOccurs=\"unbounded\"
+        minOccurs=\"0\" name=\"periods\" type=\"vin:BillingPlanPeriod\" />\n      <xsd:element
+        minOccurs=\"0\" name=\"prenotifyDays\" type=\"xsd:int\" />\n      <xsd:element
+        minOccurs=\"0\" name=\"endOfLifeTimestamp\" type=\"xsd:dateTime\" />\n      <xsd:element
+        maxOccurs=\"unbounded\" minOccurs=\"0\" name=\"nameValues\" type=\"vin:NameValuePair\"
+        />\n      <xsd:element maxOccurs=\"unbounded\" minOccurs=\"0\" name=\"merchantEntitlementIds\"
+        type=\"vin:MerchantEntitlementId\" />\n      <xsd:element minOccurs=\"0\"
+        name=\"billingStatementIdentifier\" type=\"xsd:string\" />\n    </xsd:sequence>\n
+        \ </xsd:complexType>\n  <xsd:complexType name=\"Chargeback\">\n    <xsd:sequence>\n
+        \     <xsd:element minOccurs=\"0\" name=\"VID\" type=\"xsd:string\" />\n      <xsd:element
+        minOccurs=\"1\" name=\"amount\" type=\"xsd:decimal\" />\n      <xsd:element
+        minOccurs=\"0\" name=\"currency\" type=\"xsd:string\" />\n      <xsd:element
+        minOccurs=\"0\" name=\"presentmentAmount\" type=\"xsd:decimal\" />\n      <xsd:element
+        minOccurs=\"0\" name=\"presentmentCurrency\" type=\"xsd:string\" />\n      <xsd:element
+        minOccurs=\"0\" name=\"divisionNumber\" type=\"xsd:string\" />\n      <xsd:element
+        minOccurs=\"1\" name=\"reasonCode\" type=\"xsd:string\" />\n      <xsd:element
+        minOccurs=\"0\" name=\"caseNumber\" type=\"xsd:string\" />\n      <xsd:element
+        minOccurs=\"0\" name=\"referenceNumber\" type=\"xsd:string\" />\n      <xsd:element
+        minOccurs=\"0\" name=\"merchantNumber\" type=\"xsd:string\" />\n      <xsd:element
+        minOccurs=\"0\" name=\"merchantTransactionId\" type=\"xsd:string\" />\n      <xsd:element
+        minOccurs=\"0\" name=\"merchantTransactionTimestamp\" type=\"xsd:dateTime\"
+        />\n      <xsd:element minOccurs=\"1\" name=\"processorReceivedTimestamp\"
+        type=\"xsd:dateTime\" />\n      <xsd:element minOccurs=\"1\" name=\"postedTimestamp\"
+        type=\"xsd:dateTime\" />\n      <xsd:element minOccurs=\"0\" name=\"statusChangedTimestamp\"
+        type=\"xsd:dateTime\" />\n      <xsd:element minOccurs=\"1\" name=\"status\"
+        type=\"tns:ChargebackStatus\" />\n      <xsd:element minOccurs=\"0\" name=\"merchantUserId\"
+        type=\"xsd:string\" />\n      <xsd:element minOccurs=\"0\" name=\"note\" type=\"xsd:string\"
+        />\n      <xsd:element maxOccurs=\"unbounded\" minOccurs=\"0\" name=\"nameValues\"
+        type=\"vin:NameValuePair\" />\n    </xsd:sequence>\n  </xsd:complexType>\n
+        \ <xsd:complexType name=\"TimeInterval\">\n    <xsd:sequence>\n      <xsd:element
+        minOccurs=\"0\" name=\"type\" type=\"tns:TimeIntervalType\" />\n      <xsd:element
+        minOccurs=\"0\" name=\"amount\" type=\"xsd:int\" />\n    </xsd:sequence>\n
+        \ </xsd:complexType>\n  <xsd:complexType name=\"CurrencyAmount\">\n    <xsd:sequence>\n
+        \     <xsd:element minOccurs=\"0\" name=\"currency\" type=\"xsd:string\" />\n
+        \     <xsd:element minOccurs=\"1\" name=\"amount\" type=\"xsd:decimal\" />\n
+        \   </xsd:sequence>\n  </xsd:complexType>\n  <xsd:complexType name=\"Credit\">\n
+        \   <xsd:sequence>\n      <xsd:element maxOccurs=\"unbounded\" minOccurs=\"0\"
+        name=\"tokenAmounts\" type=\"vin:TokenAmount\" />\n      <xsd:element maxOccurs=\"unbounded\"
+        minOccurs=\"0\" name=\"timeIntervals\" type=\"vin:TimeInterval\" />\n      <xsd:element
+        maxOccurs=\"unbounded\" minOccurs=\"0\" name=\"currencyAmounts\" type=\"vin:CurrencyAmount\"
+        />\n    </xsd:sequence>\n  </xsd:complexType>\n  <xsd:complexType name=\"CreditEventLog\">\n
+        \   <xsd:sequence>\n      <xsd:element minOccurs=\"0\" name=\"credit\" type=\"tns:Credit\"
+        />\n      <xsd:element minOccurs=\"0\" name=\"timeStamp\" type=\"xsd:dateTime\"
+        />\n      <xsd:element minOccurs=\"0\" name=\"type\" type=\"tns:CreditEventType\"
+        />\n      <xsd:element minOccurs=\"0\" name=\"note\" type=\"xsd:string\" />\n
+        \   </xsd:sequence>\n  </xsd:complexType>\n  <xsd:complexType name=\"Diagnostic\">\n
+        \   <xsd:sequence>\n      <xsd:element minOccurs=\"0\" name=\"a_field\" type=\"xsd:string\"
+        />\n    </xsd:sequence>\n  </xsd:complexType>\n  <xsd:complexType name=\"GiftCardStatus\">\n
+        \   <xsd:sequence>\n      <xsd:element minOccurs=\"0\" name=\"status\" type=\"tns:GiftCardStatusType\"
+        />\n      <xsd:element minOccurs=\"0\" name=\"timestamp\" type=\"xsd:dateTime\"
+        />\n      <xsd:element minOccurs=\"0\" name=\"providerResponseCode\" type=\"xsd:string\"
+        />\n      <xsd:element minOccurs=\"0\" name=\"providerResponseMsg\" type=\"xsd:string\"
+        />\n      <xsd:element maxOccurs=\"unbounded\" minOccurs=\"0\" name=\"nameValues\"
+        type=\"vin:NameValuePair\" />\n    </xsd:sequence>\n  </xsd:complexType>\n
+        \ <xsd:complexType name=\"GiftCard\">\n    <xsd:sequence>\n      <xsd:element
+        minOccurs=\"0\" name=\"sku\" type=\"xsd:string\" />\n      <xsd:element minOccurs=\"0\"
+        name=\"pin\" type=\"xsd:string\" />\n      <xsd:element minOccurs=\"0\" name=\"lastDigits\"
+        type=\"xsd:string\" />\n      <xsd:element minOccurs=\"0\" name=\"pinLength\"
+        type=\"xsd:int\" />\n      <xsd:element minOccurs=\"0\" name=\"hashType\"
+        type=\"vin:HashType\" />\n      <xsd:element minOccurs=\"0\" name=\"pinHash\"
+        type=\"xsd:string\" />\n      <xsd:element minOccurs=\"0\" name=\"paymentProvider\"
+        type=\"xsd:string\" />\n      <xsd:element minOccurs=\"0\" name=\"status\"
+        type=\"tns:GiftCardStatus\" />\n      <xsd:element minOccurs=\"0\" name=\"VID\"
+        type=\"xsd:string\" />\n      <xsd:element minOccurs=\"0\" name=\"product\"
+        type=\"tns:Product\" />\n    </xsd:sequence>\n  </xsd:complexType>\n  <xsd:complexType
+        name=\"ElectronicSignature\">\n    <xsd:sequence>\n      <xsd:element minOccurs=\"0\"
+        name=\"VID\" type=\"xsd:string\" />\n      <xsd:element minOccurs=\"1\" name=\"uri\"
+        type=\"xsd:anyURI\" />\n      <xsd:element minOccurs=\"0\" name=\"sourceIp\"
+        type=\"xsd:string\" />\n      <xsd:element minOccurs=\"1\" name=\"timestamp\"
+        type=\"xsd:dateTime\" />\n      <xsd:element minOccurs=\"1\" name=\"account\"
+        type=\"tns:Account\" />\n      <xsd:element minOccurs=\"1\" name=\"transaction\"
+        type=\"tns:Transaction\" />\n      <xsd:element minOccurs=\"0\" name=\"description\"
+        type=\"xsd:string\" />\n    </xsd:sequence>\n  </xsd:complexType>\n  <xsd:complexType
+        name=\"EmailTemplate\">\n    <xsd:sequence>\n      <xsd:element minOccurs=\"0\"
+        name=\"vid\" type=\"xsd:string\" />\n      <xsd:element minOccurs=\"1\" name=\"product\"
+        type=\"tns:Product\" />\n      <xsd:element minOccurs=\"0\" name=\"templateType\"
+        type=\"vin:EmailTemplateType\" />\n      <xsd:element minOccurs=\"0\" name=\"version\"
+        type=\"xsd:string\" />\n      <xsd:element minOccurs=\"0\" name=\"from\" type=\"xsd:string\"
+        />\n      <xsd:element minOccurs=\"0\" name=\"replyTo\" type=\"xsd:string\"
+        />\n      <xsd:element minOccurs=\"0\" name=\"htmlMessage\" type=\"xsd:string\"
+        />\n      <xsd:element minOccurs=\"0\" name=\"textMessage\" type=\"xsd:string\"
+        />\n    </xsd:sequence>\n  </xsd:complexType>\n  <xsd:complexType name=\"Entitlement\">\n
+        \   <xsd:sequence>\n      <xsd:element minOccurs=\"0\" name=\"merchantEntitlementId\"
+        type=\"xsd:string\" />\n      <xsd:element minOccurs=\"0\" name=\"account\"
+        type=\"vin:Account\" />\n      <xsd:element minOccurs=\"0\" name=\"startTimestamp\"
+        type=\"xsd:dateTime\" />\n      <xsd:element minOccurs=\"0\" name=\"endTimestamp\"
+        type=\"xsd:dateTime\" />\n      <xsd:element minOccurs=\"0\" name=\"active\"
+        type=\"xsd:boolean\" />\n    </xsd:sequence>\n  </xsd:complexType>\n  <xsd:complexType
+        name=\"MetricStatistics\">\n    <xsd:sequence>\n      <xsd:element minOccurs=\"1\"
+        name=\"type\" type=\"vin:MetricStatusType\" />\n      <xsd:element minOccurs=\"1\"
+        name=\"numTransactions\" type=\"xsd:int\" />\n      <xsd:element minOccurs=\"1\"
+        name=\"minMs\" type=\"xsd:long\" />\n      <xsd:element minOccurs=\"1\" name=\"avgMs\"
+        type=\"xsd:long\" />\n      <xsd:element minOccurs=\"1\" name=\"maxMs\" type=\"xsd:long\"
+        />\n    </xsd:sequence>\n  </xsd:complexType>\n  <xsd:complexType name=\"CreditCard\">\n
+        \   <xsd:sequence>\n      <xsd:element minOccurs=\"0\" name=\"account\" type=\"xsd:string\"
+        />\n      <xsd:element minOccurs=\"0\" name=\"bin\" type=\"xsd:string\" />\n
+        \     <xsd:element minOccurs=\"0\" name=\"lastDigits\" type=\"xsd:string\"
+        />\n      <xsd:element minOccurs=\"0\" name=\"accountLength\" type=\"xsd:int\"
+        />\n      <xsd:element minOccurs=\"0\" name=\"hashType\" type=\"vin:HashType\"
+        />\n      <xsd:element minOccurs=\"0\" name=\"accountHash\" type=\"xsd:string\"
+        />\n      <xsd:element minOccurs=\"0\" name=\"expirationDate\" type=\"xsd:string\"
+        />\n    </xsd:sequence>\n  </xsd:complexType>\n  <xsd:complexType name=\"ECP\">\n
+        \   <xsd:sequence>\n      <xsd:element minOccurs=\"0\" name=\"account\" type=\"xsd:string\"
+        />\n      <xsd:element minOccurs=\"0\" name=\"hashType\" type=\"vin:HashType\"
+        />\n      <xsd:element minOccurs=\"0\" name=\"accountHash\" type=\"xsd:string\"
+        />\n      <xsd:element minOccurs=\"0\" name=\"routingNumber\" type=\"xsd:string\"
+        />\n      <xsd:element minOccurs=\"0\" name=\"accountType\" type=\"tns:AccountType\"
+        />\n      <xsd:element minOccurs=\"0\" name=\"lastDigits\" type=\"xsd:string\"
+        />\n      <xsd:element minOccurs=\"0\" name=\"accountLength\" type=\"xsd:int\"
+        />\n      <xsd:element minOccurs=\"0\" name=\"allowedTransactionType\" type=\"tns:ECPTransactionType\"
+        />\n    </xsd:sequence>\n  </xsd:complexType>\n  <xsd:complexType name=\"DirectDebit\">\n
+        \   <xsd:sequence>\n      <xsd:element minOccurs=\"0\" name=\"account\" type=\"xsd:string\"
+        />\n      <xsd:element minOccurs=\"0\" name=\"lastDigits\" type=\"xsd:string\"
+        />\n      <xsd:element minOccurs=\"0\" name=\"accountLength\" type=\"xsd:int\"
+        />\n      <xsd:element minOccurs=\"0\" name=\"hashType\" type=\"vin:HashType\"
+        />\n      <xsd:element minOccurs=\"0\" name=\"accountHash\" type=\"xsd:string\"
+        />\n      <xsd:element minOccurs=\"0\" name=\"countryCode\" type=\"xsd:string\"
+        />\n      <xsd:element minOccurs=\"0\" name=\"bankSortCode\" type=\"xsd:string\"
+        />\n      <xsd:element minOccurs=\"0\" name=\"ribCode\" type=\"xsd:string\"
+        />\n    </xsd:sequence>\n  </xsd:complexType>\n  <xsd:complexType name=\"PayPal\">\n
+        \   <xsd:sequence>\n      <xsd:element minOccurs=\"0\" name=\"paypalEmail\"
+        type=\"xsd:string\" />\n      <xsd:element minOccurs=\"0\" name=\"payerId\"
+        type=\"xsd:string\" />\n      <xsd:element minOccurs=\"0\" name=\"returnUrl\"
+        type=\"xsd:string\" />\n      <xsd:element minOccurs=\"0\" name=\"cancelUrl\"
+        type=\"xsd:string\" />\n    </xsd:sequence>\n  </xsd:complexType>\n  <xsd:complexType
+        name=\"Boleto\">\n    <xsd:sequence>\n      <xsd:element minOccurs=\"0\" name=\"fiscalNumber\"
+        type=\"xsd:string\" />\n    </xsd:sequence>\n  </xsd:complexType>\n  <xsd:complexType
+        name=\"PaymentMethod\">\n    <xsd:sequence>\n      <xsd:element minOccurs=\"0\"
+        name=\"VID\" type=\"xsd:string\" />\n      <xsd:element minOccurs=\"0\" name=\"type\"
+        type=\"tns:PaymentMethodType\" />\n      <xsd:element minOccurs=\"0\" name=\"creditCard\"
+        type=\"tns:CreditCard\" />\n      <xsd:element minOccurs=\"0\" name=\"ecp\"
+        type=\"tns:ECP\" />\n      <xsd:element minOccurs=\"0\" name=\"directDebit\"
+        type=\"tns:DirectDebit\" />\n      <xsd:element minOccurs=\"0\" name=\"paypal\"
+        type=\"tns:PayPal\" />\n      <xsd:element minOccurs=\"0\" name=\"boleto\"
+        type=\"tns:Boleto\" />\n      <xsd:element minOccurs=\"0\" name=\"token\"
+        type=\"tns:Token\" />\n      <xsd:element maxOccurs=\"unbounded\" minOccurs=\"0\"
+        name=\"nameValues\" type=\"vin:NameValuePair\" />\n      <xsd:element minOccurs=\"0\"
+        name=\"accountHolderName\" type=\"xsd:string\" />\n      <xsd:element minOccurs=\"0\"
+        name=\"billingAddress\" type=\"tns:Address\" />\n      <xsd:element minOccurs=\"0\"
+        name=\"customerSpecifiedType\" type=\"xsd:string\" />\n      <xsd:element
+        minOccurs=\"0\" name=\"customerDescription\" type=\"xsd:string\" />\n      <xsd:element
+        minOccurs=\"0\" name=\"merchantPaymentMethodId\" type=\"xsd:string\" />\n
+        \     <xsd:element minOccurs=\"0\" name=\"currency\" type=\"xsd:string\" />\n
+        \     <xsd:element minOccurs=\"0\" name=\"sortOrder\" type=\"xsd:int\" />\n
+        \     <xsd:element minOccurs=\"0\" name=\"active\" type=\"xsd:boolean\" />\n
+        \   </xsd:sequence>\n  </xsd:complexType>\n  <xsd:complexType name=\"PaymentProvider\">\n
+        \   <xsd:sequence>\n      <xsd:element minOccurs=\"0\" name=\"VID\" type=\"xsd:string\"
+        />\n      <xsd:element minOccurs=\"0\" name=\"description\" type=\"xsd:string\"
+        />\n      <xsd:element minOccurs=\"0\" name=\"paymentType\" type=\"tns:PaymentMethodType\"
+        />\n      <xsd:element minOccurs=\"0\" name=\"account\" type=\"xsd:string\"
+        />\n    </xsd:sequence>\n  </xsd:complexType>\n  <xsd:complexType name=\"MerchantEntitlementId\">\n
+        \   <xsd:sequence>\n      <xsd:element minOccurs=\"1\" name=\"id\" type=\"xsd:string\"
+        />\n      <xsd:element minOccurs=\"0\" name=\"description\" type=\"xsd:string\"
+        />\n    </xsd:sequence>\n  </xsd:complexType>\n  <xsd:complexType name=\"NameValuePair\">\n
+        \   <xsd:sequence>\n      <xsd:element minOccurs=\"1\" name=\"name\" type=\"xsd:string\"
+        />\n      <xsd:element minOccurs=\"1\" name=\"value\" type=\"xsd:string\"
+        />\n    </xsd:sequence>\n  </xsd:complexType>\n  <xsd:complexType name=\"Product\">\n
+        \   <xsd:sequence>\n      <xsd:element minOccurs=\"0\" name=\"VID\" type=\"xsd:string\"
+        />\n      <xsd:element minOccurs=\"0\" name=\"merchantProductId\" type=\"xsd:string\"
+        />\n      <xsd:element minOccurs=\"0\" name=\"description\" type=\"xsd:string\"
+        />\n      <xsd:element minOccurs=\"0\" name=\"status\" type=\"tns:ProductStatus\"
+        />\n      <xsd:element minOccurs=\"0\" name=\"taxClassification\" type=\"tns:TaxClassification\"
+        />\n      <xsd:element minOccurs=\"0\" name=\"defaultBillingPlan\" type=\"tns:BillingPlan\"
+        />\n      <xsd:element minOccurs=\"0\" name=\"endOfLifeTimestamp\" type=\"xsd:dateTime\"
+        />\n      <xsd:element maxOccurs=\"unbounded\" minOccurs=\"0\" name=\"nameValues\"
+        type=\"vin:NameValuePair\" />\n      <xsd:element maxOccurs=\"unbounded\"
+        minOccurs=\"0\" name=\"merchantEntitlementIds\" type=\"vin:MerchantEntitlementId\"
+        />\n      <xsd:element minOccurs=\"0\" name=\"billingStatementIdentifier\"
+        type=\"xsd:string\" />\n      <xsd:element minOccurs=\"0\" name=\"creditGranted\"
+        type=\"tns:Credit\" />\n    </xsd:sequence>\n  </xsd:complexType>\n  <xsd:complexType
+        name=\"Refund\">\n    <xsd:sequence>\n      <xsd:element minOccurs=\"0\" name=\"VID\"
+        type=\"xsd:string\" />\n      <xsd:element minOccurs=\"0\" name=\"merchantRefundId\"
+        type=\"xsd:string\" />\n      <xsd:element minOccurs=\"0\" name=\"transaction\"
+        type=\"tns:Transaction\" />\n      <xsd:element minOccurs=\"1\" name=\"amount\"
+        type=\"xsd:decimal\" />\n      <xsd:element minOccurs=\"0\" name=\"currency\"
+        type=\"xsd:string\" />\n      <xsd:element minOccurs=\"0\" name=\"timestamp\"
+        type=\"xsd:dateTime\" />\n      <xsd:element minOccurs=\"0\" name=\"referenceString\"
+        type=\"xsd:string\" />\n      <xsd:element minOccurs=\"0\" name=\"note\" type=\"xsd:string\"
+        />\n      <xsd:element minOccurs=\"0\" name=\"tokenAction\" type=\"tns:RefundTokenAction\"
+        />\n      <xsd:element minOccurs=\"0\" name=\"credit\" type=\"vin:Credit\"
+        />\n    </xsd:sequence>\n  </xsd:complexType>\n  <xsd:complexType name=\"Return\">\n
+        \   <xsd:sequence>\n      <xsd:element minOccurs=\"1\" name=\"returnCode\"
+        type=\"tns:ReturnCode\" />\n      <xsd:element minOccurs=\"0\" name=\"returnString\"
+        type=\"xsd:string\" />\n      <xsd:element minOccurs=\"0\" name=\"soapId\"
+        type=\"xsd:string\" />\n    </xsd:sequence>\n  </xsd:complexType>\n  <xsd:complexType
+        name=\"TaxExemption\">\n    <xsd:sequence>\n      <xsd:element minOccurs=\"0\"
+        name=\"region\" type=\"vin:TaxRegion\" />\n      <xsd:element minOccurs=\"0\"
+        name=\"exemptionId\" type=\"xsd:string\" />\n      <xsd:element minOccurs=\"1\"
+        name=\"active\" type=\"xsd:boolean\" />\n    </xsd:sequence>\n  </xsd:complexType>\n
+        \ <xsd:complexType name=\"SalesTax\">\n    <xsd:sequence>\n      <xsd:element
+        minOccurs=\"1\" name=\"description\" type=\"xsd:string\" />\n      <xsd:element
+        minOccurs=\"1\" name=\"tax\" type=\"xsd:decimal\" />\n    </xsd:sequence>\n
+        \ </xsd:complexType>\n  <xsd:complexType name=\"Token\">\n    <xsd:sequence>\n
+        \     <xsd:element minOccurs=\"0\" name=\"VID\" type=\"xsd:string\" />\n      <xsd:element
+        minOccurs=\"0\" name=\"merchantTokenId\" type=\"xsd:string\" />\n      <xsd:element
+        minOccurs=\"0\" name=\"description\" type=\"xsd:string\" />\n    </xsd:sequence>\n
+        \ </xsd:complexType>\n  <xsd:complexType name=\"TokenAmount\">\n    <xsd:sequence>\n
+        \     <xsd:element minOccurs=\"1\" name=\"token\" type=\"tns:Token\" />\n
+        \     <xsd:element minOccurs=\"1\" name=\"amount\" type=\"xsd:int\" />\n    </xsd:sequence>\n
+        \ </xsd:complexType>\n  <xsd:complexType name=\"TokenTransaction\">\n    <xsd:sequence>\n
+        \     <xsd:element minOccurs=\"1\" name=\"account\" type=\"tns:Account\" />\n
+        \     <xsd:element minOccurs=\"1\" name=\"tokenAmount\" type=\"tns:TokenAmount\"
+        />\n      <xsd:element minOccurs=\"0\" name=\"description\" type=\"xsd:string\"
+        />\n      <xsd:element minOccurs=\"1\" name=\"authTimestamp\" type=\"xsd:dateTime\"
+        />\n      <xsd:element minOccurs=\"0\" name=\"clearedTimestamp\" type=\"xsd:dateTime\"
+        />\n    </xsd:sequence>\n  </xsd:complexType>\n  <xsd:complexType name=\"CaptureResult\">\n
+        \   <xsd:sequence>\n      <xsd:element minOccurs=\"1\" name=\"returnCode\"
+        type=\"xsd:int\" />\n      <xsd:element minOccurs=\"1\" name=\"merchantTransactionId\"
+        type=\"xsd:string\" />\n      <xsd:element minOccurs=\"0\" name=\"originalMerchantTransactionId\"
+        type=\"xsd:string\" />\n    </xsd:sequence>\n  </xsd:complexType>\n  <xsd:complexType
+        name=\"CancelResult\">\n    <xsd:sequence>\n      <xsd:element minOccurs=\"1\"
+        name=\"returnCode\" type=\"xsd:int\" />\n      <xsd:element minOccurs=\"1\"
+        name=\"merchantTransactionId\" type=\"xsd:string\" />\n    </xsd:sequence>\n
+        \ </xsd:complexType>\n  <xsd:complexType name=\"ScoreCode\">\n    <xsd:sequence>\n
+        \     <xsd:element minOccurs=\"0\" name=\"description\" type=\"xsd:string\"
+        />\n      <xsd:element minOccurs=\"0\" name=\"id\" type=\"xsd:string\" />\n
+        \   </xsd:sequence>\n  </xsd:complexType>\n  <xsd:complexType name=\"TransactionItem\">\n
+        \   <xsd:sequence>\n      <xsd:element minOccurs=\"0\" name=\"sku\" type=\"xsd:string\"
+        />\n      <xsd:element minOccurs=\"1\" name=\"name\" type=\"xsd:string\" />\n
+        \     <xsd:element minOccurs=\"1\" name=\"price\" type=\"xsd:decimal\" />\n
+        \     <xsd:element minOccurs=\"1\" name=\"quantity\" type=\"xsd:int\" />\n
+        \     <xsd:element minOccurs=\"0\" name=\"taxClassification\" type=\"tns:TaxClassification\"
+        />\n      <xsd:element maxOccurs=\"unbounded\" minOccurs=\"0\" name=\"tokens\"
+        type=\"vin:TokenAmount\" />\n    </xsd:sequence>\n  </xsd:complexType>\n  <xsd:complexType
+        name=\"TransactionStatus\">\n    <xsd:sequence>\n      <xsd:element minOccurs=\"1\"
+        name=\"status\" type=\"tns:TransactionStatusType\" />\n      <xsd:element
+        minOccurs=\"1\" name=\"timestamp\" type=\"xsd:dateTime\" />\n      <xsd:element
+        minOccurs=\"1\" name=\"paymentMethodType\" type=\"tns:PaymentMethodType\"
+        />\n      <xsd:element minOccurs=\"0\" name=\"creditCardStatus\" type=\"tns:TransactionStatusCreditCard\"
+        />\n      <xsd:element minOccurs=\"0\" name=\"ecpStatus\" type=\"tns:TransactionStatusECP\"
+        />\n      <xsd:element minOccurs=\"0\" name=\"boletoStatus\" type=\"tns:TransactionStatusBoleto\"
+        />\n      <xsd:element minOccurs=\"0\" name=\"payPalStatus\" type=\"tns:TransactionStatusPayPal\"
+        />\n      <xsd:element minOccurs=\"0\" name=\"directDebitStatus\" type=\"tns:TransactionStatusDirectDebit\"
+        />\n      <xsd:element minOccurs=\"0\" name=\"vinAVS\" type=\"tns:AVSMatchType\"
+        />\n    </xsd:sequence>\n  </xsd:complexType>\n  <xsd:complexType name=\"TransactionStatusCreditCard\">\n
+        \   <xsd:sequence>\n      <xsd:element minOccurs=\"1\" name=\"authCode\" type=\"xsd:string\"
+        />\n      <xsd:element minOccurs=\"0\" name=\"avsCode\" type=\"xsd:string\"
+        />\n      <xsd:element minOccurs=\"0\" name=\"cvnCode\" type=\"xsd:string\"
+        />\n    </xsd:sequence>\n  </xsd:complexType>\n  <xsd:complexType name=\"TransactionStatusECP\">\n
+        \   <xsd:sequence>\n      <xsd:element minOccurs=\"0\" name=\"authCode\" type=\"xsd:string\"
+        />\n    </xsd:sequence>\n  </xsd:complexType>\n  <xsd:complexType name=\"TransactionStatusBoleto\">\n
+        \   <xsd:sequence>\n      <xsd:element minOccurs=\"0\" name=\"uri\" type=\"xsd:string\"
+        />\n    </xsd:sequence>\n  </xsd:complexType>\n  <xsd:complexType name=\"TransactionStatusPayPal\">\n
+        \   <xsd:sequence>\n      <xsd:element minOccurs=\"0\" name=\"token\" type=\"xsd:string\"
+        />\n      <xsd:element minOccurs=\"0\" name=\"paypalEmail\" type=\"xsd:string\"
+        />\n      <xsd:element minOccurs=\"0\" name=\"payerId\" type=\"xsd:string\"
+        />\n      <xsd:element minOccurs=\"0\" name=\"authCode\" type=\"xsd:string\"
+        />\n      <xsd:element minOccurs=\"0\" name=\"redirectUrl\" type=\"xsd:string\"
+        />\n    </xsd:sequence>\n  </xsd:complexType>\n  <xsd:complexType name=\"TransactionStatusDirectDebit\">\n
+        \   <xsd:sequence>\n      <xsd:element minOccurs=\"0\" name=\"authCode\" type=\"xsd:string\"
+        />\n    </xsd:sequence>\n  </xsd:complexType>\n  <xsd:complexType name=\"Transaction\">\n
+        \   <xsd:sequence>\n      <xsd:element minOccurs=\"0\" name=\"VID\" type=\"xsd:string\"
+        />\n      <xsd:element minOccurs=\"0\" name=\"amount\" type=\"xsd:decimal\"
+        />\n      <xsd:element minOccurs=\"0\" name=\"currency\" type=\"xsd:string\"
+        />\n      <xsd:element minOccurs=\"0\" name=\"divisionNumber\" type=\"xsd:string\"
+        />\n      <xsd:element minOccurs=\"0\" name=\"merchantTransactionId\" type=\"xsd:string\"
+        />\n      <xsd:element minOccurs=\"0\" name=\"previousMerchantTransactionId\"
+        type=\"xsd:string\" />\n      <xsd:element minOccurs=\"0\" name=\"timestamp\"
+        type=\"xsd:dateTime\" />\n      <xsd:element minOccurs=\"0\" name=\"account\"
+        type=\"tns:Account\" />\n      <xsd:element minOccurs=\"0\" name=\"sourcePaymentMethod\"
+        type=\"tns:PaymentMethod\" />\n      <xsd:element minOccurs=\"0\" name=\"destPaymentMethod\"
+        type=\"tns:PaymentMethod\" />\n      <xsd:element minOccurs=\"0\" name=\"ecpTransactionType\"
+        type=\"tns:ECPTransactionType\" />\n      <xsd:element maxOccurs=\"unbounded\"
+        minOccurs=\"0\" name=\"statusLog\" type=\"vin:TransactionStatus\" />\n      <xsd:element
+        minOccurs=\"0\" name=\"paymentProcessor\" type=\"xsd:string\" />\n      <xsd:element
+        minOccurs=\"0\" name=\"sourcePhoneNumber\" type=\"xsd:string\" />\n      <xsd:element
+        minOccurs=\"0\" name=\"shippingAddress\" type=\"tns:Address\" />\n      <xsd:element
+        maxOccurs=\"unbounded\" minOccurs=\"0\" name=\"nameValues\" type=\"vin:NameValuePair\"
+        />\n      <xsd:element maxOccurs=\"unbounded\" minOccurs=\"0\" name=\"transactionItems\"
+        type=\"vin:TransactionItem\" />\n      <xsd:element minOccurs=\"0\" name=\"merchantAffiliateId\"
+        type=\"xsd:string\" />\n      <xsd:element minOccurs=\"0\" name=\"merchantAffiliateSubId\"
+        type=\"xsd:string\" />\n      <xsd:element minOccurs=\"0\" name=\"userAgent\"
+        type=\"xsd:string\" />\n      <xsd:element minOccurs=\"0\" name=\"note\" type=\"xsd:string\"
+        />\n      <xsd:element minOccurs=\"0\" name=\"preferredNotificationLanguage\"
+        type=\"xsd:string\" />\n      <xsd:element minOccurs=\"0\" name=\"sourceMacAddress\"
+        type=\"xsd:string\" />\n      <xsd:element minOccurs=\"0\" name=\"sourceIp\"
+        type=\"xsd:string\" />\n      <xsd:element minOccurs=\"0\" name=\"billingStatementIdentifier\"
+        type=\"xsd:string\" />\n      <xsd:element maxOccurs=\"unbounded\" minOccurs=\"0\"
+        name=\"taxExemptions\" type=\"vin:TaxExemption\" />\n      <xsd:element minOccurs=\"0\"
+        name=\"salesTaxAddress\" type=\"tns:Address\" />\n      <xsd:element minOccurs=\"0\"
+        name=\"verificationCode\" type=\"xsd:string\" />\n      <xsd:element minOccurs=\"0\"
+        name=\"billingPeriodStart\" type=\"xsd:dateTime\" />\n      <xsd:element minOccurs=\"0\"
+        name=\"billingPeriodEnd\" type=\"xsd:dateTime\" />\n    </xsd:sequence>\n
+        \ </xsd:complexType>\n  <xsd:complexType name=\"WebSession\">\n    <xsd:sequence>\n
+        \     <xsd:element minOccurs=\"0\" name=\"VID\" type=\"xsd:string\" />\n      <xsd:element
+        minOccurs=\"0\" name=\"method\" type=\"xsd:string\" />\n      <xsd:element
+        minOccurs=\"0\" name=\"version\" type=\"xsd:string\" />\n      <xsd:element
+        minOccurs=\"0\" name=\"returnURL\" type=\"xsd:string\" />\n      <xsd:element
+        minOccurs=\"0\" name=\"errorURL\" type=\"xsd:string\" />\n      <xsd:element
+        minOccurs=\"0\" name=\"ipAddress\" type=\"xsd:string\" />\n      <xsd:element
+        minOccurs=\"0\" name=\"expireTime\" type=\"xsd:dateTime\" />\n      <xsd:element
+        maxOccurs=\"unbounded\" minOccurs=\"0\" name=\"nameValues\" type=\"vin:NameValuePair\"
+        />\n      <xsd:element maxOccurs=\"unbounded\" minOccurs=\"0\" name=\"postValues\"
+        type=\"vin:NameValuePair\" />\n      <xsd:element maxOccurs=\"unbounded\"
+        minOccurs=\"0\" name=\"methodParamValues\" type=\"vin:NameValuePair\" />\n
+        \     <xsd:element maxOccurs=\"unbounded\" minOccurs=\"0\" name=\"privateFormValues\"
+        type=\"vin:NameValuePair\" />\n      <xsd:element minOccurs=\"0\" name=\"apiReturn\"
+        type=\"tns:Return\" />\n      <xsd:element minOccurs=\"0\" name=\"apiReturnValues\"
+        type=\"tns:WebSessionMethodReturn\" />\n    </xsd:sequence>\n  </xsd:complexType>\n
+        \ <xsd:complexType name=\"WebSessionMethodReturn\">\n    <xsd:sequence>\n
+        \     <xsd:element minOccurs=\"0\" name=\"method\" type=\"xsd:string\" />\n
+        \     <xsd:element minOccurs=\"0\" name=\"paymentMethodValidate\" type=\"tns:PaymentMethodValidate\"
+        />\n      <xsd:element minOccurs=\"0\" name=\"paymentMethodUpdate\" type=\"tns:PaymentMethodUpdate\"
+        />\n      <xsd:element minOccurs=\"0\" name=\"transactionAuth\" type=\"tns:TransactionAuth\"
+        />\n      <xsd:element minOccurs=\"0\" name=\"autoBillUpdate\" type=\"tns:AutoBillUpdate\"
+        />\n      <xsd:element minOccurs=\"0\" name=\"transactionAuthCapture\" type=\"tns:TransactionAuthCapture\"
+        />\n      <xsd:element minOccurs=\"0\" name=\"accountUpdatePaymentMethod\"
+        type=\"tns:AccountUpdatePaymentMethod\" />\n    </xsd:sequence>\n  </xsd:complexType>\n
+        \ <xsd:complexType name=\"PaymentMethodValidate\">\n    <xsd:sequence>\n      <xsd:element
+        minOccurs=\"0\" name=\"authStatus\" type=\"vin:TransactionStatus\" />\n      <xsd:element
+        minOccurs=\"0\" name=\"validated\" type=\"xsd:boolean\" />\n      <xsd:element
+        minOccurs=\"0\" name=\"score\" type=\"xsd:int\" />\n      <xsd:element maxOccurs=\"unbounded\"
+        minOccurs=\"0\" name=\"scoreCodes\" type=\"vin:ScoreCode\" />\n    </xsd:sequence>\n
+        \ </xsd:complexType>\n  <xsd:complexType name=\"PaymentMethodUpdate\">\n    <xsd:sequence>\n
+        \     <xsd:element minOccurs=\"0\" name=\"paymentMethod\" type=\"vin:PaymentMethod\"
+        />\n      <xsd:element minOccurs=\"0\" name=\"created\" type=\"xsd:boolean\"
+        />\n      <xsd:element minOccurs=\"0\" name=\"validated\" type=\"xsd:boolean\"
+        />\n      <xsd:element minOccurs=\"0\" name=\"score\" type=\"xsd:int\" />\n
+        \     <xsd:element maxOccurs=\"unbounded\" minOccurs=\"0\" name=\"scoreCodes\"
+        type=\"vin:ScoreCode\" />\n      <xsd:element minOccurs=\"0\" name=\"authStatus\"
+        type=\"vin:TransactionStatus\" />\n    </xsd:sequence>\n  </xsd:complexType>\n
+        \ <xsd:complexType name=\"TransactionAuth\">\n    <xsd:sequence>\n      <xsd:element
+        minOccurs=\"0\" name=\"transaction\" type=\"vin:Transaction\" />\n      <xsd:element
+        minOccurs=\"0\" name=\"score\" type=\"xsd:int\" />\n      <xsd:element maxOccurs=\"unbounded\"
+        minOccurs=\"0\" name=\"scoreCodes\" type=\"vin:ScoreCode\" />\n    </xsd:sequence>\n
+        \ </xsd:complexType>\n  <xsd:complexType name=\"AutoBillUpdate\">\n    <xsd:sequence>\n
+        \     <xsd:element minOccurs=\"0\" name=\"autobill\" type=\"vin:AutoBill\"
+        />\n      <xsd:element minOccurs=\"0\" name=\"created\" type=\"xsd:boolean\"
+        />\n      <xsd:element minOccurs=\"0\" name=\"authStatus\" type=\"vin:TransactionStatus\"
+        />\n      <xsd:element minOccurs=\"0\" name=\"firstBillDate\" type=\"xsd:date\"
+        />\n      <xsd:element minOccurs=\"0\" name=\"firstBillAmount\" type=\"xsd:decimal\"
+        />\n      <xsd:element minOccurs=\"0\" name=\"firstBillingCurrency\" type=\"xsd:string\"
+        />\n      <xsd:element minOccurs=\"0\" name=\"score\" type=\"xsd:int\" />\n
+        \     <xsd:element maxOccurs=\"unbounded\" minOccurs=\"0\" name=\"scoreCodes\"
+        type=\"vin:ScoreCode\" />\n    </xsd:sequence>\n  </xsd:complexType>\n  <xsd:complexType
+        name=\"TransactionAuthCapture\">\n    <xsd:sequence>\n      <xsd:element minOccurs=\"0\"
+        name=\"transaction\" type=\"vin:Transaction\" />\n    </xsd:sequence>\n  </xsd:complexType>\n
+        \ <xsd:complexType name=\"AccountUpdatePaymentMethod\">\n    <xsd:sequence>\n
+        \     <xsd:element minOccurs=\"0\" name=\"account\" type=\"vin:Account\" />\n
+        \     <xsd:element minOccurs=\"0\" name=\"validated\" type=\"xsd:boolean\"
+        />\n    </xsd:sequence>\n  </xsd:complexType>\n  <xsd:simpleType name=\"EmailPreference\">\n
+        \   <xsd:restriction base=\"xsd:string\">\n      <xsd:enumeration value=\"plaintext\"
+        />\n      <xsd:enumeration value=\"html\" />\n      <xsd:enumeration value=\"multipart\"
+        />\n    </xsd:restriction>\n  </xsd:simpleType>\n  <xsd:simpleType name=\"PaymentUpdateBehavior\">\n
+        \   <xsd:restriction base=\"xsd:string\">\n      <xsd:enumeration value=\"Update\"
+        />\n      <xsd:enumeration value=\"Validate\" />\n      <xsd:enumeration value=\"CatchUp\"
+        />\n    </xsd:restriction>\n  </xsd:simpleType>\n  <xsd:simpleType name=\"AccountPayerReplacementBehavior\">\n
+        \   <xsd:restriction base=\"xsd:string\">\n      <xsd:enumeration value=\"ReplaceOnAllAutoBills\"
+        />\n      <xsd:enumeration value=\"ReplaceOnlyFutureAutoBills\" />\n    </xsd:restriction>\n
+        \ </xsd:simpleType>\n  <xsd:simpleType name=\"ActivityCancelInitType\">\n
+        \   <xsd:restriction base=\"xsd:string\">\n      <xsd:enumeration value=\"Merchant\"
+        />\n      <xsd:enumeration value=\"Customer\" />\n      <xsd:enumeration value=\"Chargeback\"
+        />\n    </xsd:restriction>\n  </xsd:simpleType>\n  <xsd:simpleType name=\"ActivityType\">\n
+        \   <xsd:restriction base=\"xsd:string\">\n      <xsd:enumeration value=\"Login\"
+        />\n      <xsd:enumeration value=\"Logout\" />\n      <xsd:enumeration value=\"URIView\"
+        />\n      <xsd:enumeration value=\"Phone\" />\n      <xsd:enumeration value=\"Email\"
+        />\n      <xsd:enumeration value=\"Fulfillment\" />\n      <xsd:enumeration
+        value=\"Usage\" />\n      <xsd:enumeration value=\"NamedValue\" />\n      <xsd:enumeration
+        value=\"Cancellation\" />\n      <xsd:enumeration value=\"Note\" />\n    </xsd:restriction>\n
+        \ </xsd:simpleType>\n  <xsd:simpleType name=\"ActivityCallType\">\n    <xsd:restriction
+        base=\"xsd:string\">\n      <xsd:enumeration value=\"FromMerchantToCustomer\"
+        />\n      <xsd:enumeration value=\"FromMerchantToOther\" />\n      <xsd:enumeration
+        value=\"FromCustomerToMerchant\" />\n      <xsd:enumeration value=\"FromCustomerToOther\"
+        />\n      <xsd:enumeration value=\"FromOtherToCustomer\" />\n      <xsd:enumeration
+        value=\"FromOtherToMerchant\" />\n    </xsd:restriction>\n  </xsd:simpleType>\n
+        \ <xsd:simpleType name=\"AddressType\">\n    <xsd:restriction base=\"xsd:string\">\n
+        \     <xsd:enumeration value=\"Shipping\" />\n      <xsd:enumeration value=\"Billing\"
+        />\n    </xsd:restriction>\n  </xsd:simpleType>\n  <xsd:simpleType name=\"AutoBillStatus\">\n
+        \   <xsd:restriction base=\"xsd:string\">\n      <xsd:enumeration value=\"Active\"
+        />\n      <xsd:enumeration value=\"Suspended\" />\n      <xsd:enumeration
+        value=\"Cancelled\" />\n      <xsd:enumeration value=\"Upgraded\" />\n      <xsd:enumeration
+        value=\"PendingCustomerAction\" />\n    </xsd:restriction>\n  </xsd:simpleType>\n
+        \ <xsd:simpleType name=\"DuplicateBehavior\">\n    <xsd:restriction base=\"xsd:string\">\n
+        \     <xsd:enumeration value=\"Duplicate\" />\n      <xsd:enumeration value=\"SucceedIgnore\"
+        />\n      <xsd:enumeration value=\"Fail\" />\n    </xsd:restriction>\n  </xsd:simpleType>\n
+        \ <xsd:simpleType name=\"BillingPeriodType\">\n    <xsd:restriction base=\"xsd:string\">\n
+        \     <xsd:enumeration value=\"Day\" />\n      <xsd:enumeration value=\"Week\"
+        />\n      <xsd:enumeration value=\"Month\" />\n      <xsd:enumeration value=\"Year\"
+        />\n    </xsd:restriction>\n  </xsd:simpleType>\n  <xsd:simpleType name=\"UpgradeNegativeNet\">\n
+        \   <xsd:restriction base=\"xsd:string\">\n      <xsd:enumeration value=\"CREDIT\"
+        />\n      <xsd:enumeration value=\"REFUND\" />\n    </xsd:restriction>\n  </xsd:simpleType>\n
+        \ <xsd:simpleType name=\"UpgradeProrate\">\n    <xsd:restriction base=\"xsd:string\">\n
+        \     <xsd:enumeration value=\"LINEAR\" />\n    </xsd:restriction>\n  </xsd:simpleType>\n
+        \ <xsd:simpleType name=\"BillingPlanStatus\">\n    <xsd:restriction base=\"xsd:string\">\n
+        \     <xsd:enumeration value=\"Active\" />\n      <xsd:enumeration value=\"Suspended\"
+        />\n    </xsd:restriction>\n  </xsd:simpleType>\n  <xsd:simpleType name=\"ChargebackStatus\">\n
+        \   <xsd:restriction base=\"xsd:string\">\n      <xsd:enumeration value=\"New\"
+        />\n      <xsd:enumeration value=\"Retrieval\" />\n      <xsd:enumeration
+        value=\"Responded\" />\n      <xsd:enumeration value=\"Legitimate\" />\n      <xsd:enumeration
+        value=\"Challenged\" />\n      <xsd:enumeration value=\"Represented\" />\n
+        \     <xsd:enumeration value=\"Won\" />\n      <xsd:enumeration value=\"Lost\"
+        />\n      <xsd:enumeration value=\"CollectionsNew\" />\n      <xsd:enumeration
+        value=\"CollectionsWon\" />\n      <xsd:enumeration value=\"CollectionsLost\"
+        />\n      <xsd:enumeration value=\"Expired\" />\n      <xsd:enumeration value=\"Pass\"
+        />\n      <xsd:enumeration value=\"Incomplete\" />\n      <xsd:enumeration
+        value=\"NewSecondChargeback\" />\n      <xsd:enumeration value=\"Duplicate\"
+        />\n    </xsd:restriction>\n  </xsd:simpleType>\n  <xsd:simpleType name=\"TimeIntervalType\">\n
+        \   <xsd:restriction base=\"xsd:string\">\n      <xsd:enumeration value=\"Day\"
+        />\n      <xsd:enumeration value=\"Week\" />\n      <xsd:enumeration value=\"Month\"
+        />\n      <xsd:enumeration value=\"Year\" />\n    </xsd:restriction>\n  </xsd:simpleType>\n
+        \ <xsd:simpleType name=\"CreditEventType\">\n    <xsd:restriction base=\"xsd:string\">\n
+        \     <xsd:enumeration value=\"GiftCardRedemption\" />\n      <xsd:enumeration
+        value=\"GiftCardReversal\" />\n      <xsd:enumeration value=\"GiftCardStatusInquiry\"
+        />\n      <xsd:enumeration value=\"Grant\" />\n      <xsd:enumeration value=\"Revocation\"
+        />\n      <xsd:enumeration value=\"Consumption\" />\n      <xsd:enumeration
+        value=\"Refund\" />\n    </xsd:restriction>\n  </xsd:simpleType>\n  <xsd:simpleType
+        name=\"GiftCardActivityType\">\n    <xsd:restriction base=\"xsd:string\">\n
+        \     <xsd:enumeration value=\"Redeem\" />\n      <xsd:enumeration value=\"Reverse\"
+        />\n    </xsd:restriction>\n  </xsd:simpleType>\n  <xsd:simpleType name=\"GiftCardStatusType\">\n
+        \   <xsd:restriction base=\"xsd:string\">\n      <xsd:enumeration value=\"Unknown\"
+        />\n      <xsd:enumeration value=\"Active\" />\n      <xsd:enumeration value=\"RedemptionPending\"
+        />\n      <xsd:enumeration value=\"Redeemed\" />\n      <xsd:enumeration value=\"Deactive\"
+        />\n      <xsd:enumeration value=\"Suspended\" />\n    </xsd:restriction>\n
+        \ </xsd:simpleType>\n  <xsd:simpleType name=\"EmailTemplateType\">\n    <xsd:restriction
+        base=\"xsd:string\">\n      <xsd:enumeration value=\"PreBilling\" />\n      <xsd:enumeration
+        value=\"PreBillingNoPaymentMethod\" />\n      <xsd:enumeration value=\"Success\"
+        />\n      <xsd:enumeration value=\"FailureSoftFail\" />\n      <xsd:enumeration
+        value=\"FailureHardFail\" />\n      <xsd:enumeration value=\"FailureNoPaymentMethod\"
+        />\n      <xsd:enumeration value=\"BillingDelay\" />\n      <xsd:enumeration
+        value=\"BillingDelayNoPaymentMethod\" />\n      <xsd:enumeration value=\"Cancellation\"
+        />\n    </xsd:restriction>\n  </xsd:simpleType>\n  <xsd:simpleType name=\"MetricStatusType\">\n
+        \   <xsd:restriction base=\"xsd:string\">\n      <xsd:enumeration value=\"Completed\"
+        />\n      <xsd:enumeration value=\"TimedOut\" />\n    </xsd:restriction>\n
+        \ </xsd:simpleType>\n  <xsd:simpleType name=\"PaymentMethodType\">\n    <xsd:restriction
+        base=\"xsd:string\">\n      <xsd:enumeration value=\"CreditCard\" />\n      <xsd:enumeration
+        value=\"PayPal\" />\n      <xsd:enumeration value=\"ECP\" />\n      <xsd:enumeration
+        value=\"DirectDebit\" />\n      <xsd:enumeration value=\"Token\" />\n      <xsd:enumeration
+        value=\"Boleto\" />\n    </xsd:restriction>\n  </xsd:simpleType>\n  <xsd:simpleType
+        name=\"HashType\">\n    <xsd:restriction base=\"xsd:string\">\n      <xsd:enumeration
+        value=\"sha1\" />\n      <xsd:enumeration value=\"md5\" />\n    </xsd:restriction>\n
+        \ </xsd:simpleType>\n  <xsd:simpleType name=\"AccountType\">\n    <xsd:restriction
+        base=\"xsd:string\">\n      <xsd:enumeration value=\"ConsumerChecking\" />\n
+        \     <xsd:enumeration value=\"ConsumerSavings\" />\n      <xsd:enumeration
+        value=\"CorporateChecking\" />\n    </xsd:restriction>\n  </xsd:simpleType>\n
+        \ <xsd:simpleType name=\"ECPTransactionType\">\n    <xsd:restriction base=\"xsd:string\">\n
+        \     <xsd:enumeration value=\"All\" />\n      <xsd:enumeration value=\"Inbound\"
+        />\n      <xsd:enumeration value=\"Outbound\" />\n      <xsd:enumeration value=\"InboundOutbound\"
+        />\n      <xsd:enumeration value=\"Transfer\" />\n      <xsd:enumeration value=\"NA\"
+        />\n    </xsd:restriction>\n  </xsd:simpleType>\n  <xsd:simpleType name=\"ProductStatus\">\n
+        \   <xsd:restriction base=\"xsd:string\">\n      <xsd:enumeration value=\"Active\"
+        />\n      <xsd:enumeration value=\"Suspended\" />\n    </xsd:restriction>\n
+        \ </xsd:simpleType>\n  <xsd:simpleType name=\"TaxClassification\">\n    <xsd:restriction
+        base=\"xsd:string\">\n      <xsd:enumeration value=\"PhysicalGoods\" />\n
+        \     <xsd:enumeration value=\"DownloadableExecutableSoftware\" />\n      <xsd:enumeration
+        value=\"DownloadableElectronicData\" />\n      <xsd:enumeration value=\"Service\"
+        />\n      <xsd:enumeration value=\"TaxExempt\" />\n      <xsd:enumeration
+        value=\"OtherTaxable\" />\n    </xsd:restriction>\n  </xsd:simpleType>\n  <xsd:simpleType
+        name=\"RefundTokenAction\">\n    <xsd:restriction base=\"xsd:string\">\n      <xsd:enumeration
+        value=\"None\" />\n      <xsd:enumeration value=\"CancelZeroBalance\" />\n
+        \     <xsd:enumeration value=\"CancelNegativeBalance\" />\n    </xsd:restriction>\n
+        \ </xsd:simpleType>\n  <xsd:simpleType name=\"ReturnCode\">\n    <xsd:restriction
+        base=\"xsd:int\">\n      <xsd:enumeration value=\"200\" />\n      <xsd:enumeration
+        value=\"201\" />\n      <xsd:enumeration value=\"202\" />\n      <xsd:enumeration
+        value=\"203\" />\n      <xsd:enumeration value=\"204\" />\n      <xsd:enumeration
+        value=\"205\" />\n      <xsd:enumeration value=\"206\" />\n      <xsd:enumeration
+        value=\"300\" />\n      <xsd:enumeration value=\"301\" />\n      <xsd:enumeration
+        value=\"302\" />\n      <xsd:enumeration value=\"303\" />\n      <xsd:enumeration
+        value=\"304\" />\n      <xsd:enumeration value=\"305\" />\n      <xsd:enumeration
+        value=\"306\" />\n      <xsd:enumeration value=\"307\" />\n      <xsd:enumeration
+        value=\"400\" />\n      <xsd:enumeration value=\"401\" />\n      <xsd:enumeration
+        value=\"402\" />\n      <xsd:enumeration value=\"403\" />\n      <xsd:enumeration
+        value=\"404\" />\n      <xsd:enumeration value=\"405\" />\n      <xsd:enumeration
+        value=\"406\" />\n      <xsd:enumeration value=\"407\" />\n      <xsd:enumeration
+        value=\"408\" />\n      <xsd:enumeration value=\"409\" />\n      <xsd:enumeration
+        value=\"410\" />\n      <xsd:enumeration value=\"411\" />\n      <xsd:enumeration
+        value=\"412\" />\n      <xsd:enumeration value=\"413\" />\n      <xsd:enumeration
+        value=\"414\" />\n      <xsd:enumeration value=\"415\" />\n      <xsd:enumeration
+        value=\"416\" />\n      <xsd:enumeration value=\"417\" />\n      <xsd:enumeration
+        value=\"500\" />\n      <xsd:enumeration value=\"501\" />\n      <xsd:enumeration
+        value=\"502\" />\n      <xsd:enumeration value=\"503\" />\n      <xsd:enumeration
+        value=\"504\" />\n      <xsd:enumeration value=\"505\" />\n    </xsd:restriction>\n
+        \ </xsd:simpleType>\n  <xsd:simpleType name=\"TaxRegion\">\n    <xsd:restriction
+        base=\"xsd:string\">\n      <xsd:enumeration value=\"AT\" />\n      <xsd:enumeration
+        value=\"BE\" />\n      <xsd:enumeration value=\"BG\" />\n      <xsd:enumeration
+        value=\"CY\" />\n      <xsd:enumeration value=\"CZ\" />\n      <xsd:enumeration
+        value=\"DE\" />\n      <xsd:enumeration value=\"DK\" />\n      <xsd:enumeration
+        value=\"EE\" />\n      <xsd:enumeration value=\"EL\" />\n      <xsd:enumeration
+        value=\"ES\" />\n      <xsd:enumeration value=\"FI\" />\n      <xsd:enumeration
+        value=\"FR\" />\n      <xsd:enumeration value=\"GB\" />\n      <xsd:enumeration
+        value=\"HU\" />\n      <xsd:enumeration value=\"IE\" />\n      <xsd:enumeration
+        value=\"IT\" />\n      <xsd:enumeration value=\"LT\" />\n      <xsd:enumeration
+        value=\"LU\" />\n      <xsd:enumeration value=\"LV\" />\n      <xsd:enumeration
+        value=\"MT\" />\n      <xsd:enumeration value=\"NL\" />\n      <xsd:enumeration
+        value=\"PL\" />\n      <xsd:enumeration value=\"PT\" />\n      <xsd:enumeration
+        value=\"RO\" />\n      <xsd:enumeration value=\"SE\" />\n      <xsd:enumeration
+        value=\"SI\" />\n      <xsd:enumeration value=\"SK\" />\n      <xsd:enumeration
+        value=\"CH\" />\n      <xsd:enumeration value=\"CA\" />\n      <xsd:enumeration
+        value=\"US\" />\n    </xsd:restriction>\n  </xsd:simpleType>\n  <xsd:simpleType
+        name=\"TransactionStatusType\">\n    <xsd:restriction base=\"xsd:string\">\n
+        \     <xsd:enumeration value=\"New\" />\n      <xsd:enumeration value=\"AuthorizationPending\"
+        />\n      <xsd:enumeration value=\"AuthorizedPending\" />\n      <xsd:enumeration
+        value=\"Authorized\" />\n      <xsd:enumeration value=\"AuthorizedForValidation\"
+        />\n      <xsd:enumeration value=\"Cancelled\" />\n      <xsd:enumeration
+        value=\"Captured\" />\n      <xsd:enumeration value=\"Settled\" />\n      <xsd:enumeration
+        value=\"Refunded\" />\n      <xsd:enumeration value=\"Pending\" />\n    </xsd:restriction>\n
+        \ </xsd:simpleType>\n  <xsd:simpleType name=\"AVSMatchType\">\n    <xsd:restriction
+        base=\"xsd:string\">\n      <xsd:enumeration value=\"FullMatch\" />\n      <xsd:enumeration
+        value=\"PartialMatch\" />\n      <xsd:enumeration value=\"NoMatch\" />\n      <xsd:enumeration
+        value=\"IssuerError\" />\n      <xsd:enumeration value=\"NoOpinion\" />\n
+        \   </xsd:restriction>\n  </xsd:simpleType>\n</xsd:schema>"
+    http_version: '1.1'
+  recorded_at: Wed, 21 Mar 2012 14:12:57 GMT
+- request:
+    method: get
+    uri: http://soap.vindicia.com:443/3.6/Account.wsdl
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      accept:
+      - ! '*/*'
+      user-agent:
+      - Ruby
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      date:
+      - Wed, 21 Mar 2012 14:12:58 GMT
+      server:
+      - Apache/1.3.41 (Unix) mod_perl/1.30 mod_ssl/2.8.31 OpenSSL/0.9.7f
+      connection:
+      - close
+      content-type:
+      - text/html; charset=iso-8859-1
+    body:
+      encoding: US-ASCII
+      string: ! '<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+
+        <HTML><HEAD>
+
+        <TITLE>400 Bad Request</TITLE>
+
+        </HEAD><BODY>
+
+        <H1>Bad Request</H1>
+
+        Your browser sent a request that this server could not understand.<P>
+
+        Reason: You''re speaking plain HTTP to an SSL-enabled server port.<BR>
+
+        Instead use the HTTPS scheme to access this URL, please.<BR>
+
+        <BLOCKQUOTE>Hint: <A HREF="https://soap.vindicia.com:443/"><B>https://soap.vindicia.com:443/</B></A></BLOCKQUOTE><P>
+
+        </BODY></HTML>
+
+'
+    http_version: '1.1'
+  recorded_at: Wed, 21 Mar 2012 14:12:58 GMT
+- request:
+    method: get
+    uri: http://soap.vindicia.com:443/3.6/ActivityTypeArg.wsdl
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      accept:
+      - ! '*/*'
+      user-agent:
+      - Ruby
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      date:
+      - Wed, 21 Mar 2012 14:12:58 GMT
+      server:
+      - Apache/1.3.41 (Unix) mod_perl/1.30 mod_ssl/2.8.31 OpenSSL/0.9.7f
+      connection:
+      - close
+      content-type:
+      - text/html; charset=iso-8859-1
+    body:
+      encoding: US-ASCII
+      string: ! '<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+
+        <HTML><HEAD>
+
+        <TITLE>400 Bad Request</TITLE>
+
+        </HEAD><BODY>
+
+        <H1>Bad Request</H1>
+
+        Your browser sent a request that this server could not understand.<P>
+
+        Reason: You''re speaking plain HTTP to an SSL-enabled server port.<BR>
+
+        Instead use the HTTPS scheme to access this URL, please.<BR>
+
+        <BLOCKQUOTE>Hint: <A HREF="https://soap.vindicia.com:443/"><B>https://soap.vindicia.com:443/</B></A></BLOCKQUOTE><P>
+
+        </BODY></HTML>
+
+'
+    http_version: '1.1'
+  recorded_at: Wed, 21 Mar 2012 14:12:58 GMT
+- request:
+    method: get
+    uri: http://soap.vindicia.com:443/3.6/ActivityLogin.wsdl
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      accept:
+      - ! '*/*'
+      user-agent:
+      - Ruby
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      date:
+      - Wed, 21 Mar 2012 14:12:58 GMT
+      server:
+      - Apache/1.3.41 (Unix) mod_perl/1.30 mod_ssl/2.8.31 OpenSSL/0.9.7f
+      connection:
+      - close
+      content-type:
+      - text/html; charset=iso-8859-1
+    body:
+      encoding: US-ASCII
+      string: ! '<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+
+        <HTML><HEAD>
+
+        <TITLE>400 Bad Request</TITLE>
+
+        </HEAD><BODY>
+
+        <H1>Bad Request</H1>
+
+        Your browser sent a request that this server could not understand.<P>
+
+        Reason: You''re speaking plain HTTP to an SSL-enabled server port.<BR>
+
+        Instead use the HTTPS scheme to access this URL, please.<BR>
+
+        <BLOCKQUOTE>Hint: <A HREF="https://soap.vindicia.com:443/"><B>https://soap.vindicia.com:443/</B></A></BLOCKQUOTE><P>
+
+        </BODY></HTML>
+
+'
+    http_version: '1.1'
+  recorded_at: Wed, 21 Mar 2012 14:12:58 GMT
+- request:
+    method: get
+    uri: http://soap.vindicia.com:443/3.6/ActivityLogout.wsdl
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      accept:
+      - ! '*/*'
+      user-agent:
+      - Ruby
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      date:
+      - Wed, 21 Mar 2012 14:12:58 GMT
+      server:
+      - Apache/1.3.41 (Unix) mod_perl/1.30 mod_ssl/2.8.31 OpenSSL/0.9.7f
+      connection:
+      - close
+      content-type:
+      - text/html; charset=iso-8859-1
+    body:
+      encoding: US-ASCII
+      string: ! '<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+
+        <HTML><HEAD>
+
+        <TITLE>400 Bad Request</TITLE>
+
+        </HEAD><BODY>
+
+        <H1>Bad Request</H1>
+
+        Your browser sent a request that this server could not understand.<P>
+
+        Reason: You''re speaking plain HTTP to an SSL-enabled server port.<BR>
+
+        Instead use the HTTPS scheme to access this URL, please.<BR>
+
+        <BLOCKQUOTE>Hint: <A HREF="https://soap.vindicia.com:443/"><B>https://soap.vindicia.com:443/</B></A></BLOCKQUOTE><P>
+
+        </BODY></HTML>
+
+'
+    http_version: '1.1'
+  recorded_at: Wed, 21 Mar 2012 14:12:58 GMT
+- request:
+    method: get
+    uri: http://soap.vindicia.com:443/3.6/ActivityUsage.wsdl
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      accept:
+      - ! '*/*'
+      user-agent:
+      - Ruby
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      date:
+      - Wed, 21 Mar 2012 14:12:58 GMT
+      server:
+      - Apache/1.3.41 (Unix) mod_perl/1.30 mod_ssl/2.8.31 OpenSSL/0.9.7f
+      connection:
+      - close
+      content-type:
+      - text/html; charset=iso-8859-1
+    body:
+      encoding: US-ASCII
+      string: ! '<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+
+        <HTML><HEAD>
+
+        <TITLE>400 Bad Request</TITLE>
+
+        </HEAD><BODY>
+
+        <H1>Bad Request</H1>
+
+        Your browser sent a request that this server could not understand.<P>
+
+        Reason: You''re speaking plain HTTP to an SSL-enabled server port.<BR>
+
+        Instead use the HTTPS scheme to access this URL, please.<BR>
+
+        <BLOCKQUOTE>Hint: <A HREF="https://soap.vindicia.com:443/"><B>https://soap.vindicia.com:443/</B></A></BLOCKQUOTE><P>
+
+        </BODY></HTML>
+
+'
+    http_version: '1.1'
+  recorded_at: Wed, 21 Mar 2012 14:12:59 GMT
+- request:
+    method: get
+    uri: http://soap.vindicia.com:443/3.6/ActivityNamedValue.wsdl
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      accept:
+      - ! '*/*'
+      user-agent:
+      - Ruby
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      date:
+      - Wed, 21 Mar 2012 14:12:59 GMT
+      server:
+      - Apache/1.3.41 (Unix) mod_perl/1.30 mod_ssl/2.8.31 OpenSSL/0.9.7f
+      connection:
+      - close
+      content-type:
+      - text/html; charset=iso-8859-1
+    body:
+      encoding: US-ASCII
+      string: ! '<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+
+        <HTML><HEAD>
+
+        <TITLE>400 Bad Request</TITLE>
+
+        </HEAD><BODY>
+
+        <H1>Bad Request</H1>
+
+        Your browser sent a request that this server could not understand.<P>
+
+        Reason: You''re speaking plain HTTP to an SSL-enabled server port.<BR>
+
+        Instead use the HTTPS scheme to access this URL, please.<BR>
+
+        <BLOCKQUOTE>Hint: <A HREF="https://soap.vindicia.com:443/"><B>https://soap.vindicia.com:443/</B></A></BLOCKQUOTE><P>
+
+        </BODY></HTML>
+
+'
+    http_version: '1.1'
+  recorded_at: Wed, 21 Mar 2012 14:12:59 GMT
+- request:
+    method: get
+    uri: http://soap.vindicia.com:443/3.6/ActivityPhoneContact.wsdl
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      accept:
+      - ! '*/*'
+      user-agent:
+      - Ruby
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      date:
+      - Wed, 21 Mar 2012 14:12:59 GMT
+      server:
+      - Apache/1.3.41 (Unix) mod_perl/1.30 mod_ssl/2.8.31 OpenSSL/0.9.7f
+      connection:
+      - close
+      content-type:
+      - text/html; charset=iso-8859-1
+    body:
+      encoding: US-ASCII
+      string: ! '<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+
+        <HTML><HEAD>
+
+        <TITLE>400 Bad Request</TITLE>
+
+        </HEAD><BODY>
+
+        <H1>Bad Request</H1>
+
+        Your browser sent a request that this server could not understand.<P>
+
+        Reason: You''re speaking plain HTTP to an SSL-enabled server port.<BR>
+
+        Instead use the HTTPS scheme to access this URL, please.<BR>
+
+        <BLOCKQUOTE>Hint: <A HREF="https://soap.vindicia.com:443/"><B>https://soap.vindicia.com:443/</B></A></BLOCKQUOTE><P>
+
+        </BODY></HTML>
+
+'
+    http_version: '1.1'
+  recorded_at: Wed, 21 Mar 2012 14:12:59 GMT
+- request:
+    method: get
+    uri: http://soap.vindicia.com:443/3.6/ActivityEmailContact.wsdl
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      accept:
+      - ! '*/*'
+      user-agent:
+      - Ruby
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      date:
+      - Wed, 21 Mar 2012 14:12:59 GMT
+      server:
+      - Apache/1.3.41 (Unix) mod_perl/1.30 mod_ssl/2.8.31 OpenSSL/0.9.7f
+      connection:
+      - close
+      content-type:
+      - text/html; charset=iso-8859-1
+    body:
+      encoding: US-ASCII
+      string: ! '<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+
+        <HTML><HEAD>
+
+        <TITLE>400 Bad Request</TITLE>
+
+        </HEAD><BODY>
+
+        <H1>Bad Request</H1>
+
+        Your browser sent a request that this server could not understand.<P>
+
+        Reason: You''re speaking plain HTTP to an SSL-enabled server port.<BR>
+
+        Instead use the HTTPS scheme to access this URL, please.<BR>
+
+        <BLOCKQUOTE>Hint: <A HREF="https://soap.vindicia.com:443/"><B>https://soap.vindicia.com:443/</B></A></BLOCKQUOTE><P>
+
+        </BODY></HTML>
+
+'
+    http_version: '1.1'
+  recorded_at: Wed, 21 Mar 2012 14:12:59 GMT
+- request:
+    method: get
+    uri: http://soap.vindicia.com:443/3.6/ActivityFulfillment.wsdl
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      accept:
+      - ! '*/*'
+      user-agent:
+      - Ruby
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      date:
+      - Wed, 21 Mar 2012 14:12:59 GMT
+      server:
+      - Apache/1.3.41 (Unix) mod_perl/1.30 mod_ssl/2.8.31 OpenSSL/0.9.7f
+      connection:
+      - close
+      content-type:
+      - text/html; charset=iso-8859-1
+    body:
+      encoding: US-ASCII
+      string: ! '<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+
+        <HTML><HEAD>
+
+        <TITLE>400 Bad Request</TITLE>
+
+        </HEAD><BODY>
+
+        <H1>Bad Request</H1>
+
+        Your browser sent a request that this server could not understand.<P>
+
+        Reason: You''re speaking plain HTTP to an SSL-enabled server port.<BR>
+
+        Instead use the HTTPS scheme to access this URL, please.<BR>
+
+        <BLOCKQUOTE>Hint: <A HREF="https://soap.vindicia.com:443/"><B>https://soap.vindicia.com:443/</B></A></BLOCKQUOTE><P>
+
+        </BODY></HTML>
+
+'
+    http_version: '1.1'
+  recorded_at: Wed, 21 Mar 2012 14:12:59 GMT
+- request:
+    method: get
+    uri: http://soap.vindicia.com:443/3.6/ActivityURIView.wsdl
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      accept:
+      - ! '*/*'
+      user-agent:
+      - Ruby
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      date:
+      - Wed, 21 Mar 2012 14:12:59 GMT
+      server:
+      - Apache/1.3.41 (Unix) mod_perl/1.30 mod_ssl/2.8.31 OpenSSL/0.9.7f
+      connection:
+      - close
+      content-type:
+      - text/html; charset=iso-8859-1
+    body:
+      encoding: US-ASCII
+      string: ! '<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+
+        <HTML><HEAD>
+
+        <TITLE>400 Bad Request</TITLE>
+
+        </HEAD><BODY>
+
+        <H1>Bad Request</H1>
+
+        Your browser sent a request that this server could not understand.<P>
+
+        Reason: You''re speaking plain HTTP to an SSL-enabled server port.<BR>
+
+        Instead use the HTTPS scheme to access this URL, please.<BR>
+
+        <BLOCKQUOTE>Hint: <A HREF="https://soap.vindicia.com:443/"><B>https://soap.vindicia.com:443/</B></A></BLOCKQUOTE><P>
+
+        </BODY></HTML>
+
+'
+    http_version: '1.1'
+  recorded_at: Wed, 21 Mar 2012 14:12:59 GMT
+- request:
+    method: get
+    uri: http://soap.vindicia.com:443/3.6/ActivityCancellation.wsdl
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      accept:
+      - ! '*/*'
+      user-agent:
+      - Ruby
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      date:
+      - Wed, 21 Mar 2012 14:12:59 GMT
+      server:
+      - Apache/1.3.41 (Unix) mod_perl/1.30 mod_ssl/2.8.31 OpenSSL/0.9.7f
+      connection:
+      - close
+      content-type:
+      - text/html; charset=iso-8859-1
+    body:
+      encoding: US-ASCII
+      string: ! '<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+
+        <HTML><HEAD>
+
+        <TITLE>400 Bad Request</TITLE>
+
+        </HEAD><BODY>
+
+        <H1>Bad Request</H1>
+
+        Your browser sent a request that this server could not understand.<P>
+
+        Reason: You''re speaking plain HTTP to an SSL-enabled server port.<BR>
+
+        Instead use the HTTPS scheme to access this URL, please.<BR>
+
+        <BLOCKQUOTE>Hint: <A HREF="https://soap.vindicia.com:443/"><B>https://soap.vindicia.com:443/</B></A></BLOCKQUOTE><P>
+
+        </BODY></HTML>
+
+'
+    http_version: '1.1'
+  recorded_at: Wed, 21 Mar 2012 14:13:00 GMT
+- request:
+    method: get
+    uri: http://soap.vindicia.com:443/3.6/ActivityNote.wsdl
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      accept:
+      - ! '*/*'
+      user-agent:
+      - Ruby
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      date:
+      - Wed, 21 Mar 2012 14:13:00 GMT
+      server:
+      - Apache/1.3.41 (Unix) mod_perl/1.30 mod_ssl/2.8.31 OpenSSL/0.9.7f
+      connection:
+      - close
+      content-type:
+      - text/html; charset=iso-8859-1
+    body:
+      encoding: US-ASCII
+      string: ! '<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+
+        <HTML><HEAD>
+
+        <TITLE>400 Bad Request</TITLE>
+
+        </HEAD><BODY>
+
+        <H1>Bad Request</H1>
+
+        Your browser sent a request that this server could not understand.<P>
+
+        Reason: You''re speaking plain HTTP to an SSL-enabled server port.<BR>
+
+        Instead use the HTTPS scheme to access this URL, please.<BR>
+
+        <BLOCKQUOTE>Hint: <A HREF="https://soap.vindicia.com:443/"><B>https://soap.vindicia.com:443/</B></A></BLOCKQUOTE><P>
+
+        </BODY></HTML>
+
+'
+    http_version: '1.1'
+  recorded_at: Wed, 21 Mar 2012 14:13:00 GMT
+- request:
+    method: get
+    uri: http://soap.vindicia.com:443/3.6/Activity.wsdl
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      accept:
+      - ! '*/*'
+      user-agent:
+      - Ruby
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      date:
+      - Wed, 21 Mar 2012 14:13:00 GMT
+      server:
+      - Apache/1.3.41 (Unix) mod_perl/1.30 mod_ssl/2.8.31 OpenSSL/0.9.7f
+      connection:
+      - close
+      content-type:
+      - text/html; charset=iso-8859-1
+    body:
+      encoding: US-ASCII
+      string: ! '<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+
+        <HTML><HEAD>
+
+        <TITLE>400 Bad Request</TITLE>
+
+        </HEAD><BODY>
+
+        <H1>Bad Request</H1>
+
+        Your browser sent a request that this server could not understand.<P>
+
+        Reason: You''re speaking plain HTTP to an SSL-enabled server port.<BR>
+
+        Instead use the HTTPS scheme to access this URL, please.<BR>
+
+        <BLOCKQUOTE>Hint: <A HREF="https://soap.vindicia.com:443/"><B>https://soap.vindicia.com:443/</B></A></BLOCKQUOTE><P>
+
+        </BODY></HTML>
+
+'
+    http_version: '1.1'
+  recorded_at: Wed, 21 Mar 2012 14:13:00 GMT
+- request:
+    method: get
+    uri: http://soap.vindicia.com:443/3.6/Address.wsdl
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      accept:
+      - ! '*/*'
+      user-agent:
+      - Ruby
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      date:
+      - Wed, 21 Mar 2012 14:13:00 GMT
+      server:
+      - Apache/1.3.41 (Unix) mod_perl/1.30 mod_ssl/2.8.31 OpenSSL/0.9.7f
+      connection:
+      - close
+      content-type:
+      - text/html; charset=iso-8859-1
+    body:
+      encoding: US-ASCII
+      string: ! '<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+
+        <HTML><HEAD>
+
+        <TITLE>400 Bad Request</TITLE>
+
+        </HEAD><BODY>
+
+        <H1>Bad Request</H1>
+
+        Your browser sent a request that this server could not understand.<P>
+
+        Reason: You''re speaking plain HTTP to an SSL-enabled server port.<BR>
+
+        Instead use the HTTPS scheme to access this URL, please.<BR>
+
+        <BLOCKQUOTE>Hint: <A HREF="https://soap.vindicia.com:443/"><B>https://soap.vindicia.com:443/</B></A></BLOCKQUOTE><P>
+
+        </BODY></HTML>
+
+'
+    http_version: '1.1'
+  recorded_at: Wed, 21 Mar 2012 14:13:00 GMT
+- request:
+    method: get
+    uri: http://soap.vindicia.com:443/3.6/Authentication.wsdl
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      accept:
+      - ! '*/*'
+      user-agent:
+      - Ruby
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      date:
+      - Wed, 21 Mar 2012 14:13:00 GMT
+      server:
+      - Apache/1.3.41 (Unix) mod_perl/1.30 mod_ssl/2.8.31 OpenSSL/0.9.7f
+      connection:
+      - close
+      content-type:
+      - text/html; charset=iso-8859-1
+    body:
+      encoding: US-ASCII
+      string: ! '<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+
+        <HTML><HEAD>
+
+        <TITLE>400 Bad Request</TITLE>
+
+        </HEAD><BODY>
+
+        <H1>Bad Request</H1>
+
+        Your browser sent a request that this server could not understand.<P>
+
+        Reason: You''re speaking plain HTTP to an SSL-enabled server port.<BR>
+
+        Instead use the HTTPS scheme to access this URL, please.<BR>
+
+        <BLOCKQUOTE>Hint: <A HREF="https://soap.vindicia.com:443/"><B>https://soap.vindicia.com:443/</B></A></BLOCKQUOTE><P>
+
+        </BODY></HTML>
+
+'
+    http_version: '1.1'
+  recorded_at: Wed, 21 Mar 2012 14:13:00 GMT
+- request:
+    method: get
+    uri: http://soap.vindicia.com:443/3.6/AutoBill.wsdl
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      accept:
+      - ! '*/*'
+      user-agent:
+      - Ruby
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      date:
+      - Wed, 21 Mar 2012 14:13:00 GMT
+      server:
+      - Apache/1.3.41 (Unix) mod_perl/1.30 mod_ssl/2.8.31 OpenSSL/0.9.7f
+      connection:
+      - close
+      content-type:
+      - text/html; charset=iso-8859-1
+    body:
+      encoding: US-ASCII
+      string: ! '<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+
+        <HTML><HEAD>
+
+        <TITLE>400 Bad Request</TITLE>
+
+        </HEAD><BODY>
+
+        <H1>Bad Request</H1>
+
+        Your browser sent a request that this server could not understand.<P>
+
+        Reason: You''re speaking plain HTTP to an SSL-enabled server port.<BR>
+
+        Instead use the HTTPS scheme to access this URL, please.<BR>
+
+        <BLOCKQUOTE>Hint: <A HREF="https://soap.vindicia.com:443/"><B>https://soap.vindicia.com:443/</B></A></BLOCKQUOTE><P>
+
+        </BODY></HTML>
+
+'
+    http_version: '1.1'
+  recorded_at: Wed, 21 Mar 2012 14:13:00 GMT
+- request:
+    method: get
+    uri: http://soap.vindicia.com:443/3.6/AutoBillUpgradeHistoryStep.wsdl
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      accept:
+      - ! '*/*'
+      user-agent:
+      - Ruby
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      date:
+      - Wed, 21 Mar 2012 14:13:00 GMT
+      server:
+      - Apache/1.3.41 (Unix) mod_perl/1.30 mod_ssl/2.8.31 OpenSSL/0.9.7f
+      connection:
+      - close
+      content-type:
+      - text/html; charset=iso-8859-1
+    body:
+      encoding: US-ASCII
+      string: ! '<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+
+        <HTML><HEAD>
+
+        <TITLE>400 Bad Request</TITLE>
+
+        </HEAD><BODY>
+
+        <H1>Bad Request</H1>
+
+        Your browser sent a request that this server could not understand.<P>
+
+        Reason: You''re speaking plain HTTP to an SSL-enabled server port.<BR>
+
+        Instead use the HTTPS scheme to access this URL, please.<BR>
+
+        <BLOCKQUOTE>Hint: <A HREF="https://soap.vindicia.com:443/"><B>https://soap.vindicia.com:443/</B></A></BLOCKQUOTE><P>
+
+        </BODY></HTML>
+
+'
+    http_version: '1.1'
+  recorded_at: Wed, 21 Mar 2012 14:13:01 GMT
+- request:
+    method: get
+    uri: http://soap.vindicia.com:443/3.6/BillingPlanPrice.wsdl
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      accept:
+      - ! '*/*'
+      user-agent:
+      - Ruby
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      date:
+      - Wed, 21 Mar 2012 14:13:01 GMT
+      server:
+      - Apache/1.3.41 (Unix) mod_perl/1.30 mod_ssl/2.8.31 OpenSSL/0.9.7f
+      connection:
+      - close
+      content-type:
+      - text/html; charset=iso-8859-1
+    body:
+      encoding: US-ASCII
+      string: ! '<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+
+        <HTML><HEAD>
+
+        <TITLE>400 Bad Request</TITLE>
+
+        </HEAD><BODY>
+
+        <H1>Bad Request</H1>
+
+        Your browser sent a request that this server could not understand.<P>
+
+        Reason: You''re speaking plain HTTP to an SSL-enabled server port.<BR>
+
+        Instead use the HTTPS scheme to access this URL, please.<BR>
+
+        <BLOCKQUOTE>Hint: <A HREF="https://soap.vindicia.com:443/"><B>https://soap.vindicia.com:443/</B></A></BLOCKQUOTE><P>
+
+        </BODY></HTML>
+
+'
+    http_version: '1.1'
+  recorded_at: Wed, 21 Mar 2012 14:13:01 GMT
+- request:
+    method: get
+    uri: http://soap.vindicia.com:443/3.6/BillingPlanPeriod.wsdl
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      accept:
+      - ! '*/*'
+      user-agent:
+      - Ruby
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      date:
+      - Wed, 21 Mar 2012 14:13:01 GMT
+      server:
+      - Apache/1.3.41 (Unix) mod_perl/1.30 mod_ssl/2.8.31 OpenSSL/0.9.7f
+      connection:
+      - close
+      content-type:
+      - text/html; charset=iso-8859-1
+    body:
+      encoding: US-ASCII
+      string: ! '<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+
+        <HTML><HEAD>
+
+        <TITLE>400 Bad Request</TITLE>
+
+        </HEAD><BODY>
+
+        <H1>Bad Request</H1>
+
+        Your browser sent a request that this server could not understand.<P>
+
+        Reason: You''re speaking plain HTTP to an SSL-enabled server port.<BR>
+
+        Instead use the HTTPS scheme to access this URL, please.<BR>
+
+        <BLOCKQUOTE>Hint: <A HREF="https://soap.vindicia.com:443/"><B>https://soap.vindicia.com:443/</B></A></BLOCKQUOTE><P>
+
+        </BODY></HTML>
+
+'
+    http_version: '1.1'
+  recorded_at: Wed, 21 Mar 2012 14:13:01 GMT
+- request:
+    method: get
+    uri: http://soap.vindicia.com:443/3.6/BillingPlan.wsdl
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      accept:
+      - ! '*/*'
+      user-agent:
+      - Ruby
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      date:
+      - Wed, 21 Mar 2012 14:13:01 GMT
+      server:
+      - Apache/1.3.41 (Unix) mod_perl/1.30 mod_ssl/2.8.31 OpenSSL/0.9.7f
+      connection:
+      - close
+      content-type:
+      - text/html; charset=iso-8859-1
+    body:
+      encoding: US-ASCII
+      string: ! '<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+
+        <HTML><HEAD>
+
+        <TITLE>400 Bad Request</TITLE>
+
+        </HEAD><BODY>
+
+        <H1>Bad Request</H1>
+
+        Your browser sent a request that this server could not understand.<P>
+
+        Reason: You''re speaking plain HTTP to an SSL-enabled server port.<BR>
+
+        Instead use the HTTPS scheme to access this URL, please.<BR>
+
+        <BLOCKQUOTE>Hint: <A HREF="https://soap.vindicia.com:443/"><B>https://soap.vindicia.com:443/</B></A></BLOCKQUOTE><P>
+
+        </BODY></HTML>
+
+'
+    http_version: '1.1'
+  recorded_at: Wed, 21 Mar 2012 14:13:01 GMT
+- request:
+    method: get
+    uri: http://soap.vindicia.com:443/3.6/Chargeback.wsdl
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      accept:
+      - ! '*/*'
+      user-agent:
+      - Ruby
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      date:
+      - Wed, 21 Mar 2012 14:13:01 GMT
+      server:
+      - Apache/1.3.41 (Unix) mod_perl/1.30 mod_ssl/2.8.31 OpenSSL/0.9.7f
+      connection:
+      - close
+      content-type:
+      - text/html; charset=iso-8859-1
+    body:
+      encoding: US-ASCII
+      string: ! '<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+
+        <HTML><HEAD>
+
+        <TITLE>400 Bad Request</TITLE>
+
+        </HEAD><BODY>
+
+        <H1>Bad Request</H1>
+
+        Your browser sent a request that this server could not understand.<P>
+
+        Reason: You''re speaking plain HTTP to an SSL-enabled server port.<BR>
+
+        Instead use the HTTPS scheme to access this URL, please.<BR>
+
+        <BLOCKQUOTE>Hint: <A HREF="https://soap.vindicia.com:443/"><B>https://soap.vindicia.com:443/</B></A></BLOCKQUOTE><P>
+
+        </BODY></HTML>
+
+'
+    http_version: '1.1'
+  recorded_at: Wed, 21 Mar 2012 14:13:01 GMT
+- request:
+    method: get
+    uri: http://soap.vindicia.com:443/3.6/TimeInterval.wsdl
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      accept:
+      - ! '*/*'
+      user-agent:
+      - Ruby
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      date:
+      - Wed, 21 Mar 2012 14:13:01 GMT
+      server:
+      - Apache/1.3.41 (Unix) mod_perl/1.30 mod_ssl/2.8.31 OpenSSL/0.9.7f
+      connection:
+      - close
+      content-type:
+      - text/html; charset=iso-8859-1
+    body:
+      encoding: US-ASCII
+      string: ! '<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+
+        <HTML><HEAD>
+
+        <TITLE>400 Bad Request</TITLE>
+
+        </HEAD><BODY>
+
+        <H1>Bad Request</H1>
+
+        Your browser sent a request that this server could not understand.<P>
+
+        Reason: You''re speaking plain HTTP to an SSL-enabled server port.<BR>
+
+        Instead use the HTTPS scheme to access this URL, please.<BR>
+
+        <BLOCKQUOTE>Hint: <A HREF="https://soap.vindicia.com:443/"><B>https://soap.vindicia.com:443/</B></A></BLOCKQUOTE><P>
+
+        </BODY></HTML>
+
+'
+    http_version: '1.1'
+  recorded_at: Wed, 21 Mar 2012 14:13:01 GMT
+- request:
+    method: get
+    uri: http://soap.vindicia.com:443/3.6/CurrencyAmount.wsdl
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      accept:
+      - ! '*/*'
+      user-agent:
+      - Ruby
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      date:
+      - Wed, 21 Mar 2012 14:13:01 GMT
+      server:
+      - Apache/1.3.41 (Unix) mod_perl/1.30 mod_ssl/2.8.31 OpenSSL/0.9.7f
+      connection:
+      - close
+      content-type:
+      - text/html; charset=iso-8859-1
+    body:
+      encoding: US-ASCII
+      string: ! '<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+
+        <HTML><HEAD>
+
+        <TITLE>400 Bad Request</TITLE>
+
+        </HEAD><BODY>
+
+        <H1>Bad Request</H1>
+
+        Your browser sent a request that this server could not understand.<P>
+
+        Reason: You''re speaking plain HTTP to an SSL-enabled server port.<BR>
+
+        Instead use the HTTPS scheme to access this URL, please.<BR>
+
+        <BLOCKQUOTE>Hint: <A HREF="https://soap.vindicia.com:443/"><B>https://soap.vindicia.com:443/</B></A></BLOCKQUOTE><P>
+
+        </BODY></HTML>
+
+'
+    http_version: '1.1'
+  recorded_at: Wed, 21 Mar 2012 14:13:02 GMT
+- request:
+    method: get
+    uri: http://soap.vindicia.com:443/3.6/Credit.wsdl
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      accept:
+      - ! '*/*'
+      user-agent:
+      - Ruby
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      date:
+      - Wed, 21 Mar 2012 14:13:02 GMT
+      server:
+      - Apache/1.3.41 (Unix) mod_perl/1.30 mod_ssl/2.8.31 OpenSSL/0.9.7f
+      connection:
+      - close
+      content-type:
+      - text/html; charset=iso-8859-1
+    body:
+      encoding: US-ASCII
+      string: ! '<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+
+        <HTML><HEAD>
+
+        <TITLE>400 Bad Request</TITLE>
+
+        </HEAD><BODY>
+
+        <H1>Bad Request</H1>
+
+        Your browser sent a request that this server could not understand.<P>
+
+        Reason: You''re speaking plain HTTP to an SSL-enabled server port.<BR>
+
+        Instead use the HTTPS scheme to access this URL, please.<BR>
+
+        <BLOCKQUOTE>Hint: <A HREF="https://soap.vindicia.com:443/"><B>https://soap.vindicia.com:443/</B></A></BLOCKQUOTE><P>
+
+        </BODY></HTML>
+
+'
+    http_version: '1.1'
+  recorded_at: Wed, 21 Mar 2012 14:13:02 GMT
+- request:
+    method: get
+    uri: http://soap.vindicia.com:443/3.6/CreditEventLog.wsdl
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      accept:
+      - ! '*/*'
+      user-agent:
+      - Ruby
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      date:
+      - Wed, 21 Mar 2012 14:13:02 GMT
+      server:
+      - Apache/1.3.41 (Unix) mod_perl/1.30 mod_ssl/2.8.31 OpenSSL/0.9.7f
+      connection:
+      - close
+      content-type:
+      - text/html; charset=iso-8859-1
+    body:
+      encoding: US-ASCII
+      string: ! '<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+
+        <HTML><HEAD>
+
+        <TITLE>400 Bad Request</TITLE>
+
+        </HEAD><BODY>
+
+        <H1>Bad Request</H1>
+
+        Your browser sent a request that this server could not understand.<P>
+
+        Reason: You''re speaking plain HTTP to an SSL-enabled server port.<BR>
+
+        Instead use the HTTPS scheme to access this URL, please.<BR>
+
+        <BLOCKQUOTE>Hint: <A HREF="https://soap.vindicia.com:443/"><B>https://soap.vindicia.com:443/</B></A></BLOCKQUOTE><P>
+
+        </BODY></HTML>
+
+'
+    http_version: '1.1'
+  recorded_at: Wed, 21 Mar 2012 14:13:02 GMT
+- request:
+    method: get
+    uri: http://soap.vindicia.com:443/3.6/Diagnostic.wsdl
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      accept:
+      - ! '*/*'
+      user-agent:
+      - Ruby
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      date:
+      - Wed, 21 Mar 2012 14:13:02 GMT
+      server:
+      - Apache/1.3.41 (Unix) mod_perl/1.30 mod_ssl/2.8.31 OpenSSL/0.9.7f
+      connection:
+      - close
+      content-type:
+      - text/html; charset=iso-8859-1
+    body:
+      encoding: US-ASCII
+      string: ! '<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+
+        <HTML><HEAD>
+
+        <TITLE>400 Bad Request</TITLE>
+
+        </HEAD><BODY>
+
+        <H1>Bad Request</H1>
+
+        Your browser sent a request that this server could not understand.<P>
+
+        Reason: You''re speaking plain HTTP to an SSL-enabled server port.<BR>
+
+        Instead use the HTTPS scheme to access this URL, please.<BR>
+
+        <BLOCKQUOTE>Hint: <A HREF="https://soap.vindicia.com:443/"><B>https://soap.vindicia.com:443/</B></A></BLOCKQUOTE><P>
+
+        </BODY></HTML>
+
+'
+    http_version: '1.1'
+  recorded_at: Wed, 21 Mar 2012 14:13:02 GMT
+- request:
+    method: get
+    uri: http://soap.vindicia.com:443/3.6/GiftCardStatus.wsdl
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      accept:
+      - ! '*/*'
+      user-agent:
+      - Ruby
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      date:
+      - Wed, 21 Mar 2012 14:13:02 GMT
+      server:
+      - Apache/1.3.41 (Unix) mod_perl/1.30 mod_ssl/2.8.31 OpenSSL/0.9.7f
+      connection:
+      - close
+      content-type:
+      - text/html; charset=iso-8859-1
+    body:
+      encoding: US-ASCII
+      string: ! '<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+
+        <HTML><HEAD>
+
+        <TITLE>400 Bad Request</TITLE>
+
+        </HEAD><BODY>
+
+        <H1>Bad Request</H1>
+
+        Your browser sent a request that this server could not understand.<P>
+
+        Reason: You''re speaking plain HTTP to an SSL-enabled server port.<BR>
+
+        Instead use the HTTPS scheme to access this URL, please.<BR>
+
+        <BLOCKQUOTE>Hint: <A HREF="https://soap.vindicia.com:443/"><B>https://soap.vindicia.com:443/</B></A></BLOCKQUOTE><P>
+
+        </BODY></HTML>
+
+'
+    http_version: '1.1'
+  recorded_at: Wed, 21 Mar 2012 14:13:02 GMT
+- request:
+    method: get
+    uri: http://soap.vindicia.com:443/3.6/GiftCard.wsdl
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      accept:
+      - ! '*/*'
+      user-agent:
+      - Ruby
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      date:
+      - Wed, 21 Mar 2012 14:13:02 GMT
+      server:
+      - Apache/1.3.41 (Unix) mod_perl/1.30 mod_ssl/2.8.31 OpenSSL/0.9.7f
+      connection:
+      - close
+      content-type:
+      - text/html; charset=iso-8859-1
+    body:
+      encoding: US-ASCII
+      string: ! '<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+
+        <HTML><HEAD>
+
+        <TITLE>400 Bad Request</TITLE>
+
+        </HEAD><BODY>
+
+        <H1>Bad Request</H1>
+
+        Your browser sent a request that this server could not understand.<P>
+
+        Reason: You''re speaking plain HTTP to an SSL-enabled server port.<BR>
+
+        Instead use the HTTPS scheme to access this URL, please.<BR>
+
+        <BLOCKQUOTE>Hint: <A HREF="https://soap.vindicia.com:443/"><B>https://soap.vindicia.com:443/</B></A></BLOCKQUOTE><P>
+
+        </BODY></HTML>
+
+'
+    http_version: '1.1'
+  recorded_at: Wed, 21 Mar 2012 14:13:02 GMT
+- request:
+    method: get
+    uri: http://soap.vindicia.com:443/3.6/ElectronicSignature.wsdl
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      accept:
+      - ! '*/*'
+      user-agent:
+      - Ruby
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      date:
+      - Wed, 21 Mar 2012 14:13:02 GMT
+      server:
+      - Apache/1.3.41 (Unix) mod_perl/1.30 mod_ssl/2.8.31 OpenSSL/0.9.7f
+      connection:
+      - close
+      content-type:
+      - text/html; charset=iso-8859-1
+    body:
+      encoding: US-ASCII
+      string: ! '<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+
+        <HTML><HEAD>
+
+        <TITLE>400 Bad Request</TITLE>
+
+        </HEAD><BODY>
+
+        <H1>Bad Request</H1>
+
+        Your browser sent a request that this server could not understand.<P>
+
+        Reason: You''re speaking plain HTTP to an SSL-enabled server port.<BR>
+
+        Instead use the HTTPS scheme to access this URL, please.<BR>
+
+        <BLOCKQUOTE>Hint: <A HREF="https://soap.vindicia.com:443/"><B>https://soap.vindicia.com:443/</B></A></BLOCKQUOTE><P>
+
+        </BODY></HTML>
+
+'
+    http_version: '1.1'
+  recorded_at: Wed, 21 Mar 2012 14:13:02 GMT
+- request:
+    method: get
+    uri: http://soap.vindicia.com:443/3.6/EmailTemplate.wsdl
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      accept:
+      - ! '*/*'
+      user-agent:
+      - Ruby
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      date:
+      - Wed, 21 Mar 2012 14:13:03 GMT
+      server:
+      - Apache/1.3.41 (Unix) mod_perl/1.30 mod_ssl/2.8.31 OpenSSL/0.9.7f
+      connection:
+      - close
+      content-type:
+      - text/html; charset=iso-8859-1
+    body:
+      encoding: US-ASCII
+      string: ! '<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+
+        <HTML><HEAD>
+
+        <TITLE>400 Bad Request</TITLE>
+
+        </HEAD><BODY>
+
+        <H1>Bad Request</H1>
+
+        Your browser sent a request that this server could not understand.<P>
+
+        Reason: You''re speaking plain HTTP to an SSL-enabled server port.<BR>
+
+        Instead use the HTTPS scheme to access this URL, please.<BR>
+
+        <BLOCKQUOTE>Hint: <A HREF="https://soap.vindicia.com:443/"><B>https://soap.vindicia.com:443/</B></A></BLOCKQUOTE><P>
+
+        </BODY></HTML>
+
+'
+    http_version: '1.1'
+  recorded_at: Wed, 21 Mar 2012 14:13:03 GMT
+- request:
+    method: get
+    uri: http://soap.vindicia.com:443/3.6/Entitlement.wsdl
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      accept:
+      - ! '*/*'
+      user-agent:
+      - Ruby
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      date:
+      - Wed, 21 Mar 2012 14:13:03 GMT
+      server:
+      - Apache/1.3.41 (Unix) mod_perl/1.30 mod_ssl/2.8.31 OpenSSL/0.9.7f
+      connection:
+      - close
+      content-type:
+      - text/html; charset=iso-8859-1
+    body:
+      encoding: US-ASCII
+      string: ! '<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+
+        <HTML><HEAD>
+
+        <TITLE>400 Bad Request</TITLE>
+
+        </HEAD><BODY>
+
+        <H1>Bad Request</H1>
+
+        Your browser sent a request that this server could not understand.<P>
+
+        Reason: You''re speaking plain HTTP to an SSL-enabled server port.<BR>
+
+        Instead use the HTTPS scheme to access this URL, please.<BR>
+
+        <BLOCKQUOTE>Hint: <A HREF="https://soap.vindicia.com:443/"><B>https://soap.vindicia.com:443/</B></A></BLOCKQUOTE><P>
+
+        </BODY></HTML>
+
+'
+    http_version: '1.1'
+  recorded_at: Wed, 21 Mar 2012 14:13:03 GMT
+- request:
+    method: get
+    uri: http://soap.vindicia.com:443/3.6/MetricStatistics.wsdl
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      accept:
+      - ! '*/*'
+      user-agent:
+      - Ruby
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      date:
+      - Wed, 21 Mar 2012 14:13:03 GMT
+      server:
+      - Apache/1.3.41 (Unix) mod_perl/1.30 mod_ssl/2.8.31 OpenSSL/0.9.7f
+      connection:
+      - close
+      content-type:
+      - text/html; charset=iso-8859-1
+    body:
+      encoding: US-ASCII
+      string: ! '<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+
+        <HTML><HEAD>
+
+        <TITLE>400 Bad Request</TITLE>
+
+        </HEAD><BODY>
+
+        <H1>Bad Request</H1>
+
+        Your browser sent a request that this server could not understand.<P>
+
+        Reason: You''re speaking plain HTTP to an SSL-enabled server port.<BR>
+
+        Instead use the HTTPS scheme to access this URL, please.<BR>
+
+        <BLOCKQUOTE>Hint: <A HREF="https://soap.vindicia.com:443/"><B>https://soap.vindicia.com:443/</B></A></BLOCKQUOTE><P>
+
+        </BODY></HTML>
+
+'
+    http_version: '1.1'
+  recorded_at: Wed, 21 Mar 2012 14:13:03 GMT
+- request:
+    method: get
+    uri: http://soap.vindicia.com:443/3.6/CreditCard.wsdl
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      accept:
+      - ! '*/*'
+      user-agent:
+      - Ruby
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      date:
+      - Wed, 21 Mar 2012 14:13:03 GMT
+      server:
+      - Apache/1.3.41 (Unix) mod_perl/1.30 mod_ssl/2.8.31 OpenSSL/0.9.7f
+      connection:
+      - close
+      content-type:
+      - text/html; charset=iso-8859-1
+    body:
+      encoding: US-ASCII
+      string: ! '<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+
+        <HTML><HEAD>
+
+        <TITLE>400 Bad Request</TITLE>
+
+        </HEAD><BODY>
+
+        <H1>Bad Request</H1>
+
+        Your browser sent a request that this server could not understand.<P>
+
+        Reason: You''re speaking plain HTTP to an SSL-enabled server port.<BR>
+
+        Instead use the HTTPS scheme to access this URL, please.<BR>
+
+        <BLOCKQUOTE>Hint: <A HREF="https://soap.vindicia.com:443/"><B>https://soap.vindicia.com:443/</B></A></BLOCKQUOTE><P>
+
+        </BODY></HTML>
+
+'
+    http_version: '1.1'
+  recorded_at: Wed, 21 Mar 2012 14:13:03 GMT
+- request:
+    method: get
+    uri: http://soap.vindicia.com:443/3.6/ECP.wsdl
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      accept:
+      - ! '*/*'
+      user-agent:
+      - Ruby
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      date:
+      - Wed, 21 Mar 2012 14:13:03 GMT
+      server:
+      - Apache/1.3.41 (Unix) mod_perl/1.30 mod_ssl/2.8.31 OpenSSL/0.9.7f
+      connection:
+      - close
+      content-type:
+      - text/html; charset=iso-8859-1
+    body:
+      encoding: US-ASCII
+      string: ! '<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+
+        <HTML><HEAD>
+
+        <TITLE>400 Bad Request</TITLE>
+
+        </HEAD><BODY>
+
+        <H1>Bad Request</H1>
+
+        Your browser sent a request that this server could not understand.<P>
+
+        Reason: You''re speaking plain HTTP to an SSL-enabled server port.<BR>
+
+        Instead use the HTTPS scheme to access this URL, please.<BR>
+
+        <BLOCKQUOTE>Hint: <A HREF="https://soap.vindicia.com:443/"><B>https://soap.vindicia.com:443/</B></A></BLOCKQUOTE><P>
+
+        </BODY></HTML>
+
+'
+    http_version: '1.1'
+  recorded_at: Wed, 21 Mar 2012 14:13:03 GMT
+- request:
+    method: get
+    uri: http://soap.vindicia.com:443/3.6/DirectDebit.wsdl
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      accept:
+      - ! '*/*'
+      user-agent:
+      - Ruby
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      date:
+      - Wed, 21 Mar 2012 14:13:03 GMT
+      server:
+      - Apache/1.3.41 (Unix) mod_perl/1.30 mod_ssl/2.8.31 OpenSSL/0.9.7f
+      connection:
+      - close
+      content-type:
+      - text/html; charset=iso-8859-1
+    body:
+      encoding: US-ASCII
+      string: ! '<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+
+        <HTML><HEAD>
+
+        <TITLE>400 Bad Request</TITLE>
+
+        </HEAD><BODY>
+
+        <H1>Bad Request</H1>
+
+        Your browser sent a request that this server could not understand.<P>
+
+        Reason: You''re speaking plain HTTP to an SSL-enabled server port.<BR>
+
+        Instead use the HTTPS scheme to access this URL, please.<BR>
+
+        <BLOCKQUOTE>Hint: <A HREF="https://soap.vindicia.com:443/"><B>https://soap.vindicia.com:443/</B></A></BLOCKQUOTE><P>
+
+        </BODY></HTML>
+
+'
+    http_version: '1.1'
+  recorded_at: Wed, 21 Mar 2012 14:13:03 GMT
+- request:
+    method: get
+    uri: http://soap.vindicia.com:443/3.6/PayPal.wsdl
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      accept:
+      - ! '*/*'
+      user-agent:
+      - Ruby
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      date:
+      - Wed, 21 Mar 2012 14:13:04 GMT
+      server:
+      - Apache/1.3.41 (Unix) mod_perl/1.30 mod_ssl/2.8.31 OpenSSL/0.9.7f
+      connection:
+      - close
+      content-type:
+      - text/html; charset=iso-8859-1
+    body:
+      encoding: US-ASCII
+      string: ! '<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+
+        <HTML><HEAD>
+
+        <TITLE>400 Bad Request</TITLE>
+
+        </HEAD><BODY>
+
+        <H1>Bad Request</H1>
+
+        Your browser sent a request that this server could not understand.<P>
+
+        Reason: You''re speaking plain HTTP to an SSL-enabled server port.<BR>
+
+        Instead use the HTTPS scheme to access this URL, please.<BR>
+
+        <BLOCKQUOTE>Hint: <A HREF="https://soap.vindicia.com:443/"><B>https://soap.vindicia.com:443/</B></A></BLOCKQUOTE><P>
+
+        </BODY></HTML>
+
+'
+    http_version: '1.1'
+  recorded_at: Wed, 21 Mar 2012 14:13:04 GMT
+- request:
+    method: get
+    uri: http://soap.vindicia.com:443/3.6/Boleto.wsdl
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      accept:
+      - ! '*/*'
+      user-agent:
+      - Ruby
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      date:
+      - Wed, 21 Mar 2012 14:13:04 GMT
+      server:
+      - Apache/1.3.41 (Unix) mod_perl/1.30 mod_ssl/2.8.31 OpenSSL/0.9.7f
+      connection:
+      - close
+      content-type:
+      - text/html; charset=iso-8859-1
+    body:
+      encoding: US-ASCII
+      string: ! '<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+
+        <HTML><HEAD>
+
+        <TITLE>400 Bad Request</TITLE>
+
+        </HEAD><BODY>
+
+        <H1>Bad Request</H1>
+
+        Your browser sent a request that this server could not understand.<P>
+
+        Reason: You''re speaking plain HTTP to an SSL-enabled server port.<BR>
+
+        Instead use the HTTPS scheme to access this URL, please.<BR>
+
+        <BLOCKQUOTE>Hint: <A HREF="https://soap.vindicia.com:443/"><B>https://soap.vindicia.com:443/</B></A></BLOCKQUOTE><P>
+
+        </BODY></HTML>
+
+'
+    http_version: '1.1'
+  recorded_at: Wed, 21 Mar 2012 14:13:04 GMT
+- request:
+    method: get
+    uri: http://soap.vindicia.com:443/3.6/PaymentMethod.wsdl
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      accept:
+      - ! '*/*'
+      user-agent:
+      - Ruby
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      date:
+      - Wed, 21 Mar 2012 14:13:04 GMT
+      server:
+      - Apache/1.3.41 (Unix) mod_perl/1.30 mod_ssl/2.8.31 OpenSSL/0.9.7f
+      connection:
+      - close
+      content-type:
+      - text/html; charset=iso-8859-1
+    body:
+      encoding: US-ASCII
+      string: ! '<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+
+        <HTML><HEAD>
+
+        <TITLE>400 Bad Request</TITLE>
+
+        </HEAD><BODY>
+
+        <H1>Bad Request</H1>
+
+        Your browser sent a request that this server could not understand.<P>
+
+        Reason: You''re speaking plain HTTP to an SSL-enabled server port.<BR>
+
+        Instead use the HTTPS scheme to access this URL, please.<BR>
+
+        <BLOCKQUOTE>Hint: <A HREF="https://soap.vindicia.com:443/"><B>https://soap.vindicia.com:443/</B></A></BLOCKQUOTE><P>
+
+        </BODY></HTML>
+
+'
+    http_version: '1.1'
+  recorded_at: Wed, 21 Mar 2012 14:13:04 GMT
+- request:
+    method: get
+    uri: http://soap.vindicia.com:443/3.6/PaymentProvider.wsdl
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      accept:
+      - ! '*/*'
+      user-agent:
+      - Ruby
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      date:
+      - Wed, 21 Mar 2012 14:13:04 GMT
+      server:
+      - Apache/1.3.41 (Unix) mod_perl/1.30 mod_ssl/2.8.31 OpenSSL/0.9.7f
+      connection:
+      - close
+      content-type:
+      - text/html; charset=iso-8859-1
+    body:
+      encoding: US-ASCII
+      string: ! '<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+
+        <HTML><HEAD>
+
+        <TITLE>400 Bad Request</TITLE>
+
+        </HEAD><BODY>
+
+        <H1>Bad Request</H1>
+
+        Your browser sent a request that this server could not understand.<P>
+
+        Reason: You''re speaking plain HTTP to an SSL-enabled server port.<BR>
+
+        Instead use the HTTPS scheme to access this URL, please.<BR>
+
+        <BLOCKQUOTE>Hint: <A HREF="https://soap.vindicia.com:443/"><B>https://soap.vindicia.com:443/</B></A></BLOCKQUOTE><P>
+
+        </BODY></HTML>
+
+'
+    http_version: '1.1'
+  recorded_at: Wed, 21 Mar 2012 14:13:04 GMT
+- request:
+    method: get
+    uri: http://soap.vindicia.com:443/3.6/MerchantEntitlementId.wsdl
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      accept:
+      - ! '*/*'
+      user-agent:
+      - Ruby
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      date:
+      - Wed, 21 Mar 2012 14:13:04 GMT
+      server:
+      - Apache/1.3.41 (Unix) mod_perl/1.30 mod_ssl/2.8.31 OpenSSL/0.9.7f
+      connection:
+      - close
+      content-type:
+      - text/html; charset=iso-8859-1
+    body:
+      encoding: US-ASCII
+      string: ! '<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+
+        <HTML><HEAD>
+
+        <TITLE>400 Bad Request</TITLE>
+
+        </HEAD><BODY>
+
+        <H1>Bad Request</H1>
+
+        Your browser sent a request that this server could not understand.<P>
+
+        Reason: You''re speaking plain HTTP to an SSL-enabled server port.<BR>
+
+        Instead use the HTTPS scheme to access this URL, please.<BR>
+
+        <BLOCKQUOTE>Hint: <A HREF="https://soap.vindicia.com:443/"><B>https://soap.vindicia.com:443/</B></A></BLOCKQUOTE><P>
+
+        </BODY></HTML>
+
+'
+    http_version: '1.1'
+  recorded_at: Wed, 21 Mar 2012 14:13:04 GMT
+- request:
+    method: get
+    uri: http://soap.vindicia.com:443/3.6/NameValuePair.wsdl
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      accept:
+      - ! '*/*'
+      user-agent:
+      - Ruby
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      date:
+      - Wed, 21 Mar 2012 14:13:04 GMT
+      server:
+      - Apache/1.3.41 (Unix) mod_perl/1.30 mod_ssl/2.8.31 OpenSSL/0.9.7f
+      connection:
+      - close
+      content-type:
+      - text/html; charset=iso-8859-1
+    body:
+      encoding: US-ASCII
+      string: ! '<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+
+        <HTML><HEAD>
+
+        <TITLE>400 Bad Request</TITLE>
+
+        </HEAD><BODY>
+
+        <H1>Bad Request</H1>
+
+        Your browser sent a request that this server could not understand.<P>
+
+        Reason: You''re speaking plain HTTP to an SSL-enabled server port.<BR>
+
+        Instead use the HTTPS scheme to access this URL, please.<BR>
+
+        <BLOCKQUOTE>Hint: <A HREF="https://soap.vindicia.com:443/"><B>https://soap.vindicia.com:443/</B></A></BLOCKQUOTE><P>
+
+        </BODY></HTML>
+
+'
+    http_version: '1.1'
+  recorded_at: Wed, 21 Mar 2012 14:13:04 GMT
+- request:
+    method: get
+    uri: http://soap.vindicia.com:443/3.6/Product.wsdl
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      accept:
+      - ! '*/*'
+      user-agent:
+      - Ruby
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      date:
+      - Wed, 21 Mar 2012 14:13:05 GMT
+      server:
+      - Apache/1.3.41 (Unix) mod_perl/1.30 mod_ssl/2.8.31 OpenSSL/0.9.7f
+      connection:
+      - close
+      content-type:
+      - text/html; charset=iso-8859-1
+    body:
+      encoding: US-ASCII
+      string: ! '<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+
+        <HTML><HEAD>
+
+        <TITLE>400 Bad Request</TITLE>
+
+        </HEAD><BODY>
+
+        <H1>Bad Request</H1>
+
+        Your browser sent a request that this server could not understand.<P>
+
+        Reason: You''re speaking plain HTTP to an SSL-enabled server port.<BR>
+
+        Instead use the HTTPS scheme to access this URL, please.<BR>
+
+        <BLOCKQUOTE>Hint: <A HREF="https://soap.vindicia.com:443/"><B>https://soap.vindicia.com:443/</B></A></BLOCKQUOTE><P>
+
+        </BODY></HTML>
+
+'
+    http_version: '1.1'
+  recorded_at: Wed, 21 Mar 2012 14:13:05 GMT
+- request:
+    method: get
+    uri: http://soap.vindicia.com:443/3.6/Refund.wsdl
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      accept:
+      - ! '*/*'
+      user-agent:
+      - Ruby
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      date:
+      - Wed, 21 Mar 2012 14:13:05 GMT
+      server:
+      - Apache/1.3.41 (Unix) mod_perl/1.30 mod_ssl/2.8.31 OpenSSL/0.9.7f
+      connection:
+      - close
+      content-type:
+      - text/html; charset=iso-8859-1
+    body:
+      encoding: US-ASCII
+      string: ! '<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+
+        <HTML><HEAD>
+
+        <TITLE>400 Bad Request</TITLE>
+
+        </HEAD><BODY>
+
+        <H1>Bad Request</H1>
+
+        Your browser sent a request that this server could not understand.<P>
+
+        Reason: You''re speaking plain HTTP to an SSL-enabled server port.<BR>
+
+        Instead use the HTTPS scheme to access this URL, please.<BR>
+
+        <BLOCKQUOTE>Hint: <A HREF="https://soap.vindicia.com:443/"><B>https://soap.vindicia.com:443/</B></A></BLOCKQUOTE><P>
+
+        </BODY></HTML>
+
+'
+    http_version: '1.1'
+  recorded_at: Wed, 21 Mar 2012 14:13:05 GMT
+- request:
+    method: get
+    uri: http://soap.vindicia.com:443/3.6/Return.wsdl
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      accept:
+      - ! '*/*'
+      user-agent:
+      - Ruby
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      date:
+      - Wed, 21 Mar 2012 14:13:05 GMT
+      server:
+      - Apache/1.3.41 (Unix) mod_perl/1.30 mod_ssl/2.8.31 OpenSSL/0.9.7f
+      connection:
+      - close
+      content-type:
+      - text/html; charset=iso-8859-1
+    body:
+      encoding: US-ASCII
+      string: ! '<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+
+        <HTML><HEAD>
+
+        <TITLE>400 Bad Request</TITLE>
+
+        </HEAD><BODY>
+
+        <H1>Bad Request</H1>
+
+        Your browser sent a request that this server could not understand.<P>
+
+        Reason: You''re speaking plain HTTP to an SSL-enabled server port.<BR>
+
+        Instead use the HTTPS scheme to access this URL, please.<BR>
+
+        <BLOCKQUOTE>Hint: <A HREF="https://soap.vindicia.com:443/"><B>https://soap.vindicia.com:443/</B></A></BLOCKQUOTE><P>
+
+        </BODY></HTML>
+
+'
+    http_version: '1.1'
+  recorded_at: Wed, 21 Mar 2012 14:13:05 GMT
+- request:
+    method: get
+    uri: http://soap.vindicia.com:443/3.6/TaxExemption.wsdl
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      accept:
+      - ! '*/*'
+      user-agent:
+      - Ruby
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      date:
+      - Wed, 21 Mar 2012 14:13:05 GMT
+      server:
+      - Apache/1.3.41 (Unix) mod_perl/1.30 mod_ssl/2.8.31 OpenSSL/0.9.7f
+      connection:
+      - close
+      content-type:
+      - text/html; charset=iso-8859-1
+    body:
+      encoding: US-ASCII
+      string: ! '<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+
+        <HTML><HEAD>
+
+        <TITLE>400 Bad Request</TITLE>
+
+        </HEAD><BODY>
+
+        <H1>Bad Request</H1>
+
+        Your browser sent a request that this server could not understand.<P>
+
+        Reason: You''re speaking plain HTTP to an SSL-enabled server port.<BR>
+
+        Instead use the HTTPS scheme to access this URL, please.<BR>
+
+        <BLOCKQUOTE>Hint: <A HREF="https://soap.vindicia.com:443/"><B>https://soap.vindicia.com:443/</B></A></BLOCKQUOTE><P>
+
+        </BODY></HTML>
+
+'
+    http_version: '1.1'
+  recorded_at: Wed, 21 Mar 2012 14:13:05 GMT
+- request:
+    method: get
+    uri: http://soap.vindicia.com:443/3.6/SalesTax.wsdl
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      accept:
+      - ! '*/*'
+      user-agent:
+      - Ruby
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      date:
+      - Wed, 21 Mar 2012 14:13:05 GMT
+      server:
+      - Apache/1.3.41 (Unix) mod_perl/1.30 mod_ssl/2.8.31 OpenSSL/0.9.7f
+      connection:
+      - close
+      content-type:
+      - text/html; charset=iso-8859-1
+    body:
+      encoding: US-ASCII
+      string: ! '<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+
+        <HTML><HEAD>
+
+        <TITLE>400 Bad Request</TITLE>
+
+        </HEAD><BODY>
+
+        <H1>Bad Request</H1>
+
+        Your browser sent a request that this server could not understand.<P>
+
+        Reason: You''re speaking plain HTTP to an SSL-enabled server port.<BR>
+
+        Instead use the HTTPS scheme to access this URL, please.<BR>
+
+        <BLOCKQUOTE>Hint: <A HREF="https://soap.vindicia.com:443/"><B>https://soap.vindicia.com:443/</B></A></BLOCKQUOTE><P>
+
+        </BODY></HTML>
+
+'
+    http_version: '1.1'
+  recorded_at: Wed, 21 Mar 2012 14:13:05 GMT
+- request:
+    method: get
+    uri: http://soap.vindicia.com:443/3.6/Token.wsdl
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      accept:
+      - ! '*/*'
+      user-agent:
+      - Ruby
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      date:
+      - Wed, 21 Mar 2012 14:13:05 GMT
+      server:
+      - Apache/1.3.41 (Unix) mod_perl/1.30 mod_ssl/2.8.31 OpenSSL/0.9.7f
+      connection:
+      - close
+      content-type:
+      - text/html; charset=iso-8859-1
+    body:
+      encoding: US-ASCII
+      string: ! '<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+
+        <HTML><HEAD>
+
+        <TITLE>400 Bad Request</TITLE>
+
+        </HEAD><BODY>
+
+        <H1>Bad Request</H1>
+
+        Your browser sent a request that this server could not understand.<P>
+
+        Reason: You''re speaking plain HTTP to an SSL-enabled server port.<BR>
+
+        Instead use the HTTPS scheme to access this URL, please.<BR>
+
+        <BLOCKQUOTE>Hint: <A HREF="https://soap.vindicia.com:443/"><B>https://soap.vindicia.com:443/</B></A></BLOCKQUOTE><P>
+
+        </BODY></HTML>
+
+'
+    http_version: '1.1'
+  recorded_at: Wed, 21 Mar 2012 14:13:05 GMT
+- request:
+    method: get
+    uri: http://soap.vindicia.com:443/3.6/TokenAmount.wsdl
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      accept:
+      - ! '*/*'
+      user-agent:
+      - Ruby
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      date:
+      - Wed, 21 Mar 2012 14:13:06 GMT
+      server:
+      - Apache/1.3.41 (Unix) mod_perl/1.30 mod_ssl/2.8.31 OpenSSL/0.9.7f
+      connection:
+      - close
+      content-type:
+      - text/html; charset=iso-8859-1
+    body:
+      encoding: US-ASCII
+      string: ! '<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+
+        <HTML><HEAD>
+
+        <TITLE>400 Bad Request</TITLE>
+
+        </HEAD><BODY>
+
+        <H1>Bad Request</H1>
+
+        Your browser sent a request that this server could not understand.<P>
+
+        Reason: You''re speaking plain HTTP to an SSL-enabled server port.<BR>
+
+        Instead use the HTTPS scheme to access this URL, please.<BR>
+
+        <BLOCKQUOTE>Hint: <A HREF="https://soap.vindicia.com:443/"><B>https://soap.vindicia.com:443/</B></A></BLOCKQUOTE><P>
+
+        </BODY></HTML>
+
+'
+    http_version: '1.1'
+  recorded_at: Wed, 21 Mar 2012 14:13:06 GMT
+- request:
+    method: get
+    uri: http://soap.vindicia.com:443/3.6/TokenTransaction.wsdl
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      accept:
+      - ! '*/*'
+      user-agent:
+      - Ruby
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      date:
+      - Wed, 21 Mar 2012 14:13:06 GMT
+      server:
+      - Apache/1.3.41 (Unix) mod_perl/1.30 mod_ssl/2.8.31 OpenSSL/0.9.7f
+      connection:
+      - close
+      content-type:
+      - text/html; charset=iso-8859-1
+    body:
+      encoding: US-ASCII
+      string: ! '<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+
+        <HTML><HEAD>
+
+        <TITLE>400 Bad Request</TITLE>
+
+        </HEAD><BODY>
+
+        <H1>Bad Request</H1>
+
+        Your browser sent a request that this server could not understand.<P>
+
+        Reason: You''re speaking plain HTTP to an SSL-enabled server port.<BR>
+
+        Instead use the HTTPS scheme to access this URL, please.<BR>
+
+        <BLOCKQUOTE>Hint: <A HREF="https://soap.vindicia.com:443/"><B>https://soap.vindicia.com:443/</B></A></BLOCKQUOTE><P>
+
+        </BODY></HTML>
+
+'
+    http_version: '1.1'
+  recorded_at: Wed, 21 Mar 2012 14:13:06 GMT
+- request:
+    method: get
+    uri: http://soap.vindicia.com:443/3.6/CaptureResult.wsdl
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      accept:
+      - ! '*/*'
+      user-agent:
+      - Ruby
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      date:
+      - Wed, 21 Mar 2012 14:13:06 GMT
+      server:
+      - Apache/1.3.41 (Unix) mod_perl/1.30 mod_ssl/2.8.31 OpenSSL/0.9.7f
+      connection:
+      - close
+      content-type:
+      - text/html; charset=iso-8859-1
+    body:
+      encoding: US-ASCII
+      string: ! '<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+
+        <HTML><HEAD>
+
+        <TITLE>400 Bad Request</TITLE>
+
+        </HEAD><BODY>
+
+        <H1>Bad Request</H1>
+
+        Your browser sent a request that this server could not understand.<P>
+
+        Reason: You''re speaking plain HTTP to an SSL-enabled server port.<BR>
+
+        Instead use the HTTPS scheme to access this URL, please.<BR>
+
+        <BLOCKQUOTE>Hint: <A HREF="https://soap.vindicia.com:443/"><B>https://soap.vindicia.com:443/</B></A></BLOCKQUOTE><P>
+
+        </BODY></HTML>
+
+'
+    http_version: '1.1'
+  recorded_at: Wed, 21 Mar 2012 14:13:06 GMT
+- request:
+    method: get
+    uri: http://soap.vindicia.com:443/3.6/CancelResult.wsdl
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      accept:
+      - ! '*/*'
+      user-agent:
+      - Ruby
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      date:
+      - Wed, 21 Mar 2012 14:13:06 GMT
+      server:
+      - Apache/1.3.41 (Unix) mod_perl/1.30 mod_ssl/2.8.31 OpenSSL/0.9.7f
+      connection:
+      - close
+      content-type:
+      - text/html; charset=iso-8859-1
+    body:
+      encoding: US-ASCII
+      string: ! '<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+
+        <HTML><HEAD>
+
+        <TITLE>400 Bad Request</TITLE>
+
+        </HEAD><BODY>
+
+        <H1>Bad Request</H1>
+
+        Your browser sent a request that this server could not understand.<P>
+
+        Reason: You''re speaking plain HTTP to an SSL-enabled server port.<BR>
+
+        Instead use the HTTPS scheme to access this URL, please.<BR>
+
+        <BLOCKQUOTE>Hint: <A HREF="https://soap.vindicia.com:443/"><B>https://soap.vindicia.com:443/</B></A></BLOCKQUOTE><P>
+
+        </BODY></HTML>
+
+'
+    http_version: '1.1'
+  recorded_at: Wed, 21 Mar 2012 14:13:06 GMT
+- request:
+    method: get
+    uri: http://soap.vindicia.com:443/3.6/ScoreCode.wsdl
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      accept:
+      - ! '*/*'
+      user-agent:
+      - Ruby
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      date:
+      - Wed, 21 Mar 2012 14:13:06 GMT
+      server:
+      - Apache/1.3.41 (Unix) mod_perl/1.30 mod_ssl/2.8.31 OpenSSL/0.9.7f
+      connection:
+      - close
+      content-type:
+      - text/html; charset=iso-8859-1
+    body:
+      encoding: US-ASCII
+      string: ! '<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+
+        <HTML><HEAD>
+
+        <TITLE>400 Bad Request</TITLE>
+
+        </HEAD><BODY>
+
+        <H1>Bad Request</H1>
+
+        Your browser sent a request that this server could not understand.<P>
+
+        Reason: You''re speaking plain HTTP to an SSL-enabled server port.<BR>
+
+        Instead use the HTTPS scheme to access this URL, please.<BR>
+
+        <BLOCKQUOTE>Hint: <A HREF="https://soap.vindicia.com:443/"><B>https://soap.vindicia.com:443/</B></A></BLOCKQUOTE><P>
+
+        </BODY></HTML>
+
+'
+    http_version: '1.1'
+  recorded_at: Wed, 21 Mar 2012 14:13:06 GMT
+- request:
+    method: get
+    uri: http://soap.vindicia.com:443/3.6/TransactionItem.wsdl
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      accept:
+      - ! '*/*'
+      user-agent:
+      - Ruby
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      date:
+      - Wed, 21 Mar 2012 14:13:07 GMT
+      server:
+      - Apache/1.3.41 (Unix) mod_perl/1.30 mod_ssl/2.8.31 OpenSSL/0.9.7f
+      connection:
+      - close
+      content-type:
+      - text/html; charset=iso-8859-1
+    body:
+      encoding: US-ASCII
+      string: ! '<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+
+        <HTML><HEAD>
+
+        <TITLE>400 Bad Request</TITLE>
+
+        </HEAD><BODY>
+
+        <H1>Bad Request</H1>
+
+        Your browser sent a request that this server could not understand.<P>
+
+        Reason: You''re speaking plain HTTP to an SSL-enabled server port.<BR>
+
+        Instead use the HTTPS scheme to access this URL, please.<BR>
+
+        <BLOCKQUOTE>Hint: <A HREF="https://soap.vindicia.com:443/"><B>https://soap.vindicia.com:443/</B></A></BLOCKQUOTE><P>
+
+        </BODY></HTML>
+
+'
+    http_version: '1.1'
+  recorded_at: Wed, 21 Mar 2012 14:13:07 GMT
+- request:
+    method: get
+    uri: http://soap.vindicia.com:443/3.6/TransactionStatus.wsdl
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      accept:
+      - ! '*/*'
+      user-agent:
+      - Ruby
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      date:
+      - Wed, 21 Mar 2012 14:13:07 GMT
+      server:
+      - Apache/1.3.41 (Unix) mod_perl/1.30 mod_ssl/2.8.31 OpenSSL/0.9.7f
+      connection:
+      - close
+      content-type:
+      - text/html; charset=iso-8859-1
+    body:
+      encoding: US-ASCII
+      string: ! '<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+
+        <HTML><HEAD>
+
+        <TITLE>400 Bad Request</TITLE>
+
+        </HEAD><BODY>
+
+        <H1>Bad Request</H1>
+
+        Your browser sent a request that this server could not understand.<P>
+
+        Reason: You''re speaking plain HTTP to an SSL-enabled server port.<BR>
+
+        Instead use the HTTPS scheme to access this URL, please.<BR>
+
+        <BLOCKQUOTE>Hint: <A HREF="https://soap.vindicia.com:443/"><B>https://soap.vindicia.com:443/</B></A></BLOCKQUOTE><P>
+
+        </BODY></HTML>
+
+'
+    http_version: '1.1'
+  recorded_at: Wed, 21 Mar 2012 14:13:07 GMT
+- request:
+    method: get
+    uri: http://soap.vindicia.com:443/3.6/TransactionStatusCreditCard.wsdl
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      accept:
+      - ! '*/*'
+      user-agent:
+      - Ruby
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      date:
+      - Wed, 21 Mar 2012 14:13:07 GMT
+      server:
+      - Apache/1.3.41 (Unix) mod_perl/1.30 mod_ssl/2.8.31 OpenSSL/0.9.7f
+      connection:
+      - close
+      content-type:
+      - text/html; charset=iso-8859-1
+    body:
+      encoding: US-ASCII
+      string: ! '<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+
+        <HTML><HEAD>
+
+        <TITLE>400 Bad Request</TITLE>
+
+        </HEAD><BODY>
+
+        <H1>Bad Request</H1>
+
+        Your browser sent a request that this server could not understand.<P>
+
+        Reason: You''re speaking plain HTTP to an SSL-enabled server port.<BR>
+
+        Instead use the HTTPS scheme to access this URL, please.<BR>
+
+        <BLOCKQUOTE>Hint: <A HREF="https://soap.vindicia.com:443/"><B>https://soap.vindicia.com:443/</B></A></BLOCKQUOTE><P>
+
+        </BODY></HTML>
+
+'
+    http_version: '1.1'
+  recorded_at: Wed, 21 Mar 2012 14:13:07 GMT
+- request:
+    method: get
+    uri: http://soap.vindicia.com:443/3.6/TransactionStatusECP.wsdl
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      accept:
+      - ! '*/*'
+      user-agent:
+      - Ruby
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      date:
+      - Wed, 21 Mar 2012 14:13:07 GMT
+      server:
+      - Apache/1.3.41 (Unix) mod_perl/1.30 mod_ssl/2.8.31 OpenSSL/0.9.7f
+      connection:
+      - close
+      content-type:
+      - text/html; charset=iso-8859-1
+    body:
+      encoding: US-ASCII
+      string: ! '<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+
+        <HTML><HEAD>
+
+        <TITLE>400 Bad Request</TITLE>
+
+        </HEAD><BODY>
+
+        <H1>Bad Request</H1>
+
+        Your browser sent a request that this server could not understand.<P>
+
+        Reason: You''re speaking plain HTTP to an SSL-enabled server port.<BR>
+
+        Instead use the HTTPS scheme to access this URL, please.<BR>
+
+        <BLOCKQUOTE>Hint: <A HREF="https://soap.vindicia.com:443/"><B>https://soap.vindicia.com:443/</B></A></BLOCKQUOTE><P>
+
+        </BODY></HTML>
+
+'
+    http_version: '1.1'
+  recorded_at: Wed, 21 Mar 2012 14:13:07 GMT
+- request:
+    method: get
+    uri: http://soap.vindicia.com:443/3.6/TransactionStatusBoleto.wsdl
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      accept:
+      - ! '*/*'
+      user-agent:
+      - Ruby
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      date:
+      - Wed, 21 Mar 2012 14:13:07 GMT
+      server:
+      - Apache/1.3.41 (Unix) mod_perl/1.30 mod_ssl/2.8.31 OpenSSL/0.9.7f
+      connection:
+      - close
+      content-type:
+      - text/html; charset=iso-8859-1
+    body:
+      encoding: US-ASCII
+      string: ! '<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+
+        <HTML><HEAD>
+
+        <TITLE>400 Bad Request</TITLE>
+
+        </HEAD><BODY>
+
+        <H1>Bad Request</H1>
+
+        Your browser sent a request that this server could not understand.<P>
+
+        Reason: You''re speaking plain HTTP to an SSL-enabled server port.<BR>
+
+        Instead use the HTTPS scheme to access this URL, please.<BR>
+
+        <BLOCKQUOTE>Hint: <A HREF="https://soap.vindicia.com:443/"><B>https://soap.vindicia.com:443/</B></A></BLOCKQUOTE><P>
+
+        </BODY></HTML>
+
+'
+    http_version: '1.1'
+  recorded_at: Wed, 21 Mar 2012 14:13:07 GMT
+- request:
+    method: get
+    uri: http://soap.vindicia.com:443/3.6/TransactionStatusPayPal.wsdl
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      accept:
+      - ! '*/*'
+      user-agent:
+      - Ruby
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      date:
+      - Wed, 21 Mar 2012 14:13:07 GMT
+      server:
+      - Apache/1.3.41 (Unix) mod_perl/1.30 mod_ssl/2.8.31 OpenSSL/0.9.7f
+      connection:
+      - close
+      content-type:
+      - text/html; charset=iso-8859-1
+    body:
+      encoding: US-ASCII
+      string: ! '<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+
+        <HTML><HEAD>
+
+        <TITLE>400 Bad Request</TITLE>
+
+        </HEAD><BODY>
+
+        <H1>Bad Request</H1>
+
+        Your browser sent a request that this server could not understand.<P>
+
+        Reason: You''re speaking plain HTTP to an SSL-enabled server port.<BR>
+
+        Instead use the HTTPS scheme to access this URL, please.<BR>
+
+        <BLOCKQUOTE>Hint: <A HREF="https://soap.vindicia.com:443/"><B>https://soap.vindicia.com:443/</B></A></BLOCKQUOTE><P>
+
+        </BODY></HTML>
+
+'
+    http_version: '1.1'
+  recorded_at: Wed, 21 Mar 2012 14:13:07 GMT
+- request:
+    method: get
+    uri: http://soap.vindicia.com:443/3.6/TransactionStatusDirectDebit.wsdl
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      accept:
+      - ! '*/*'
+      user-agent:
+      - Ruby
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      date:
+      - Wed, 21 Mar 2012 14:13:08 GMT
+      server:
+      - Apache/1.3.41 (Unix) mod_perl/1.30 mod_ssl/2.8.31 OpenSSL/0.9.7f
+      connection:
+      - close
+      content-type:
+      - text/html; charset=iso-8859-1
+    body:
+      encoding: US-ASCII
+      string: ! '<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+
+        <HTML><HEAD>
+
+        <TITLE>400 Bad Request</TITLE>
+
+        </HEAD><BODY>
+
+        <H1>Bad Request</H1>
+
+        Your browser sent a request that this server could not understand.<P>
+
+        Reason: You''re speaking plain HTTP to an SSL-enabled server port.<BR>
+
+        Instead use the HTTPS scheme to access this URL, please.<BR>
+
+        <BLOCKQUOTE>Hint: <A HREF="https://soap.vindicia.com:443/"><B>https://soap.vindicia.com:443/</B></A></BLOCKQUOTE><P>
+
+        </BODY></HTML>
+
+'
+    http_version: '1.1'
+  recorded_at: Wed, 21 Mar 2012 14:13:08 GMT
+- request:
+    method: get
+    uri: http://soap.vindicia.com:443/3.6/Transaction.wsdl
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      accept:
+      - ! '*/*'
+      user-agent:
+      - Ruby
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      date:
+      - Wed, 21 Mar 2012 14:13:08 GMT
+      server:
+      - Apache/1.3.41 (Unix) mod_perl/1.30 mod_ssl/2.8.31 OpenSSL/0.9.7f
+      connection:
+      - close
+      content-type:
+      - text/html; charset=iso-8859-1
+    body:
+      encoding: US-ASCII
+      string: ! '<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+
+        <HTML><HEAD>
+
+        <TITLE>400 Bad Request</TITLE>
+
+        </HEAD><BODY>
+
+        <H1>Bad Request</H1>
+
+        Your browser sent a request that this server could not understand.<P>
+
+        Reason: You''re speaking plain HTTP to an SSL-enabled server port.<BR>
+
+        Instead use the HTTPS scheme to access this URL, please.<BR>
+
+        <BLOCKQUOTE>Hint: <A HREF="https://soap.vindicia.com:443/"><B>https://soap.vindicia.com:443/</B></A></BLOCKQUOTE><P>
+
+        </BODY></HTML>
+
+'
+    http_version: '1.1'
+  recorded_at: Wed, 21 Mar 2012 14:13:08 GMT
+- request:
+    method: get
+    uri: http://soap.vindicia.com:443/3.6/WebSession.wsdl
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      accept:
+      - ! '*/*'
+      user-agent:
+      - Ruby
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      date:
+      - Wed, 21 Mar 2012 14:13:08 GMT
+      server:
+      - Apache/1.3.41 (Unix) mod_perl/1.30 mod_ssl/2.8.31 OpenSSL/0.9.7f
+      connection:
+      - close
+      content-type:
+      - text/html; charset=iso-8859-1
+    body:
+      encoding: US-ASCII
+      string: ! '<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+
+        <HTML><HEAD>
+
+        <TITLE>400 Bad Request</TITLE>
+
+        </HEAD><BODY>
+
+        <H1>Bad Request</H1>
+
+        Your browser sent a request that this server could not understand.<P>
+
+        Reason: You''re speaking plain HTTP to an SSL-enabled server port.<BR>
+
+        Instead use the HTTPS scheme to access this URL, please.<BR>
+
+        <BLOCKQUOTE>Hint: <A HREF="https://soap.vindicia.com:443/"><B>https://soap.vindicia.com:443/</B></A></BLOCKQUOTE><P>
+
+        </BODY></HTML>
+
+'
+    http_version: '1.1'
+  recorded_at: Wed, 21 Mar 2012 14:13:08 GMT
+- request:
+    method: get
+    uri: http://soap.vindicia.com:443/3.6/WebSessionMethodReturn.wsdl
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      accept:
+      - ! '*/*'
+      user-agent:
+      - Ruby
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      date:
+      - Wed, 21 Mar 2012 14:13:08 GMT
+      server:
+      - Apache/1.3.41 (Unix) mod_perl/1.30 mod_ssl/2.8.31 OpenSSL/0.9.7f
+      connection:
+      - close
+      content-type:
+      - text/html; charset=iso-8859-1
+    body:
+      encoding: US-ASCII
+      string: ! '<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+
+        <HTML><HEAD>
+
+        <TITLE>400 Bad Request</TITLE>
+
+        </HEAD><BODY>
+
+        <H1>Bad Request</H1>
+
+        Your browser sent a request that this server could not understand.<P>
+
+        Reason: You''re speaking plain HTTP to an SSL-enabled server port.<BR>
+
+        Instead use the HTTPS scheme to access this URL, please.<BR>
+
+        <BLOCKQUOTE>Hint: <A HREF="https://soap.vindicia.com:443/"><B>https://soap.vindicia.com:443/</B></A></BLOCKQUOTE><P>
+
+        </BODY></HTML>
+
+'
+    http_version: '1.1'
+  recorded_at: Wed, 21 Mar 2012 14:13:08 GMT
+- request:
+    method: get
+    uri: http://soap.vindicia.com:443/3.6/PaymentMethodValidate.wsdl
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      accept:
+      - ! '*/*'
+      user-agent:
+      - Ruby
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      date:
+      - Wed, 21 Mar 2012 14:13:08 GMT
+      server:
+      - Apache/1.3.41 (Unix) mod_perl/1.30 mod_ssl/2.8.31 OpenSSL/0.9.7f
+      connection:
+      - close
+      content-type:
+      - text/html; charset=iso-8859-1
+    body:
+      encoding: US-ASCII
+      string: ! '<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+
+        <HTML><HEAD>
+
+        <TITLE>400 Bad Request</TITLE>
+
+        </HEAD><BODY>
+
+        <H1>Bad Request</H1>
+
+        Your browser sent a request that this server could not understand.<P>
+
+        Reason: You''re speaking plain HTTP to an SSL-enabled server port.<BR>
+
+        Instead use the HTTPS scheme to access this URL, please.<BR>
+
+        <BLOCKQUOTE>Hint: <A HREF="https://soap.vindicia.com:443/"><B>https://soap.vindicia.com:443/</B></A></BLOCKQUOTE><P>
+
+        </BODY></HTML>
+
+'
+    http_version: '1.1'
+  recorded_at: Wed, 21 Mar 2012 14:13:08 GMT
+- request:
+    method: get
+    uri: http://soap.vindicia.com:443/3.6/PaymentMethodUpdate.wsdl
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      accept:
+      - ! '*/*'
+      user-agent:
+      - Ruby
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      date:
+      - Wed, 21 Mar 2012 14:13:08 GMT
+      server:
+      - Apache/1.3.41 (Unix) mod_perl/1.30 mod_ssl/2.8.31 OpenSSL/0.9.7f
+      connection:
+      - close
+      content-type:
+      - text/html; charset=iso-8859-1
+    body:
+      encoding: US-ASCII
+      string: ! '<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+
+        <HTML><HEAD>
+
+        <TITLE>400 Bad Request</TITLE>
+
+        </HEAD><BODY>
+
+        <H1>Bad Request</H1>
+
+        Your browser sent a request that this server could not understand.<P>
+
+        Reason: You''re speaking plain HTTP to an SSL-enabled server port.<BR>
+
+        Instead use the HTTPS scheme to access this URL, please.<BR>
+
+        <BLOCKQUOTE>Hint: <A HREF="https://soap.vindicia.com:443/"><B>https://soap.vindicia.com:443/</B></A></BLOCKQUOTE><P>
+
+        </BODY></HTML>
+
+'
+    http_version: '1.1'
+  recorded_at: Wed, 21 Mar 2012 14:13:08 GMT
+- request:
+    method: get
+    uri: http://soap.vindicia.com:443/3.6/TransactionAuth.wsdl
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      accept:
+      - ! '*/*'
+      user-agent:
+      - Ruby
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      date:
+      - Wed, 21 Mar 2012 14:13:09 GMT
+      server:
+      - Apache/1.3.41 (Unix) mod_perl/1.30 mod_ssl/2.8.31 OpenSSL/0.9.7f
+      connection:
+      - close
+      content-type:
+      - text/html; charset=iso-8859-1
+    body:
+      encoding: US-ASCII
+      string: ! '<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+
+        <HTML><HEAD>
+
+        <TITLE>400 Bad Request</TITLE>
+
+        </HEAD><BODY>
+
+        <H1>Bad Request</H1>
+
+        Your browser sent a request that this server could not understand.<P>
+
+        Reason: You''re speaking plain HTTP to an SSL-enabled server port.<BR>
+
+        Instead use the HTTPS scheme to access this URL, please.<BR>
+
+        <BLOCKQUOTE>Hint: <A HREF="https://soap.vindicia.com:443/"><B>https://soap.vindicia.com:443/</B></A></BLOCKQUOTE><P>
+
+        </BODY></HTML>
+
+'
+    http_version: '1.1'
+  recorded_at: Wed, 21 Mar 2012 14:13:09 GMT
+- request:
+    method: get
+    uri: http://soap.vindicia.com:443/3.6/AutoBillUpdate.wsdl
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      accept:
+      - ! '*/*'
+      user-agent:
+      - Ruby
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      date:
+      - Wed, 21 Mar 2012 14:13:09 GMT
+      server:
+      - Apache/1.3.41 (Unix) mod_perl/1.30 mod_ssl/2.8.31 OpenSSL/0.9.7f
+      connection:
+      - close
+      content-type:
+      - text/html; charset=iso-8859-1
+    body:
+      encoding: US-ASCII
+      string: ! '<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+
+        <HTML><HEAD>
+
+        <TITLE>400 Bad Request</TITLE>
+
+        </HEAD><BODY>
+
+        <H1>Bad Request</H1>
+
+        Your browser sent a request that this server could not understand.<P>
+
+        Reason: You''re speaking plain HTTP to an SSL-enabled server port.<BR>
+
+        Instead use the HTTPS scheme to access this URL, please.<BR>
+
+        <BLOCKQUOTE>Hint: <A HREF="https://soap.vindicia.com:443/"><B>https://soap.vindicia.com:443/</B></A></BLOCKQUOTE><P>
+
+        </BODY></HTML>
+
+'
+    http_version: '1.1'
+  recorded_at: Wed, 21 Mar 2012 14:13:09 GMT
+- request:
+    method: get
+    uri: http://soap.vindicia.com:443/3.6/TransactionAuthCapture.wsdl
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      accept:
+      - ! '*/*'
+      user-agent:
+      - Ruby
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      date:
+      - Wed, 21 Mar 2012 14:13:09 GMT
+      server:
+      - Apache/1.3.41 (Unix) mod_perl/1.30 mod_ssl/2.8.31 OpenSSL/0.9.7f
+      connection:
+      - close
+      content-type:
+      - text/html; charset=iso-8859-1
+    body:
+      encoding: US-ASCII
+      string: ! '<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+
+        <HTML><HEAD>
+
+        <TITLE>400 Bad Request</TITLE>
+
+        </HEAD><BODY>
+
+        <H1>Bad Request</H1>
+
+        Your browser sent a request that this server could not understand.<P>
+
+        Reason: You''re speaking plain HTTP to an SSL-enabled server port.<BR>
+
+        Instead use the HTTPS scheme to access this URL, please.<BR>
+
+        <BLOCKQUOTE>Hint: <A HREF="https://soap.vindicia.com:443/"><B>https://soap.vindicia.com:443/</B></A></BLOCKQUOTE><P>
+
+        </BODY></HTML>
+
+'
+    http_version: '1.1'
+  recorded_at: Wed, 21 Mar 2012 14:13:09 GMT
+- request:
+    method: get
+    uri: http://soap.vindicia.com:443/3.6/AccountUpdatePaymentMethod.wsdl
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      accept:
+      - ! '*/*'
+      user-agent:
+      - Ruby
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      date:
+      - Wed, 21 Mar 2012 14:13:09 GMT
+      server:
+      - Apache/1.3.41 (Unix) mod_perl/1.30 mod_ssl/2.8.31 OpenSSL/0.9.7f
+      connection:
+      - close
+      content-type:
+      - text/html; charset=iso-8859-1
+    body:
+      encoding: US-ASCII
+      string: ! '<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+
+        <HTML><HEAD>
+
+        <TITLE>400 Bad Request</TITLE>
+
+        </HEAD><BODY>
+
+        <H1>Bad Request</H1>
+
+        Your browser sent a request that this server could not understand.<P>
+
+        Reason: You''re speaking plain HTTP to an SSL-enabled server port.<BR>
+
+        Instead use the HTTPS scheme to access this URL, please.<BR>
+
+        <BLOCKQUOTE>Hint: <A HREF="https://soap.vindicia.com:443/"><B>https://soap.vindicia.com:443/</B></A></BLOCKQUOTE><P>
+
+        </BODY></HTML>
+
+'
+    http_version: '1.1'
+  recorded_at: Wed, 21 Mar 2012 14:13:09 GMT
+recorded_with: VCR 2.0.0

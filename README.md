@@ -1,26 +1,20 @@
-# vindicia-api
+# Vindicia Api
 
 A wrapper for making calls to Vindicia's CashBox SOAP API.
 
 ## Installation
 
-Add this line to your application's `Gemfile`:
+Add this line to your application's Gemfile:
 
-```ruby
-gem 'vindicia-api'
-```
+    gem 'vindicia-api'
 
 And then execute:
 
-```
-$ bundle install
-```
+    $ bundle
 
 Or install it yourself as:
 
-```
-$ gem install vindicia-api
-```
+    $ gem install vindicia-api
 
 ## Usage
 
@@ -46,7 +40,7 @@ Available Vindicia endpoints are:
 * Staging: "https://soap.staging.sj.vindicia.com"
 * Production: "https://soap.vindicia.com/soap.pl"
 
-After the Vindicia API has been configured, all Vindicia classes for the respective API version will be available under the `Vindicia::*` namespace.
+After the Vindicia API has been configured, all Vindicia classes for the respective API version will be available under the Vindicia::* namespace.
 
 Parameters are passed as hashes, for example:
 
@@ -56,20 +50,10 @@ Vindicia::AutoBill.fetch_by_account(:account => { :merchantAccountId => id }
 
 * Note that parameters must be specified in the same order as documented in Vindicia's developer documentation.
 
-## Bugs
+## Contributing
 
-* WebSession class is unsupported as it uses 'initialize' as an API call which is a ruby reserved word
-
-## Contributing to vindicia-api
- 
-* Check out the latest master to make sure the feature hasn't been implemented or the bug hasn't been fixed yet
-* Check out the issue tracker to make sure someone already hasn't requested it and/or contributed it
-* Fork the project
-* Start a feature/bugfix branch
-* Commit and push until you are happy with your contribution
-* Make sure to add tests for it. This is important so I don't break it in a future version unintentionally.
-* Please try not to mess with the Rakefile, version, or history. If you want to have your own version, or is otherwise necessary, that is fine, but please isolate to its own commit so I can cherry-pick around it.
-
-## Copyright
-
-Copyright (c) 2011-2012 Agora Games. See LICENSE.txt for further details.
+1. Fork it
+2. Create your feature branch (`git checkout -b my-new-feature`)
+3. Commit your changes (`git commit -am 'Added some feature'`)
+4. Push to the branch (`git push origin my-new-feature`)
+5. Create new Pull Request

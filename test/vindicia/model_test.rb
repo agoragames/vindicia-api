@@ -2,33 +2,20 @@ require 'helper'
 require 'vindicia/util'
 require 'net/http'
 
-class Vindicia::ModelTest < Test::Unit::TestCase
+require 'rexml/document'
 
+class Vindicia::ModelTest < MiniTest::Unit::TestCase
   def setup
-    Vindicia.class_eval do
-      def self.clear_config
-        if Vindicia.config.is_configured?
-          Vindicia::API_CLASSES[Vindicia.config.api_version].each_key do |vindicia_klass|
-            Vindicia.send(:remove_const, Vindicia::Util.camelize(vindicia_klass.to_s).to_sym)
-          end
-        end
-      end
-    end
-
-    @good_api_version = '3.6'
-    assert Vindicia::API_CLASSES.has_key?(@good_api_version)
     assert !Vindicia.config.is_configured?
 
-    assert_nothing_raised do
-      Vindicia.configure do |config|
-        config.api_version = @good_api_version
-        config.login = 'your_login'
-        config.password = 'your_password' 
-        config.endpoint = 'https://soap.prodtest.sj.vindicia.com/soap.pl'
-        config.namespace = 'http://soap.vindicia.com'
-      end
+    VCR.use_cassette('model_test_setup') do
+      configure_with
     end
+
     assert Vindicia.config.is_configured?
+
+    Vindicia.send(:create_class, 'Testing')
+    assert Vindicia.const_defined?('Testing')
   end
 
   def teardown
@@ -36,24 +23,34 @@ class Vindicia::ModelTest < Test::Unit::TestCase
     Vindicia::Configuration.reset_instance
   end
 
-  def test_should_define_api_methods_of_respective_vindicia_class_for_respective_api_version
-    Vindicia::API_CLASSES[@good_api_version].each_key do |vindicia_klass_name|
-
-      vindicia_klass = Vindicia.const_get(Vindicia::Util.camelize(vindicia_klass_name.to_s))
-
-      Vindicia::API_CLASSES[@good_api_version][vindicia_klass_name].each do |api_method|
-        assert vindicia_klass.respond_to?(api_method)
-      end
-    end
+  def test_actions_should_define_api_action
+    Vindicia::Testing.actions(:auth)
+    assert Vindicia::Testing.methods.include?(:auth)
   end
 
-  def test_should_catch_exceptions_thrown_underneath_savon
-    Vindicia::AutoBill.client.expects(:request).once.raises(Timeout::Error)
+  def test_action_should_create_envelope
+    Vindicia::Testing.actions(:auth)
 
-    resp = Vindicia::AutoBill.update({})
+    envelope = Vindicia::Testing.auth
+    assert envelope.is_a?(String)
 
-    assert_not_nil resp
-    assert resp.to_hash
-    assert_equal '500', resp[:update_response][:return][:return_code]
+    document = REXML::Document.new(envelope)
+    refute_empty document.elements.to_a('//env:Body') # envelope Body
+    refute_empty document.elements.to_a('//tns:auth') # envelope action
+    refute_empty document.elements.to_a('//auth') # required Vindicia auth
+  end
+
+  def test_action_should_create_envelope_with_complicated_params
+    Vindicia::Testing.actions(:auth)
+
+    envelope = Vindicia::Testing.auth(:this => { :is => [:really, { :sort => :of }], :complicated => 1 })
+    document = REXML::Document.new(envelope)
+
+    assert_equal 2, document.elements.to_a('//this/is').length
+
+    assert_equal 1, document.elements.to_a('//this/is/sort').length
+    assert_equal "of", document.elements.to_a('//this/is/sort').first.text
+
+    assert_equal "1", document.elements.to_a('//this/complicated').first.text
   end
 end

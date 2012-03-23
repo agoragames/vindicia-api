@@ -1,25 +1,23 @@
 # -*- encoding: utf-8 -*-
-$:.push File.expand_path("../lib", __FILE__)
-require 'vindicia/version'
+require File.expand_path('../lib/vindicia/version', __FILE__)
 
 Gem::Specification.new do |gem|
-  gem.name          = "vindicia-api"
-  gem.version       = Vindicia::VERSION
-  gem.authors       = ["Tom Quackenbush"]
+  gem.authors       = ["Tom Quackenbush", "Steven Davidovitz"]
   gem.email         = ["tquackenbush@agoragames.com"]
-  gem.homepage      = "https://github.com/agoragames/vindicia-api"
-  gem.summary       = %q{A wrapper for creating queries to the Vindicia CashBox API}
-  gem.description   = %q{A wrapper for creating queries to the Vindicia CashBox API}
-
-  gem.rubyforge_project = "vindicia-api"
+  gem.description   = %q{Builds an interface for creating queries to Vindicia CashBox API}
+  gem.summary       = %q{Builds an interface for creating queries to Vindicia CashBox API}
+  gem.homepage      = ""
 
   gem.files         = `git ls-files`.split($\)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
+  gem.name          = "vindicia-api"
   gem.require_paths = ["lib"]
+  gem.version       = Vindicia::VERSION
 
-  gem.add_dependency('savon')
+  gem.add_dependency('builder')
 
-  gem.add_development_dependency('rake')
   gem.add_development_dependency('mocha')
+  gem.add_development_dependency('fakeweb')
+  gem.add_development_dependency('vcr')
 end

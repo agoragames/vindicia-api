@@ -1,59 +1,16 @@
+require 'builder'
+require 'digest/md5'
+require 'net/http'
+require 'net/https'
+require 'rexml/document'
 require 'singleton'
+require 'yaml'
+
 require 'vindicia/util'
 
 module Vindicia
-
-  API_CLASSES = {
-    "3.5" => {
-      :account=>[:update, :stop_auto_billing, :update_payment_method, :fetch_by_merchant_account_id, :fetch_by_vid, :fetch_by_web_session_vid, :fetch_by_email, :fetch_by_payment_method, :token_balance, :token_transaction, :increment_tokens, :decrement_tokens, :transfer, :redeem_gift_card, :grant_credit, :revoke_credit, :fetch_credit_history],
-      :activity=>[:record],
-      :address=>[:update, :fetch_by_vid],
-      :all_data_types=>[:get_vindicia], 
-      :all_symc_data_types=>[:get_vindicia], 
-      :auto_bill=>[:update, :cancel, :delay_billing_to_date, :delay_billing_by_days, :change_billing_day_of_month, :fetch_by_account_and_product, :fetch_by_merchant_auto_bill_id, :fetch_by_vid, :fetch_by_web_session_vid, :fetch_by_email, :fetch_by_account, :future_rebills, :fetch_delta_since, :redeem_gift_card, :grant_credit, :revoke_credit, :fetch_credit_history, :finalize_pay_pal_auth],
-      :billing_plan=>[:update, :fetch_by_vid, :fetch_by_merchant_billing_plan_id, :fetch_by_billing_plan_status, :fetch_all, :fetch_by_merchant_entitlement_id],
-      :chargeback=>[:update, :fetch_by_vid, :fetch_by_account, :fetch_by_case_number, :fetch_by_reference_number, :fetch_by_status, :fetch_by_status_since, :fetch_by_merchant_transaction_id, :fetch_delta_since, :fetch_delta, :report], 
-      :diagnostic=>[:get_hello, :put_hello, :echo_string, :echo_string_by_proxy, :get_some_mock_transactions, :put_some_mock_transactions, :echo_boolean, :echo_date_time, :echo_mock_activity_fulfillment],
-      :electronic_signature=>[:sign, :get_signature_block],
-      :email_template=>[:update, :fetch_by_vid, :fetch_by_product, :fetch_by_type, :fetch_by_type_and_version],
-      :entitlement=>[:fetch_by_entitlement_id_and_account, :fetch_by_account, :fetch_delta_since],
-      :gift_card=>[:status_inquiry, :reverse],
-      :metric_statistics=>[:report],
-      :payment_method=>[:update, :fetch_by_vid, :fetch_by_web_session_vid, :fetch_by_account, :fetch_by_merchant_payment_method_id, :validate],
-      :payment_provider=>[:update, :fetch_by_vid],
-      :product=>[:update, :fetch_by_vid, :fetch_by_merchant_product_id, :fetch_by_account, :fetch_all, :fetch_by_merchant_entitlement_id],
-      :refund=>[:fetch_by_vid, :fetch_by_account, :fetch_by_transaction, :fetch_delta_since, :report, :perform],
-      :symantec=>[:add_auto_bill_item, :cancel_auto_bill, :cancel_pending_ar_txns, :delay_bill, :dispute_bill, :refund_ab_txns, :update_abs_account, :update_ab_product, :update_bp, :update_bp_and_catch_up_billing, :validate_bp, :fetch_b_ps_by_customer_guid, :lookup_transaction, :disable_billing_profile, :fetch_captured_transactions, :report_order_exception],
-      :token=>[:update, :fetch],
-      :transaction=>[:fetch_by_vid, :fetch_by_web_session_vid, :fetch_by_account, :fetch_by_merchant_transaction_id, :fetch_delta_since, :fetch_delta, :fetch_by_autobill, :fetch_search_page, :fetch_by_payment_method, :auth, :calculate_sales_tax, :capture, :cancel, :auth_capture, :report, :score, :finalize_pay_pal_auth],
-      :web_session=>[:initialize, :finalize, :fetch_by_vid]
-    },
-    "3.6" => {
-      :account=>[:update, :stop_auto_billing, :update_payment_method, :fetch_by_merchant_account_id, :fetch_by_vid, :fetch_by_web_session_vid, :fetch_by_email, :fetch_by_payment_method, :token_balance, :token_transaction, :increment_tokens, :decrement_tokens, :transfer, :redeem_gift_card, :grant_credit, :revoke_credit, :fetch_credit_history, :add_children, :remove_children, :fetch_family, :transfer_credit],
-      :activity=>[:record],
-      :address=>[:update, :fetch_by_vid],
-      :all_data_types=>[:get_vindicia],
-      :all_symc_data_types=>[:get_vindicia],
-      :auto_bill=>[:update, :upgrade, :fetch_upgrade_history_by_merchant_auto_bill_id, :fetch_upgrade_history_by_vid, :cancel, :delay_billing_to_date, :delay_billing_by_days, :change_billing_day_of_month, :fetch_by_account_and_product, :fetch_by_merchant_auto_bill_id, :fetch_by_vid, :fetch_by_web_session_vid, :fetch_by_email, :fetch_by_account, :future_rebills, :fetch_delta_since, :redeem_gift_card, :grant_credit, :revoke_credit, :fetch_credit_history, :finalize_pay_pal_auth],
-      :billing_plan=>[:update, :fetch_by_vid, :fetch_by_merchant_billing_plan_id, :fetch_by_billing_plan_status, :fetch_all, :fetch_by_merchant_entitlement_id],
-      :chargeback=>[:update, :fetch_by_vid, :fetch_by_account, :fetch_by_case_number, :fetch_by_reference_number, :fetch_by_status, :fetch_by_status_since, :fetch_by_merchant_transaction_id, :fetch_delta_since, :fetch_delta, :report],
-      :diagnostic=>[:get_hello, :put_hello, :echo_string, :echo_string_by_proxy, :get_some_mock_transactions, :put_some_mock_transactions, :echo_boolean, :echo_date_time, :echo_mock_activity_fulfillment, :useless_use_of_diagnostic_object],
-      :electronic_signature=>[:sign, :get_signature_block],
-      :email_template=>[:update, :fetch_by_vid, :fetch_by_product, :fetch_by_type, :fetch_by_type_and_version],
-      :entitlement=>[:fetch_by_entitlement_id_and_account, :fetch_by_account, :fetch_delta_since],
-      :gift_card=>[:status_inquiry, :reverse],
-      :metric_statistics=>[:report],
-      :payment_method=>[:update, :fetch_by_vid, :fetch_by_web_session_vid, :fetch_by_account, :fetch_by_merchant_payment_method_id, :validate],
-      :payment_provider=>[:update, :fetch_by_vid],
-      :product=>[:update, :fetch_by_vid, :fetch_by_merchant_product_id, :fetch_by_account, :fetch_all, :fetch_by_merchant_entitlement_id],
-      :refund=>[:fetch_by_vid, :fetch_by_account, :fetch_by_transaction, :fetch_delta_since, :report, :perform],
-      :symantec=>[:add_auto_bill_item, :cancel_auto_bill, :cancel_pending_ar_txns, :delay_bill, :dispute_bill, :refund_ab_txns, :update_abs_account, :update_ab_product, :update_bp, :update_bp_and_catch_up_billing, :validate_bp, :fetch_b_ps_by_customer_guid, :lookup_transaction, :disable_billing_profile, :fetch_captured_transactions, :report_order_exception],
-      :token=>[:update, :fetch],
-      :transaction=>[:fetch_by_vid, :fetch_by_web_session_vid, :fetch_by_account, :fetch_by_merchant_transaction_id, :fetch_delta_since, :fetch_delta, :fetch_by_autobill, :fetch_search_page, :fetch_by_payment_method, :auth, :calculate_sales_tax, :capture, :cancel, :auth_capture, :report, :score, :finalize_pay_pal_auth],
-#      :web_session=>[:initialize, :finalize, :fetch_by_vid] # initialize is a ruby reserved word. need to refactor to get this one to work =( @TQ
-      :web_session=>[:finalize, :fetch_by_vid]
-    }
-  }
+  @api_yaml_file = File.join(File.dirname(File.expand_path(__FILE__)), "..", "api", "vindicia_%{version}_api.yml")
+  @reserved_keywords = { :initialize => :initialise }
 
   class Configuration
     include Singleton
@@ -85,31 +42,107 @@ module Vindicia
     end
   end
 
+  def self.reset_cache
+    file = @api_yaml_file % { :version => config.api_version }
+    File.unlink(file) if File.exists?(file)
+  end
+
   private
   
   def self.initialize!
-    return false unless API_CLASSES[config.api_version]
-  
-    API_CLASSES[config.api_version].each_key do |vindicia_klass|
-      const_set(Vindicia::Util.camelize(vindicia_klass.to_s), 
+    base_uri = "#{Vindicia.config.namespace}/#{Vindicia.config.api_version}"
+    base_uri.gsub!(/http:\/\//, 'https://') # if not https, make it so. everything actually lives there, despite xml namespace.
+
+    xsd = "#{base_uri}/Vindicia.xsd"
+        
+    uri = URI.parse(xsd)
+    http = Net::HTTP.new(uri.host, uri.port)
+    http.use_ssl = true
+
+    request = Net::HTTP::Get.new(uri.request_uri)
+
+    xsd_response = http.request(request)
+
+    if xsd_response.code != '200'
+      raise "Could not load xsd from #{xsd}"
+    end
+
+    md5sum = Digest::MD5.hexdigest(xsd_response.body)
+
+    begin
+      previous_file = @api_yaml_file % { :version => Vindicia.config.api_version }
+
+      if File.exists?(previous_file)
+        file = YAML.load_file(previous_file)
+        if file[:md5] == md5sum && config = file[Vindicia.config.api_version]
+          config.each do |class_name, actions|
+            create_class(class_name).actions *actions
+          end
+
+          return true
+        end
+      end
+    rescue Exception 
+      # nothing to be done, reload the file
+    end
+
+    begin
+      xml = REXML::Document.new(xsd_response.body)
+    rescue REXML::ParseException => e
+      raise "Could not parse xsd from #{xsd}"
+    end
+
+    classes = xml.elements.to_a('//xsd:complexType').map {|e| e.attributes['name']}
+
+    class_actions = {}
+
+    classes.each do |class_name|
+      klass = create_class(class_name) 
+      actions = []
+
+      wsdl = "#{base_uri}/#{class_name}.wsdl"
+
+      wsdl_response = Net::HTTP.get_response(URI.parse(wsdl)) 
+
+      if wsdl_response.code == '200'
+        begin
+          xml = REXML::Document.new(wsdl_response.body)
+        rescue REXML::ParseException => e
+          puts "Could not parse WSDL for #{klass}. Might not exist or is broken, skipping"
+        end
+
+        actions = xml.elements.to_a('//operation').map do |elem|
+          action = elem.attributes['name'].underscore.to_sym
+          @reserved_keywords[action] || action
+        end
+      end
+
+      klass.actions *actions
+      class_actions[class_name] = actions
+    end
+
+    file = @api_yaml_file % { :version => Vindicia.config.api_version } 
+    begin
+      File.open(file, "w+") do |f|
+        f.write(YAML.dump({ Vindicia.config.api_version => class_actions, :md5 => md5sum }))
+      end
+    rescue Exception
+      warn "Could not write Vindicia API cache to #{file}."
+    end
+
+    true
+  end
+
+  def self.create_class(class_name)
+    return const_get(class_name) if const_defined?(class_name)
+
+    const_set(class_name, 
         Class.new do
           include Vindicia::Model
 
-          client do
-            http.headers["Pragma"] = "no-cache"
-            http.auth.ssl.verify_mode = :none # TODO set based on environment
-          end
-
-          api_version Vindicia.config.api_version
-          login Vindicia.config.login
-          password Vindicia.config.password
-
           endpoint Vindicia.config.endpoint
           namespace Vindicia.config.namespace
-
-          actions *API_CLASSES[Vindicia.config.api_version][vindicia_klass]
         end
       )
-    end
   end
 end

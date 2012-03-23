@@ -1,6 +1,3 @@
-require "savon"
-require "savon/core_ext/string"
-
 module Vindicia
 
   # = Vindicia::Model
@@ -8,34 +5,19 @@ module Vindicia
   # Model for SOAP service oriented applications.
   module Model
 
-    VERSION = "0.0.0"
+    VERSION = "0.0.2"
 
     module ClassMethods
-
-      def self.extend_object(base)
-        super
-        base.init_vindicia_model
-      end
-
-      def init_vindicia_model
-        class_action_module
-      end
-
-      def client(&block)
-        @client ||= Savon::Client.new &block
-      end
-
       def endpoint(uri)
-        client.wsdl.endpoint = uri
+        @endpoint = uri
       end
 
       def namespace(uri)
-        client.wsdl.namespace = uri
+        @namespace = uri
       end
 
       # Accepts one or more SOAP actions and generates both class and instance methods named
-      # after the given actions. Each generated method accepts an optional SOAP body Hash and
-      # a block to be passed to <tt>Savon::Client#request</tt> and executes a SOAP request.
+      # after the given actions. Each generated method accepts an optional SOAP body Hash
       def actions(*actions)
         actions.each do |action|
           define_class_action action
@@ -43,72 +25,79 @@ module Vindicia
       end
 
     private
+
+      def build_envelope(&block)
+        xml = Builder::XmlMarkup.new
+        xml.instruct!(:xml, :encoding => "UTF-8")
+        xml.env :Envelope, 
+          "xmlns:xsd" => "http://www.w3.org/2001/XMLSchema",
+          "xmlns:xsi" => "http://www.w3.org/2001/XMLSchema-instance",
+          "xmlns:tns" => vindicia_target_namespace,
+          "xmlns:env" => "http://schemas.xmlsoap.org/soap/envelope/" do |envelope|
+
+          envelope.env :Body, &block 
+        end
+      end
     
+      def add_hash(xml, hash)
+        hash.each do |k,v|
+          add_element(xml, k, v)
+        end
+      end
+
+      def add_array(xml, elem, val)
+        val.each do |v|
+          add_element(xml, elem, v)
+        end
+      end
+
+      def add_element(xml, elem, val)
+        if val.is_a?(Hash)
+          xml.tag!(Vindicia::Util.camelize(elem)) do |env|
+            add_hash(env, val)
+          end
+        elsif val.is_a?(Array)
+          add_array(xml, elem, val)
+        else
+          xml.tag!(Vindicia::Util.camelize(elem), val.to_s)
+        end
+      end
+
       def define_class_action(action)
-        class_action_module.module_eval <<-CODE
-          def #{action.to_s.snakecase}(body = {}, &block)
-            client.request :tns, #{action.inspect} do
-              soap.namespaces["xmlns:tns"] = vindicia_target_namespace
-              http.headers["SOAPAction"] = vindicia_soap_action('#{action}')
-              soap.body = {
-                :auth => vindicia_auth_credentials
-              }.merge(body)
-              block.call(soap, wsdl, http, wsse) if block
+        instance_eval <<-CODE
+          def #{action.to_s.underscore}(body = {})
+            build_envelope do |xml|
+              xml.tns :#{action.to_s} do |action|
+                action.auth do |auth|
+                  add_hash(auth, vindicia_auth_credentials)
+                end
+
+                add_hash(action, body)
+              end
             end
-          rescue Exception => e
-            rescue_exception(:#{action.to_s.snakecase}, e)
           end
         CODE
       end
 
-      def api_version(version)
-        @api_version = version
-      end
-
-      def login(login)
-        @login = login
-      end
-
-      def password(password)
-        @password = password
-      end
-      
       def vindicia_class_name
         name.demodulize
       end
 
       def vindicia_auth_credentials
-        {:login => @login, :password => @password, :version => @api_version}
+        {:login => Vindicia.config.login, :password => Vindicia.config.password, :version => Vindicia.config.api_version}
       end
 
       def vindicia_target_namespace
-        "#{client.wsdl.namespace}/v#{underscoreize_periods(@api_version)}/#{vindicia_class_name}"
+        "#{@namespace}/v#{underscoreize_periods(Vindicia.config.api_version)}/#{vindicia_class_name}"
       end
 
       def underscoreize_periods(target)
         target.gsub(/\./, '_')
-      end
-      
-      def vindicia_soap_action(action)
-        %{"#{vindicia_target_namespace}##{action.to_s.lower_camelcase}"}
-      end
-
-      def rescue_exception(action, error)
-        { "#{action}_response".to_sym => { :return => 
-          { :return_code => '500', :return_string => "Error contacting Vindicia: #{error.message}" } 
-        } }
-      end
-            
-      def class_action_module
-        @class_action_module ||= Module.new do
-          # confused why this is needed
-        end.tap { |mod| extend mod }
       end
     end
 
     def self.included(base)
       base.extend ClassMethods
     end
-
   end
 end
