@@ -4,7 +4,7 @@ A wrapper for making calls to Vindicia's CashBox SOAP API.
 
 ## Installation
 
-Add this line to your application's Gemfile:
+Add this line to your application's `Gemfile`:
 
 ```ruby
 gem 'vindicia-api'
@@ -13,7 +13,7 @@ gem 'vindicia-api'
 And then execute:
 
 ```
-$ bundle
+$ bundle install
 ```
 
 Or install it yourself as:
