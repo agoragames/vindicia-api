@@ -54,14 +54,7 @@ module Vindicia
     base_uri.gsub!(/http:\/\//, 'https://') # if not https, make it so. everything actually lives there, despite xml namespace.
 
     xsd = "#{base_uri}/Vindicia.xsd"
-        
-    uri = URI.parse(xsd)
-    http = Net::HTTP.new(uri.host, uri.port)
-    http.use_ssl = true
-
-    request = Net::HTTP::Get.new(uri.request_uri)
-
-    xsd_response = http.request(request)
+    xsd_response = get_vindicia_file(xsd)
 
     if xsd_response.code != '200'
       raise "Could not load xsd from #{xsd}"
@@ -101,8 +94,7 @@ module Vindicia
       actions = []
 
       wsdl = "#{base_uri}/#{class_name}.wsdl"
-
-      wsdl_response = Net::HTTP.get_response(URI.parse(wsdl)) 
+      wsdl_response = get_vindicia_file(wsdl)
 
       if wsdl_response.code == '200'
         begin
@@ -144,5 +136,12 @@ module Vindicia
           namespace Vindicia.config.namespace
         end
       )
+  end
+
+  def self.get_vindicia_file(url)
+    uri = URI.parse(url)
+    http = Net::HTTP.new(uri.host, uri.port)
+    http.use_ssl = true
+    http.request(Net::HTTP::Get.new(uri.request_uri))
   end
 end
