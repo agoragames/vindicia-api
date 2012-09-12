@@ -1,5 +1,4 @@
 require "savon"
-require "savon/core_ext/string"
 
 module Vindicia
 
@@ -46,7 +45,7 @@ module Vindicia
     
       def define_class_action(action)
         class_action_module.module_eval <<-CODE
-          def #{action.to_s.snakecase}(body = {}, &block)
+          def #{action.to_s.underscore}(body = {}, &block)
             client.request :tns, #{action.inspect} do
               soap.namespaces["xmlns:tns"] = vindicia_target_namespace
               http.headers["SOAPAction"] = vindicia_soap_action('#{action}')
@@ -56,7 +55,7 @@ module Vindicia
               block.call(soap, wsdl, http, wsse) if block
             end
           rescue Exception => e
-            rescue_exception(:#{action.to_s.snakecase}, e)
+            rescue_exception(:#{action.to_s.underscore}, e)
           end
         CODE
       end
@@ -90,7 +89,7 @@ module Vindicia
       end
       
       def vindicia_soap_action(action)
-        %{"#{vindicia_target_namespace}##{action.to_s.lower_camelcase}"}
+        %{"#{vindicia_target_namespace}##{action.to_s.camelize(:lower)}"}
       end
 
       def rescue_exception(action, error)
