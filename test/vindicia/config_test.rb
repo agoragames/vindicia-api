@@ -1,5 +1,4 @@
 require 'helper'
-require 'vindicia/util'
 
 class Vindicia::ConfigTest < Test::Unit::TestCase
 
@@ -8,7 +7,7 @@ class Vindicia::ConfigTest < Test::Unit::TestCase
       def self.clear_config
         if Vindicia.config.is_configured?
           Vindicia::API_CLASSES[Vindicia.config.api_version].each_key do |vindicia_klass|
-            Vindicia.send(:remove_const, Vindicia::Util.camelize(vindicia_klass.to_s).to_sym)
+            Vindicia.send(:remove_const, vindicia_klass.to_s.camelize.to_sym)
           end
         end
       end
@@ -88,7 +87,7 @@ class Vindicia::ConfigTest < Test::Unit::TestCase
     assert Vindicia.config.is_configured?
 
     Vindicia::API_CLASSES[good_api_version].each_key do |vindicia_klass|
-      assert Vindicia.const_get(Vindicia::Util.camelize(vindicia_klass.to_s))
+      assert Vindicia.const_get(vindicia_klass.to_s.camelize)
     end
   end
   

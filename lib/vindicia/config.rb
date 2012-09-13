@@ -1,5 +1,4 @@
 require 'singleton'
-require 'vindicia/util'
 
 module Vindicia
 
@@ -193,7 +192,7 @@ module Vindicia
     return false unless API_CLASSES[config.api_version]
   
     API_CLASSES[config.api_version].each_key do |vindicia_klass|
-      const_set(Vindicia::Util.camelize(vindicia_klass.to_s), 
+      const_set(vindicia_klass.to_s.camelize, 
         Class.new do
           include Vindicia::Model
 
