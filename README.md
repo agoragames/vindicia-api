@@ -72,4 +72,4 @@ Vindicia::AutoBill.fetch_by_account(:account => { :merchantAccountId => id }
 
 ## Copyright
 
-Copyright (c) 2011-2012 Agora Games. See LICENSE.txt for further details.
+Copyright (c) 2011-2013 Agora Games. See LICENSE.txt for further details.
