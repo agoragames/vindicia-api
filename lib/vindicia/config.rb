@@ -158,20 +158,22 @@ module Vindicia
 
   class Configuration
     include Singleton
-    
-    attr_accessor :api_version, :login, :password, :endpoint, :namespace
+
+    attr_accessor :api_version, :login, :password, :endpoint, :namespace,
+      :general_log, :log_level, :logger, :pretty_print_xml, :ssl_verify_mode
+
 
     def initialize
-      @@configured = false      
+      @@configured = false
     end
 
     def configured!
       @@configured = true
     end
-    
+
     def is_configured?
       @@configured
-    end      
+    end
   end
 
   def self.config
@@ -187,18 +189,23 @@ module Vindicia
   end
 
   private
-  
+
   def self.initialize!
     return false unless API_CLASSES[config.api_version]
-  
+
     API_CLASSES[config.api_version].each_key do |vindicia_klass|
-      const_set(vindicia_klass.to_s.camelize, 
+      const_set(vindicia_klass.to_s.camelize,
         Class.new do
           include Vindicia::Model
 
           client do
             http.headers["Pragma"] = "no-cache"
-            http.auth.ssl.verify_mode = :none # TODO set based on environment
+            http.auth.ssl.verify_mode = Vindicia.config.ssl_verify_mode
+            config.log = Vindicia.config.general_log
+            config.log_level = Vindicia.config.log_level
+            config.logger = Vindicia.config.logger
+            config.pretty_print_xml = Vindicia.config.pretty_print_xml
+            HTTPI.log = false
           end
 
           api_version Vindicia.config.api_version
