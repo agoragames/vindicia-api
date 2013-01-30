@@ -5,8 +5,8 @@ require 'vindicia/version'
 Gem::Specification.new do |gem|
   gem.name          = "vindicia-api"
   gem.version       = Vindicia::VERSION
-  gem.authors       = ["Tom Quackenbush"]
-  gem.email         = ["tquackenbush@agoragames.com"]
+  gem.authors       = ["Tom Quackenbush", "Victor Garro"]
+  gem.email         = ["tquackenbush@agoragames.com", "vgarro@verticalresponse.com"]
   gem.homepage      = "https://github.com/agoragames/vindicia-api"
   gem.summary       = %q{A wrapper for creating queries to the Vindicia CashBox API}
   gem.description   = %q{A wrapper for creating queries to the Vindicia CashBox API}

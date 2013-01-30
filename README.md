@@ -33,21 +33,25 @@ Vindicia.configure do |config|
   config.password = 'your_password' 
   config.endpoint = 'https://soap.prodtest.sj.vindicia.com/soap.pl'
   config.namespace = 'http://soap.vindicia.com'
-  config.ssl.verify_mode = :none
-
 
   # By default, Savon logs each SOAP request and response to $stdout.
   # Here's how you can disable logging:
   # config.log = false
   config.general_log = true
 
-  # The default log level used by Savon is :debug.
-  #config.log_level = :info
-  config.log_level = :debug
+  # Use this for a pretty SOAP a-like logger ouput
+  config.ssl.verify_mode = :none
 
   # In a Rails application you might want Savon to use the Rails logger.
   # config.logger = Rails.logger
   config.logger = Rails.logger
+
+  # The default log level used by Savon is :debug.
+  #config.log_level = :info
+  config.log_level = :debug
+
+  # Filter those details just for the sake of security
+  config.log_filter = [:password, :login]
 
   # The XML logged by Savon can be formatted for debugging purposes.
   # Unfortunately, this feature comes with a performance and is not

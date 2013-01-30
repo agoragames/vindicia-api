@@ -7,8 +7,6 @@ module Vindicia
   # Model for SOAP service oriented applications.
   module Model
 
-    VERSION = "0.0.0"
-
     module ClassMethods
 
       def self.extend_object(base)
@@ -42,7 +40,7 @@ module Vindicia
       end
 
     private
-    
+
       def define_class_action(action)
         class_action_module.module_eval <<-CODE
           def #{action.to_s.underscore}(body = {}, &block)
@@ -71,13 +69,13 @@ module Vindicia
       def password(password)
         @password = password
       end
-      
+
       def vindicia_class_name
         name.demodulize
       end
 
       def vindicia_auth_credentials
-        {:login => @login, :password => @password, :version => @api_version}
+        {login: @login, password: @password, version: @api_version}
       end
 
       def vindicia_target_namespace
@@ -87,17 +85,19 @@ module Vindicia
       def underscoreize_periods(target)
         target.gsub(/\./, '_')
       end
-      
+
       def vindicia_soap_action(action)
         %{"#{vindicia_target_namespace}##{action.to_s.camelize(:lower)}"}
       end
 
       def rescue_exception(action, error)
-        { "#{action}_response".to_sym => { :return => 
-          { :return_code => '500', :return_string => "Error contacting Vindicia: #{error.message}" } 
+        { "#{action}_response".to_sym => {
+          return: {
+            return_code: '500',
+            return_string: "Error contacting Vindicia: #{error.message}" }
         } }
       end
-            
+
       def class_action_module
         @class_action_module ||= Module.new do
           # confused why this is needed
