@@ -24,7 +24,7 @@ class Vindicia::ConfigTest < Test::Unit::TestCase
 
     bad_api_version = '0.0'
     assert !Vindicia::API_CLASSES.has_key?(bad_api_version)
-    
+
     assert_nothing_raised do
       Vindicia.configure do |config|
         config.api_version = bad_api_version
@@ -47,14 +47,17 @@ class Vindicia::ConfigTest < Test::Unit::TestCase
       Vindicia.configure do |config|
         config.api_version = good_api_version
         config.login = 'your_login'
-        config.password = 'your_password' 
+        config.password = 'your_password'
         config.endpoint = 'https://soap.prodtest.sj.vindicia.com/soap.pl'
         config.namespace = 'http://soap.vindicia.com'
+
+        config.ssl_verify_mode = :none
+        config.pretty_print_xml = true
       end
     end
 
     assert Vindicia.config.is_configured?
-    
+
     some_other_api_version = '3.5'
     assert Vindicia::API_CLASSES.has_key?(some_other_api_version)
 
@@ -73,14 +76,23 @@ class Vindicia::ConfigTest < Test::Unit::TestCase
     good_api_version = '3.6'
     assert Vindicia::API_CLASSES.has_key?(good_api_version)
     assert !Vindicia.config.is_configured?
+    logger = Logger.new(STDOUT)
+    logger.level = Logger::WARN
 
     assert_nothing_raised do
       Vindicia.configure do |config|
         config.api_version = good_api_version
         config.login = 'your_login'
-        config.password = 'your_password' 
+        config.password = 'your_password'
         config.endpoint = 'https://soap.prodtest.sj.vindicia.com/soap.pl'
         config.namespace = 'http://soap.vindicia.com'
+
+        config.ssl_verify_mode = :none
+        config.pretty_print_xml = true
+        config.logger = logger
+        config.log_filter = [:password]
+        config.log_level = logger.level
+        config.general_log = true
       end
     end
 
@@ -90,5 +102,5 @@ class Vindicia::ConfigTest < Test::Unit::TestCase
       assert Vindicia.const_get(vindicia_klass.to_s.camelize)
     end
   end
-  
+
 end

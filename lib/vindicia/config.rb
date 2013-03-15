@@ -160,8 +160,7 @@ module Vindicia
     include Singleton
 
     attr_accessor :api_version, :login, :password, :endpoint, :namespace,
-      :general_log, :log_level, :logger, :pretty_print_xml, :ssl_verify_mode
-
+      :general_log, :log_level, :log_filter, :logger, :pretty_print_xml, :ssl_verify_mode
 
     def initialize
       @@configured = false
@@ -201,10 +200,16 @@ module Vindicia
           client do
             http.headers["Pragma"] = "no-cache"
             http.auth.ssl.verify_mode = Vindicia.config.ssl_verify_mode
-            config.log = Vindicia.config.general_log
-            config.log_level = Vindicia.config.log_level
-            config.logger = Vindicia.config.logger
+
             config.pretty_print_xml = Vindicia.config.pretty_print_xml
+            config.log = Vindicia.config.general_log
+            config.logger = Vindicia.config.logger
+
+            if config.logger
+              config.logger.filter = Vindicia.config.log_filter
+              config.logger.level = Vindicia.config.log_level
+            end
+
             HTTPI.log = false
           end
 
