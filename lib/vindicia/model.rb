@@ -42,18 +42,19 @@ module Vindicia
     private
 
       def define_class_action(action)
+        real_action = API_ACTION_NAME_RESERVED_BY_RUBY_MAPS[action] || action
         class_action_module.module_eval <<-CODE
           def #{action.to_s.underscore}(body = {}, &block)
-            client.request :tns, #{action.inspect} do
+            client.request :tns, #{ real_action.inspect } do
               soap.namespaces["xmlns:tns"] = vindicia_target_namespace
-              http.headers["SOAPAction"] = vindicia_soap_action('#{action}')
+              http.headers["SOAPAction"] = vindicia_soap_action('#{ real_action }')
               soap.body = {
                 :auth => vindicia_auth_credentials
               }.merge(body)
               block.call(soap, wsdl, http, wsse) if block
             end
           rescue Exception => e
-            rescue_exception(:#{action.to_s.underscore}, e)
+            rescue_exception(:#{ action.to_s.underscore }, e)
           end
         CODE
       end
@@ -79,7 +80,7 @@ module Vindicia
       end
 
       def vindicia_target_namespace
-        "#{client.wsdl.namespace}/v#{underscoreize_periods(@api_version)}/#{vindicia_class_name}"
+        "#{client.wsdl.namespace}/v#{ underscoreize_periods(@api_version) }/#{ vindicia_class_name }"
       end
 
       def underscoreize_periods(target)
@@ -87,14 +88,14 @@ module Vindicia
       end
 
       def vindicia_soap_action(action)
-        %{"#{vindicia_target_namespace}##{action.to_s.camelize(:lower)}"}
+        %{"#{ vindicia_target_namespace}##{ action.to_s.camelize(:lower) }" }
       end
 
       def rescue_exception(action, error)
         { "#{action}_response".to_sym => {
           return: {
             return_code: '500',
-            return_string: "Error contacting Vindicia: #{error.message}" }
+            return_string: "Error contacting Vindicia: #{ error.message }" }
         } }
       end
 
