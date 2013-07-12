@@ -10,6 +10,7 @@ Gem::Specification.new do |gem|
   gem.homepage      = "https://github.com/agoragames/vindicia-api"
   gem.summary       = %q{A wrapper for creating queries to the Vindicia CashBox API}
   gem.description   = %q{A wrapper for creating queries to the Vindicia CashBox API}
+  gem.license       = 'MIT'
 
   gem.rubyforge_project = "vindicia-api"
 
