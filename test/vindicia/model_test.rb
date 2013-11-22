@@ -49,13 +49,23 @@ class Vindicia::ModelTest < Test::Unit::TestCase
     end
   end
 
-  def test_should_catch_exceptions_thrown_underneath_savon
-    Vindicia::AutoBill.client.expects(:request).once.raises(Timeout::Error)
+  def test_should_catch_500_exceptions_thrown_underneath_savon
+    Vindicia::AutoBill.client.expects(:request).once.raises(StandardError)
 
     resp = Vindicia::AutoBill.update({})
 
     assert_not_nil resp
     assert resp.to_hash
     assert_equal '500', resp[:update_response][:return][:return_code]
+  end
+
+  def test_should_catch_503_exceptions_thrown_underneath_savon
+    Vindicia::AutoBill.client.expects(:request).once.raises(Timeout::Error)
+
+    resp = Vindicia::AutoBill.update({})
+
+    assert_not_nil resp
+    assert resp.to_hash
+    assert_equal '503', resp[:update_response][:return][:return_code]
   end
 end

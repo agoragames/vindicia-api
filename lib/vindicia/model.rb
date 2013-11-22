@@ -53,8 +53,10 @@ module Vindicia
               }.merge(body)
               block.call(soap, wsdl, http, wsse) if block
             end
+          rescue Savon::HTTP::Error, Timeout::Error, Errno::ETIMEDOUT => e
+            rescue_exception(:#{ action.to_s.underscore }, '503', e.message)
           rescue Exception => e
-            rescue_exception(:#{ action.to_s.underscore }, e)
+            rescue_exception(:#{ action.to_s.underscore }, '500', e.message)
           end
         CODE
       end
@@ -91,12 +93,13 @@ module Vindicia
         %{"#{ vindicia_target_namespace}##{ action.to_s.camelize(:lower) }" }
       end
 
-      def rescue_exception(action, error)
+      def rescue_exception(action, code, message)
         { "#{action}_response".to_sym => {
           return: {
-            return_code: '500',
-            return_string: "Error contacting Vindicia: #{ error.message }" }
-        } }
+            return_code:    code,
+            return_string:  message,
+          } }
+        }
       end
 
       def class_action_module
