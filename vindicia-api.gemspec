@@ -21,6 +21,7 @@ Gem::Specification.new do |gem|
 
   gem.add_dependency('savon', '= 1.2.0')
   gem.add_dependency('activesupport')
+  gem.add_dependency('httpclient')
 
   gem.add_development_dependency('rake')
   gem.add_development_dependency('mocha')
