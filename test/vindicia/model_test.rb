@@ -1,5 +1,7 @@
 require 'helper'
 require 'net/http'
+require 'httpclient'
+
 
 class Vindicia::ModelTest < Test::Unit::TestCase
 
@@ -51,21 +53,26 @@ class Vindicia::ModelTest < Test::Unit::TestCase
 
   def test_should_catch_500_exceptions_thrown_underneath_savon
     Vindicia::AutoBill.client.expects(:request).once.raises(StandardError)
-
-    resp = Vindicia::AutoBill.update({})
-
-    assert_not_nil resp
-    assert resp.to_hash
-    assert_equal '500', resp[:update_response][:return][:return_code]
+    assert_failure('500')
   end
 
   def test_should_catch_503_exceptions_thrown_underneath_savon
-    Vindicia::AutoBill.client.expects(:request).once.raises(Timeout::Error)
+    [HTTPClient::ConnectTimeoutError,
+     Timeout::Error,
+     Errno::ETIMEDOUT
+    ].each do | exception_class |
+      Vindicia::AutoBill.client.expects(:request).once.raises(exception_class)
+      assert_failure('503')
+    end
+  end
 
+  private
+
+  def assert_failure(code)
     resp = Vindicia::AutoBill.update({})
 
     assert_not_nil resp
     assert resp.to_hash
-    assert_equal '503', resp[:update_response][:return][:return_code]
+    assert_equal code, resp[:update_response][:return][:return_code]
   end
 end

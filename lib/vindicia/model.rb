@@ -1,4 +1,5 @@
-require "savon"
+require 'savon'
+require 'httpclient'
 
 module Vindicia
 
@@ -53,7 +54,7 @@ module Vindicia
               }.merge(body)
               block.call(soap, wsdl, http, wsse) if block
             end
-          rescue Savon::HTTP::Error, Timeout::Error, Errno::ETIMEDOUT => e
+          rescue HTTPClient::ConnectTimeoutError, Timeout::Error, Errno::ETIMEDOUT => e
             rescue_exception(:#{ action.to_s.underscore }, '503', e.message)
           rescue Exception => e
             rescue_exception(:#{ action.to_s.underscore }, '500', e.message)
