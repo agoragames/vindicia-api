@@ -55,4 +55,33 @@ class Vindicia::ModelTest < Test::Unit::TestCase
     assert resp.to_hash
     assert_equal '500', resp[:update_response][:return][:return_code]
   end
+
+  def test_should_support_ruby_keyword_actions
+    # this feature is used by WebSession, to support the initialize action, no huge rework, just escape codes
+    assert Vindicia.config.is_configured?
+
+    web_session = Vindicia::WebSession
+
+    # method is available to be called
+    web_session_methods = web_session.methods
+    assert web_session_methods.include?(:_initialize)
+
+    # method yields an action that is escaped
+    resp = web_session._initialize(:ipAddress => '124.23.210.175',
+                            :method => 'AutoBill_Update',
+                            :returnUrl => 'https://merchant.com/subscribe/success.php',
+                            :errorUrl => 'https://merchant.com/subscribe/failed.php',
+                            :privatePormValues => [
+                              { :name => 'Account_VID', :value => '36c8de2cb74b2c2b08b259cf231ac8d90d1bb3b8' },
+                              { :name => 'Product_merchantProductId', :value => 'StartWars II' },
+                              { :name => 'vin_BillingPlan_merchantBillingPlanId', :value => 'GoldAccess2010, PlatinumAccess2010' }
+                            ],
+                            :methodParamValues => [
+                              { :name => 'AutoBill_Update_minChargebackProbability', :value => '80' }
+                            ])
+    assert_not_nil resp
+    assert resp.to_hash
+    # the fact that the response is enveloped in the escaped form of the action is evidence that the action was properly mapped
+    assert_equal '403', resp[:initialize_response][:return][:return_code]
+  end
 end
