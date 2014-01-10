@@ -44,7 +44,7 @@ module Vindicia
     private
     
       def define_class_action(action)
-        escaped_action = !action.to_s.start_with?('_') ? action.to_s : action[1..-1] #chomp leading _, if present
+        escaped_action = !action.to_s.start_with?('_') ? action : action[1..-1] #chomp leading _, if present
         class_action_module.module_eval <<-CODE
           def #{action.to_s.underscore}(body = {}, &block)
             client.request :tns, #{escaped_action.inspect} do
