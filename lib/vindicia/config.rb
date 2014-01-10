@@ -25,7 +25,7 @@ module Vindicia
       :symantec=>[:add_auto_bill_item, :cancel_auto_bill, :cancel_pending_ar_txns, :delay_bill, :dispute_bill, :refund_ab_txns, :update_abs_account, :update_ab_product, :update_bp, :update_bp_and_catch_up_billing, :validate_bp, :fetch_b_ps_by_customer_guid, :lookup_transaction, :disable_billing_profile, :fetch_captured_transactions, :report_order_exception],
       :token=>[:update, :fetch],
       :transaction=>[:fetch_by_vid, :fetch_by_web_session_vid, :fetch_by_account, :fetch_by_merchant_transaction_id, :fetch_delta_since, :fetch_delta, :fetch_by_autobill, :fetch_search_page, :fetch_by_payment_method, :auth, :calculate_sales_tax, :capture, :cancel, :auth_capture, :report, :score, :finalize_pay_pal_auth],
-      :web_session=>[:initialize, :finalize, :fetch_by_vid]
+      :web_session=>[:_initialize, :finalize, :fetch_by_vid]
     },
     "3.6" => {
       :account=>[:update, :stop_auto_billing, :update_payment_method, :fetch_by_merchant_account_id, :fetch_by_vid, :fetch_by_web_session_vid, :fetch_by_email, :fetch_by_payment_method, :token_balance, :token_transaction, :increment_tokens, :decrement_tokens, :transfer, :redeem_gift_card, :grant_credit, :revoke_credit, :fetch_credit_history, :add_children, :remove_children, :fetch_family, :transfer_credit],
@@ -49,8 +49,7 @@ module Vindicia
       :symantec=>[:add_auto_bill_item, :cancel_auto_bill, :cancel_pending_ar_txns, :delay_bill, :dispute_bill, :refund_ab_txns, :update_abs_account, :update_ab_product, :update_bp, :update_bp_and_catch_up_billing, :validate_bp, :fetch_b_ps_by_customer_guid, :lookup_transaction, :disable_billing_profile, :fetch_captured_transactions, :report_order_exception],
       :token=>[:update, :fetch],
       :transaction=>[:fetch_by_vid, :fetch_by_web_session_vid, :fetch_by_account, :fetch_by_merchant_transaction_id, :fetch_delta_since, :fetch_delta, :fetch_by_autobill, :fetch_search_page, :fetch_by_payment_method, :auth, :calculate_sales_tax, :capture, :cancel, :auth_capture, :report, :score, :finalize_pay_pal_auth],
-#      :web_session=>[:initialize, :finalize, :fetch_by_vid] # initialize is a ruby reserved word. need to refactor to get this one to work =( @TQ
-      :web_session=>[:finalize, :fetch_by_vid]
+      :web_session=>[:_initialize, :finalize, :fetch_by_vid]
     },
     "3.7" => {
       :account => [:update, :stop_auto_billing, :update_payment_method, :fetch_by_merchant_account_id, :fetch_by_vid, :fetch_by_web_session_vid, :fetch_by_email, :fetch_by_payment_method, :token_balance, :token_transaction, :increment_tokens, :decrement_tokens, :transfer, :redeem_gift_card, :grant_credit, :revoke_credit, :fetch_credit_history, :add_children, :remove_children, :fetch_family, :transfer_credit, :make_payment, :reverse_payment, :is_entitled, :grant_entitlement, :revoke_entitlement, :extend_entitlement_to_date, :extend_entitlement_by_interval],
@@ -74,8 +73,7 @@ module Vindicia
       :symantec => [:add_auto_bill_item, :cancel_auto_bill, :cancel_pending_ar_txns, :delay_bill, :dispute_bill, :refund_ab_txns, :update_abs_account, :update_ab_product, :update_bp, :update_bp_and_catch_up_billing, :validate_bp, :fetch_b_ps_by_customer_guid, :lookup_transaction, :disable_billing_profile, :fetch_captured_transactions, :report_order_exception],
       :token => [:update, :fetch],
       :transaction => [:fetch_by_vid, :fetch_by_web_session_vid, :fetch_by_account, :fetch_by_merchant_transaction_id, :fetch_delta_since, :fetch_delta, :fetch_by_autobill, :fetch_search_page, :fetch_by_payment_method, :auth, :calculate_sales_tax, :capture, :cancel, :auth_capture, :report, :score, :finalize_pay_pal_auth],
-#      :web_session=>[:initialize, :finalize, :fetch_by_vid] # initialize is a ruby reserved word. need to refactor to get this one to work =( @TQ
-      :web_session=> [:finalize, :fetch_by_vid]
+      :web_session=>[:_initialize, :finalize, :fetch_by_vid]
     },
     "3.8" => {
       :account => [:update, :stop_auto_billing, :update_payment_method, :fetch_by_merchant_account_id, :fetch_by_vid, :fetch_by_web_session_vid, :fetch_by_email, :fetch_by_payment_method, :token_balance, :token_transaction, :increment_tokens, :decrement_tokens, :transfer, :redeem_gift_card, :grant_credit, :revoke_credit, :fetch_credit_history, :add_children, :remove_children, :fetch_family, :transfer_credit, :make_payment, :reverse_payment, :is_entitled, :grant_entitlement, :revoke_entitlement, :extend_entitlement_to_date, :extend_entitlement_by_interval],
@@ -100,8 +98,6 @@ module Vindicia
       :symantec => [:add_auto_bill_item, :cancel_auto_bill, :cancel_pending_ar_txns, :delay_bill, :dispute_bill, :refund_ab_txns, :update_abs_account, :update_ab_product, :update_bp, :update_bp_and_catch_up_billing, :validate_bp, :fetch_b_ps_by_customer_guid, :lookup_transaction, :disable_billing_profile, :fetch_captured_transactions, :report_order_exception],
       :token => [:update, :fetch],
       :transaction => [:fetch_by_vid, :fetch_by_web_session_vid, :fetch_by_account, :fetch_by_merchant_transaction_id, :fetch_delta_since, :fetch_delta, :fetch_by_autobill, :fetch_search_page, :fetch_by_payment_method, :auth, :calculate_sales_tax, :capture, :cancel, :auth_capture, :report, :score, :finalize_pay_pal_auth],
-#      :web_session=>[:initialize, :finalize, :fetch_by_vid] # initialize is a ruby reserved word. need to refactor to get this one to work =( @TQ
-      :web_session=> [:finalize, :fetch_by_vid]
     },
     "3.9" => {
       :account => [:update, :stop_auto_billing, :update_payment_method, :fetch_by_merchant_account_id, :fetch_by_vid, :fetch_by_web_session_vid, :fetch_by_email, :fetch_by_payment_method, :token_balance, :token_transaction, :increment_tokens, :decrement_tokens, :transfer, :redeem_gift_card, :grant_credit, :revoke_credit, :fetch_credit_history, :fetch_all_credit_history, :add_children, :remove_children, :fetch_family, :transfer_credit, :make_payment, :reverse_payment, :is_entitled, :grant_entitlement, :revoke_entitlement, :extend_entitlement_to_date, :extend_entitlement_by_interval],
@@ -126,8 +122,7 @@ module Vindicia
       :symantec => [:add_auto_bill_item, :cancel_auto_bill, :cancel_pending_ar_txns, :delay_bill, :dispute_bill, :refund_ab_txns, :update_abs_account, :update_ab_product, :update_bp, :update_bp_and_catch_up_billing, :validate_bp, :fetch_b_ps_by_customer_guid, :lookup_transaction, :disable_billing_profile, :fetch_captured_transactions, :report_order_exception],
       :token => [:update, :fetch],
       :transaction => [:fetch_by_vid, :fetch_by_web_session_vid, :fetch_by_account, :fetch_by_merchant_transaction_id, :fetch_delta_since, :fetch_delta, :fetch_by_autobill, :fetch_search_page, :fetch_by_payment_method, :auth, :calculate_sales_tax, :capture, :cancel, :auth_capture, :report, :score, :finalize_pay_pal_auth],
-#      :web_session=>[:initialize, :finalize, :fetch_by_vid] # initialize is a ruby reserved word. need to refactor to get this one to work =( @TQ
-      :web_session=> [:finalize, :fetch_by_vid]
+      :web_session=>[:_initialize, :finalize, :fetch_by_vid]
     },
     "4.0" => {
       :account => [:update, :stop_auto_billing, :update_payment_method, :fetch_by_merchant_account_id, :fetch_by_vid, :fetch_by_web_session_vid, :fetch_by_email, :fetch_by_payment_method, :token_balance, :token_transaction, :increment_tokens, :decrement_tokens, :transfer, :redeem_gift_card, :grant_credit, :revoke_credit, :fetch_credit_history, :fetch_all_credit_history, :add_children, :remove_children, :fetch_family, :transfer_credit, :make_payment, :reverse_payment, :is_entitled, :grant_entitlement, :revoke_entitlement, :extend_entitlement_to_date, :extend_entitlement_by_interval],
@@ -151,8 +146,7 @@ module Vindicia
       :refund => [:fetch_by_vid, :fetch_by_account, :fetch_by_transaction, :fetch_delta_since, :report, :perform],
       :token => [:update, :fetch],
       :transaction => [:fetch_by_vid, :fetch_by_web_session_vid, :fetch_by_account, :fetch_by_merchant_transaction_id, :fetch_delta_since, :fetch_delta, :fetch_by_autobill, :fetch_search_page, :fetch_by_payment_method, :auth, :calculate_sales_tax, :capture, :cancel, :auth_capture, :report, :score, :finalize_pay_pal_auth, :finalize_boku_auth_capture],
-#      :web_session=>[:initialize, :finalize, :fetch_by_vid] # initialize is a ruby reserved word. need to refactor to get this one to work =( @TQ
-      :web_session=> [:finalize, :fetch_by_vid]
+      :web_session=>[:_initialize, :finalize, :fetch_by_vid]
     },
     "4.2" => {
       :account => [:update, :stop_auto_billing, :update_payment_method, :fetch_by_merchant_account_id, :fetch_by_vid, :fetch_by_web_session_vid, :fetch_by_email, :fetch_by_payment_method, :token_balance, :token_transaction, :increment_tokens, :decrement_tokens, :transfer, :redeem_gift_card, :grant_credit, :revoke_credit, :fetch_credit_history, :fetch_all_credit_history, :add_children, :remove_children, :fetch_family, :transfer_credit, :make_payment, :reverse_payment, :is_entitled, :grant_entitlement, :revoke_entitlement, :extend_entitlement_to_date, :extend_entitlement_by_interval],
@@ -176,8 +170,7 @@ module Vindicia
       :refund => [:fetch_by_vid, :fetch_by_account, :fetch_by_transaction, :fetch_delta_since, :report, :perform],
       :token => [:update, :fetch],
       :transaction => [:fetch_by_vid, :fetch_by_web_session_vid, :fetch_by_account, :fetch_by_merchant_transaction_id, :fetch_delta_since, :fetch_delta, :fetch_by_autobill, :fetch_by_payment_method, :auth, :calculate_sales_tax, :capture, :cancel, :auth_capture, :report, :score, :finalize_pay_pal_auth, :finalize_boku_auth_capture, :finalize_customer_action, :address_and_sales_tax_from_pay_pal_order],
-#      :web_session=>[:initialize, :finalize, :fetch_by_vid] # initialize is a ruby reserved word. need to refactor to get this one to work =( @TQ
-      :web_session=> [:finalize, :fetch_by_vid]
+      :web_session=>[:_initialize, :finalize, :fetch_by_vid]
     }
   }
 
