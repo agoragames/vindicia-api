@@ -22,7 +22,7 @@ class Vindicia::ModelTest < Test::Unit::TestCase
       Vindicia.configure do |config|
         config.api_version = @good_api_version
         config.login = 'your_login'
-        config.password = 'your_password' 
+        config.password = 'your_password'
         config.endpoint = 'https://soap.prodtest.sj.vindicia.com/soap.pl'
         config.namespace = 'http://soap.vindicia.com'
       end

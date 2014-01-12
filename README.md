@@ -30,7 +30,7 @@ Add something like the following to your environments or in an initializer:
 Vindicia.configure do |config|
   config.api_version = '3.6'
   config.login = 'your_login'
-  config.password = 'your_password' 
+  config.password = 'your_password'
   config.endpoint = 'https://soap.prodtest.sj.vindicia.com/soap.pl'
   config.namespace = 'http://soap.vindicia.com'
 end
@@ -61,7 +61,7 @@ Vindicia::AutoBill.fetch_by_account(:account => { :merchantAccountId => id }
 * WebSession class is unsupported as it uses 'initialize' as an API call which is a ruby reserved word
 
 ## Contributing to vindicia-api
- 
+
 * Check out the latest master to make sure the feature hasn't been implemented or the bug hasn't been fixed yet
 * Check out the issue tracker to make sure someone already hasn't requested it and/or contributed it
 * Fork the project
@@ -72,4 +72,4 @@ Vindicia::AutoBill.fetch_by_account(:account => { :merchantAccountId => id }
 
 ## Copyright
 
-Copyright (c) 2011-2013 Agora Games. See LICENSE.txt for further details.
+Copyright (c) 2011-2014 Agora Games. See LICENSE.txt for further details.

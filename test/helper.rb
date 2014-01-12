@@ -17,4 +17,4 @@ require 'vindicia-api'
 class Test::Unit::TestCase
 end
 
-require 'mocha'
+require 'mocha/test_unit'
