@@ -28,7 +28,7 @@ Add something like the following to your environments or in an initializer:
 
 ```ruby
 Vindicia.configure do |config|
-  config.api_version = '3.6'
+  config.api_version = '4.2'
   config.login = 'your_login'
   config.password = 'your_password' 
   config.endpoint = 'https://soap.prodtest.sj.vindicia.com/soap.pl'
@@ -38,7 +38,15 @@ end
 
 You will want to modify the example above with which API version you are targeting, your login credentials, and the Vindicia endpoint you will be using.
 
-Current supported API versions are '3.5' and '3.6'.
+Current supported API versions are [ '3.5', '3.6', '3.7', '3.8', '3.9', '4.0', '4.1', '4.2' ].
+
+For a fuller understanding of the supported versions, classes, and methods, see
+Vindicia::API_CLASSES.  For instance, the list of versions may be introspected
+via the following:
+Vindicia::API_CLASSES.keys
+
+Likewise, the list of classes and their methods may be introspected via the following:
+Vindicia::API_CLASSES[version_number]
 
 Available Vindicia endpoints are:
 
@@ -51,14 +59,22 @@ After the Vindicia API has been configured, all Vindicia classes for the respect
 Parameters are passed as hashes, for example:
 
 ```ruby
-Vindicia::AutoBill.fetch_by_account(:account => { :merchantAccountId => id }
+auto_bill_response = Vindicia::AutoBill.fetch_by_account(:account => { :merchantAccountId => id })
+auto_bill = auto_bill_response.to_class
+if auto_bill.nil?
+  raise "Error fetching AutoBill by Account for merchantAccountId: '#{id}', fault: '#{auto_bill_response.soap_fault}', error: #{auto_bill_response.http_error}"
+end
 ```
 
 * Note that parameters must be specified in the same order as documented in Vindicia's developer documentation.
 
-## Bugs
+## Hacks
 
-* WebSession class is unsupported as it uses 'initialize' as an API call which is a ruby reserved word
+* WebSession class is supported in a hacky manner, as it uses 'initialize' as
+an API call which is a ruby reserved word.  An underscore is hence prepended to
+avoid the issue, so WebSession._initialize can be used to create a WebSession.
+* Savon 1 required jumping the same hoops repetitively to extract the class, so
+.to_class was extended to Savon::SOAP::Response .
 
 ## Contributing to vindicia-api
  
@@ -72,4 +88,4 @@ Vindicia::AutoBill.fetch_by_account(:account => { :merchantAccountId => id }
 
 ## Copyright
 
-Copyright (c) 2011-2013 Agora Games. See LICENSE.txt for further details.
+Copyright (c) 2011-2014 Agora Games. See LICENSE.txt for further details.
