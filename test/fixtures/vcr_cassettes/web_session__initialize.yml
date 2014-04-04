@@ -1,0 +1,57 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://soap.prodtest.sj.vindicia.com/soap.pl
+    body:
+      encoding: US-ASCII
+      string: <?xml version="1.0" encoding="UTF-8"?><env:Envelope xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tns="http://soap.vindicia.com/v3_6/WebSession"
+        xmlns:env="http://schemas.xmlsoap.org/soap/envelope/"><env:Body><tns:initialize><auth><login>your_login</login><password>your_password</password><version>3.6</version></auth><ipAddress>124.23.210.175</ipAddress><method>AutoBill_Update</method><returnUrl>https://merchant.com/subscribe/success.php</returnUrl><errorUrl>https://merchant.com/subscribe/failed.php</errorUrl><privatePormValues><name>Account_VID</name><value>36c8de2cb74b2c2b08b259cf231ac8d90d1bb3b8</value></privatePormValues><privatePormValues><name>Product_merchantProductId</name><value>StartWars
+        II</value></privatePormValues><privatePormValues><name>vin_BillingPlan_merchantBillingPlanId</name><value>GoldAccess2010,
+        PlatinumAccess2010</value></privatePormValues><methodParamValues><name>AutoBill_Update_minChargebackProbability</name><value>80</value></methodParamValues></tns:initialize></env:Body></env:Envelope>
+    headers:
+      Pragma:
+      - no-cache
+      Soapaction:
+      - ! '"http://soap.vindicia.com/v3_6/WebSession#initialize"'
+      Content-Type:
+      - text/xml;charset=UTF-8
+      Content-Length:
+      - '1086'
+      Accept:
+      - ! '*/*'
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 04 Apr 2014 21:58:50 GMT
+      Server:
+      - Apache/2.2.15 (CentOS) mod_ssl/2.2.15 OpenSSL/1.0.0-fips mod_apreq2-20090110/2.8.0
+        mod_perl/2.0.4 Perl/v5.10.1
+      Content-Length:
+      - '866'
+      Content-Type:
+      - text/xml; charset=utf-8
+      Soapserver:
+      - SOAP::Lite/Perl/0.710.10
+      Connection:
+      - close
+    body:
+      encoding: US-ASCII
+      string: ! "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<soap:Envelope \n    xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"
+        \n    xmlns:soapenc=\"http://schemas.xmlsoap.org/soap/encoding/\" \n    xmlns:vin=\"http://soap.vindicia.com/v3_6/Vindicia\"
+        \n    xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" \n    soap:encodingStyle=\"http://schemas.xmlsoap.org/soap/encoding/\"
+        \n    xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n
+        \   <initializeResponse xmlns=\"http://soap.vindicia.com/v3_6/WebSession\">\n
+        \     <return xmlns=\"\" xsi:type=\"vin:Return\">\n        <returnCode xsi:type=\"vin:ReturnCode\">403</returnCode>\n\n
+        \       <soapId xsi:type=\"xsd:string\">d7cf030773898b759e5c025dffa90498951a2405</soapId>\n\n
+        \       <returnString xsi:type=\"xsd:string\">Permission denied to domain
+        \"soap\"</returnString>\n      </return>\n    </initializeResponse>\n  </soap:Body>\n</soap:Envelope>\n"
+    http_version: 
+  recorded_at: Fri, 04 Apr 2014 21:58:50 GMT
+recorded_with: VCR 2.9.0

@@ -44,11 +44,12 @@ module Vindicia
     private
     
       def define_class_action(action)
+        escaped_action = !action.to_s.start_with?('_') ? action : action[1..-1] #chomp leading _, if present
         class_action_module.module_eval <<-CODE
           def #{action.to_s.underscore}(body = {}, &block)
-            client.request :tns, #{action.inspect} do
+            client.request :tns, #{escaped_action.inspect} do
               soap.namespaces["xmlns:tns"] = vindicia_target_namespace
-              http.headers["SOAPAction"] = vindicia_soap_action('#{action}')
+              http.headers["SOAPAction"] = vindicia_soap_action('#{escaped_action}')
               soap.body = {
                 :auth => vindicia_auth_credentials
               }.merge(body)
