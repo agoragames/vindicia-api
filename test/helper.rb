@@ -17,4 +17,17 @@ require 'vindicia-api'
 class Test::Unit::TestCase
 end
 
-require 'mocha/test_unit'
+require 'mocha/setup'
+require 'webmock/test_unit'
+require 'vcr'
+
+VCR.configure do |c|
+  c.cassette_library_dir = 'test/fixtures/vcr_cassettes'
+  c.hook_into :webmock
+end
+
+Savon.configure do |config|
+  config.log = false
+end
+
+HTTPI.log = false
