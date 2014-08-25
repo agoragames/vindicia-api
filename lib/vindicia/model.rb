@@ -1,5 +1,6 @@
 require 'savon'
 require 'httpclient'
+require 'retriable'
 
 module Vindicia
 
@@ -31,6 +32,15 @@ module Vindicia
         client.wsdl.namespace = uri
       end
 
+      # Exponential backoff, for use by connection failure handling code
+      def retry_interval(attempt)
+        2**(attempt - 1)
+      end
+
+      def log_retry(ex, attempt)
+        Vindicia.config.logger.warn("Attempt #{attempt} failed, retrying: #{ex.message}") if Vindicia.config.logger
+      end
+
       # Accepts one or more SOAP actions and generates both class and instance methods named
       # after the given actions. Each generated method accepts an optional SOAP body Hash and
       # a block to be passed to <tt>Savon::Client#request</tt> and executes a SOAP request.
@@ -46,15 +56,20 @@ module Vindicia
         real_action = API_ACTION_NAME_RESERVED_BY_RUBY_MAPS[action] || action
         class_action_module.module_eval <<-CODE
           def #{action.to_s.underscore}(body = {}, &block)
-            client.request :tns, #{ real_action.inspect } do
-              soap.namespaces["xmlns:tns"] = vindicia_target_namespace
-              http.headers["SOAPAction"] = vindicia_soap_action('#{ real_action }')
-              soap.body = {
-                :auth => vindicia_auth_credentials
-              }.merge(body)
-              block.call(soap, wsdl, http, wsse) if block
+            Retriable.retriable :on       => [ HTTPClient::ConnectTimeoutError, Errno::ECONNRESET ],
+                                :tries    => Vindicia.config.max_connect_attempts,
+                                :interval => method(:retry_interval),
+                                :on_retry => method(:log_retry) do
+              client.request :tns, #{ real_action.inspect } do
+                soap.namespaces["xmlns:tns"] = vindicia_target_namespace
+                http.headers["SOAPAction"] = vindicia_soap_action('#{ real_action }')
+                soap.body = {
+                  :auth => vindicia_auth_credentials
+                }.merge(body)
+                block.call(soap, wsdl, http, wsse) if block
+              end
             end
-          rescue HTTPClient::ConnectTimeoutError, Timeout::Error, Errno::ETIMEDOUT => e
+          rescue HTTPClient::ConnectTimeoutError, Timeout::Error, Errno::ETIMEDOUT, Errno::ECONNRESET => e
             rescue_exception(:#{ action.to_s.underscore }, '503', e.message)
           rescue Exception => e
             rescue_exception(:#{ action.to_s.underscore }, '500', e.message)

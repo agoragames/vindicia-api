@@ -158,11 +158,18 @@ module Vindicia
   class Configuration
     include Singleton
 
+    # Number of times to attempt to connect() (and, if necessary, negotiate SSL)
+    # with the Vindicia API endpoint. Increase this if you have unreliable
+    # connectivity between your environment and Vindicia
+    DEFAULT_MAX_CONNECT_ATTEMPTS = 1
+
     attr_accessor :api_version, :login, :password, :endpoint, :namespace,
-      :general_log, :log_level, :log_filter, :logger, :pretty_print_xml, :ssl_verify_mode
+      :general_log, :log_level, :log_filter, :logger, :pretty_print_xml, :ssl_verify_mode,
+      :max_connect_attempts
 
     def initialize
       @@configured = false
+      @max_connect_attempts = DEFAULT_MAX_CONNECT_ATTEMPTS
     end
 
     def configured!
