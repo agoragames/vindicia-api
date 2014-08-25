@@ -59,9 +59,20 @@ class Vindicia::ModelTest < Test::Unit::TestCase
   def test_should_catch_503_exceptions_thrown_underneath_savon
     [HTTPClient::ConnectTimeoutError,
      Timeout::Error,
-     Errno::ETIMEDOUT
+     Errno::ETIMEDOUT,
+     Errno::ECONNRESET
     ].each do | exception_class |
+      Vindicia::AutoBill.expects(:log_retry).never
       Vindicia::AutoBill.client.expects(:request).once.raises(exception_class)
+      assert_failure('503')
+    end
+  end
+
+  def test_should_retry_connection_errors
+    Vindicia.config.max_connect_attempts = 2 # retry once, then fail
+    [ HTTPClient::ConnectTimeoutError, Errno::ECONNRESET ].each do | exception_class |
+      Vindicia::AutoBill.expects(:log_retry).once
+      Vindicia::AutoBill.client.expects(:request).twice.raises(exception_class)
       assert_failure('503')
     end
   end
