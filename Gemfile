@@ -1,4 +1,4 @@
 source 'https://rubygems.org'
 
-# Specify your gem's dependencies in vindicia-api.gemspec
+gem 'savon', git: "git@github.com:VerticalResponse/savon.git", branch: 'version1'
 gemspec

@@ -21,7 +21,7 @@ module Vindicia
       end
 
       def client(&block)
-        @client ||= Savon::Client.new &block
+        @client ||= Savon::Client.new(&block)
       end
 
       def endpoint(uri)
@@ -31,6 +31,31 @@ module Vindicia
       def namespace(uri)
         client.wsdl.namespace = uri
       end
+
+      def ssl_verify_mode(mode)
+        client.http.auth.ssl.verify_mode = mode
+      end
+
+      def ssl_version(version)
+        client.http.auth.ssl.ssl_version = version
+      end
+
+      def cert_file(file)
+        client.http.auth.ssl.cert_file = file
+      end
+
+      def ca_cert_file(file)
+        client.http.auth.ssl.ca_cert_file = file
+      end
+
+      def cert_key_file(file)
+        client.http.auth.ssl.cert_key_file = file
+      end
+
+      def cert_key_pwd(pwd)
+        client.http.auth.ssl.cert_key_password = pwd
+      end
+
 
       # Exponential backoff, for use by connection failure handling code
       def retry_interval(attempt)
@@ -50,10 +75,10 @@ module Vindicia
         end
       end
 
-    private
+      private
 
       def define_class_action(action)
-        real_action = API_ACTION_NAME_RESERVED_BY_RUBY_MAPS[action] || action
+        real_action = Vindicia::API_ACTION_NAME_RESERVED_BY_RUBY_MAPS[action] || action
         class_action_module.module_eval <<-CODE
           def #{action.to_s.underscore}(body = {}, &block)
             Retriable.retriable :on       => [ HTTPClient::ConnectTimeoutError, Errno::ECONNRESET ],

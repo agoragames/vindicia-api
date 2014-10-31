@@ -16,7 +16,7 @@ class Vindicia::ConfigTest < Test::Unit::TestCase
 
   def teardown
     Vindicia.clear_config
-    Vindicia::Configuration.reset_instance
+    Vindicia::Config.reset_instance
   end
 
   def set_config_values(config, api_version)
@@ -25,6 +25,27 @@ class Vindicia::ConfigTest < Test::Unit::TestCase
     config.password = 'your_password'
     config.endpoint = 'https://soap.prodtest.sj.vindicia.com/soap.pl'
     config.namespace = 'http://soap.vindicia.com'
+  end
+
+  def set_default_misc_values(config, logger = nil)
+    config.pretty_print_xml = true
+    config.log_filter       = [:password]
+    config.general_log      = true
+
+    if logger
+      config.logger           = logger
+      config.log_level        = logger.level
+    end
+  end
+
+  # Using LICENSE.txt just to not load a valid cert into the repo
+  def set_valid_ssl_values(config)
+    config.ssl_verify_mode = :peer
+    config.ssl_version     = :TLSv1
+    config.cert_file       = 'LICENSE.txt'
+    config.ca_cert_file    = 'LICENSE.txt'
+    config.cert_key_file   = 'LICENSE.txt'
+    config.cert_pwd        = ''
   end
 
   def test_should_not_configure_on_upsupported_api_version
@@ -50,9 +71,9 @@ class Vindicia::ConfigTest < Test::Unit::TestCase
     assert_nothing_raised do
       Vindicia.configure do |config|
         set_config_values(config, good_api_version)
+        set_default_misc_values(config)
 
         config.ssl_verify_mode = :none
-        config.pretty_print_xml = true
       end
     end
 
@@ -78,13 +99,9 @@ class Vindicia::ConfigTest < Test::Unit::TestCase
     assert_nothing_raised do
       Vindicia.configure do |config|
         set_config_values(config, good_api_version)
+        set_default_misc_values(config, logger)
 
         config.ssl_verify_mode = :none
-        config.pretty_print_xml = true
-        config.logger = logger
-        config.log_filter = [:password]
-        config.log_level = logger.level
-        config.general_log = true
       end
     end
 
@@ -105,19 +122,30 @@ class Vindicia::ConfigTest < Test::Unit::TestCase
     assert_nothing_raised do
       Vindicia.configure do |config|
         set_config_values(config, good_api_version)
+        set_default_misc_values(config, logger)
 
         config.ssl_verify_mode = :none
-        config.pretty_print_xml = true
-        config.logger = logger
-        config.log_filter = [:password]
-        config.log_level = logger.level
-        config.general_log = true
       end
     end
 
     assert_respond_to(Vindicia::WebSession, :init)
     assert_not_respond_to(Vindicia::WebSession, :initialize)
-
   end
 
+  def test_ssl_options_are_allowed
+    good_api_version = '3.6'
+    assert Vindicia::API_CLASSES.has_key?(good_api_version)
+    assert !Vindicia.config.is_configured?
+
+    assert_nothing_raised do
+      Vindicia.configure do |config|
+        set_config_values(config, good_api_version)
+        set_default_misc_values(config)
+        set_valid_ssl_values(config)
+      end
+    end
+
+    assert Vindicia.config.is_configured?
+    assert !Vindicia.config.ca_cert_file.nil?
+  end
 end

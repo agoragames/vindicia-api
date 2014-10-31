@@ -1,3 +1,5 @@
 require 'active_support/core_ext/string/conversions'
+require 'vindicia/version'
 require 'vindicia/config'
+require 'vindicia/mappings'
 require 'vindicia/model'

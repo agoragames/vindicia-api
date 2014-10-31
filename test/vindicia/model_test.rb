@@ -37,7 +37,7 @@ class Vindicia::ModelTest < Test::Unit::TestCase
 
   def teardown
     Vindicia.clear_config
-    Vindicia::Configuration.reset_instance
+    Vindicia::Config.reset_instance
   end
 
   def test_should_define_api_methods_of_respective_vindicia_class_for_respective_api_version
