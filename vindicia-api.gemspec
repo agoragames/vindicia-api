@@ -19,11 +19,12 @@ Gem::Specification.new do |gem|
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
   gem.require_paths = ['lib']
 
-  gem.add_dependency('savon', '= 1.3.0')
+  gem.add_dependency('savon', '~> 1.3.1')
   gem.add_dependency('activesupport')
   gem.add_dependency('retriable')
 
   gem.add_development_dependency('rake')
-  gem.add_development_dependency('minitest', '~> 4.7')
+  gem.add_development_dependency('test-unit')
+  gem.add_development_dependency('httpclient')
   gem.add_development_dependency('mocha', '~> 0.14.0')
 end
