@@ -1,4 +1,4 @@
-require 'active_support/core_ext/string/conversions'
+require 'active_support/core_ext/string/inflections'
 require 'vindicia/version'
 require 'vindicia/config'
 require 'vindicia/mappings'
