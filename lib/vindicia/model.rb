@@ -56,6 +56,14 @@ module Vindicia
         client.http.auth.ssl.cert_key_password = pwd
       end
 
+      def open_timeout(timeout)
+        client.http.open_timeout = timeout
+      end
+
+      def read_timeout(timeout)
+        client.http.read_timeout = timeout
+      end
+
 
       # Exponential backoff, for use by connection failure handling code
       def retry_interval(attempt)

@@ -12,6 +12,7 @@ module Vindicia
     attr_accessor :api_version, :login, :password, :endpoint, :namespace,
       :general_log, :log_level, :log_filter, :logger, :pretty_print_xml,
       :ssl_version, :ssl_verify_mode, :cert_file, :ca_cert_file, :cert_key_file, :cert_pwd,
+      :open_timeout, :read_timeout,
       :max_connect_attempts
 
     def initialize
@@ -52,6 +53,12 @@ module Vindicia
 
           client do
             http.headers["Pragma"]    = "no-cache"
+            if Vindicia.config.open_timeout
+              http.open_timeout = Vindicia.config.open_timeout
+            end
+            if Vindicia.config.read_timeout
+              http.read_timeout = Vindicia.config.read_timeout
+            end
             config.pretty_print_xml   = Vindicia.config.pretty_print_xml
             config.log                = Vindicia.config.general_log
             config.logger             = Vindicia.config.logger
