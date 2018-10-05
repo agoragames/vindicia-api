@@ -70,8 +70,11 @@ module Vindicia
         2**(attempt - 1)
       end
 
-      def log_retry(ex, attempt)
-        Vindicia.config.logger.warn("Attempt #{attempt} failed, retrying: #{ex.message}") if Vindicia.config.logger
+      # This method has to match the retriable callback
+      # https://github.com/kamui/retriable/blob/eaab7caba015389adf1b892e9bec4e97f9430eda/lib/retriable.rb#L70
+      # on_retry.call(exception, try, elapsed_time, interval) if on_retry
+      def log_retry(ex, attempt, elapsed_time, interval)
+        Vindicia.config.logger.warn("Attempt #{attempt} failed, elapsed time: #{elapsed_time}, interval: #{interval}, message: #{ex.message} | Retrying...") if Vindicia.config.logger
       end
 
       # Accepts one or more SOAP actions and generates both class and instance methods named
