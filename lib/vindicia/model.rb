@@ -92,7 +92,7 @@ module Vindicia
         real_action = Vindicia::API_ACTION_NAME_RESERVED_BY_RUBY_MAPS[action] || action
         class_action_module.module_eval <<-RUBY, __FILE__, __LINE__ + 1
           def #{action.to_s.underscore}(body = {}, &block)
-            Retriable.retriable :on       => [ HTTPClient::ConnectTimeoutError, Errno::ECONNRESET ],
+            Retriable.retriable :on       => [ HTTPClient::ConnectTimeoutError, Net::OpenTimeout, Timeout::Error, Errno::ETIMEDOUT, Errno::ECONNRESET],
                                 :tries    => Vindicia.config.max_connect_attempts,
                                 :interval => method(:retry_interval),
                                 :on_retry => method(:log_retry) do
@@ -105,7 +105,7 @@ module Vindicia
                 block.call(soap, wsdl, http, wsse) if block
               end
             end
-          rescue HTTPClient::ConnectTimeoutError, Timeout::Error, Errno::ETIMEDOUT, Errno::ECONNRESET => e
+          rescue HTTPClient::ConnectTimeoutError, Net::OpenTimeout, Timeout::Error, Errno::ETIMEDOUT, Errno::ECONNRESET => e
             rescue_exception(:#{ action.to_s.underscore }, '503', e.message)
           rescue Exception => e
             raise if %w(Mocha::ExpectationError WebMock::NetConnectNotAllowedError).include? e.class.name
